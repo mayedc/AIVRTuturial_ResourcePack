@@ -1,0 +1,28 @@
+* text=auto
+
+*.cs text eol=lf
+*.shader text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.xml text eol=lf
+*.ps1 text eol=crlf
+*.bat text eol=crlf
+
+*.unity text eol=lf
+*.prefab text eol=lf
+*.asset text eol=lf
+*.meta text eol=lf
+*.inputactions text eol=lf
+
+*.blend binary
+*.fbx binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.psd binary
+*.mp4 binary
+*.wav binary
+*.ogg binary
+*.dll binary

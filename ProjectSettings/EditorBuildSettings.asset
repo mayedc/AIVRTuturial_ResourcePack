@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/AI_VR_Workshop_V4/Scenes/Workshop_Desktop.unity
+    guid: 2056e3efe795c4e262fbe3ec36c3dac9
+  - enabled: 1
+    path: Assets/AI_VR_Workshop_V4/Scenes/Workshop_MetaVR.unity
+    guid: c29ba198de3c44607a5ec21c1595448e
+  m_configObjects:
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 0b910fd55bba59844b3e7f460f5966c5, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 3597f94894fc0f34e8e28b5eaf7a3f8e, type: 2}
+  m_UseUCBPForAssetBundles: 0

@@ -1,0 +1,40 @@
+# Unity-generated and local state
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+UserSettings/
+MemoryCaptures/
+Recordings/
+*.csproj
+*.sln
+*.slnx
+*.user
+*.pidb
+*.booproj
+*.unityproj
+*.suo
+*.tmp
+*.bak
+*.swp
+*.DS_Store
+.vs/
+.idea/
+.vscode/
+# Credentials and machine-local MCP settings
+.cursor/mcp.json
+.env
+.env.*
+!.env.example
+# Backups for Blender scripts and large local output
+*.blend1
+*.blend2
+# Generated APKs belong in releases, not repository history
+*.apk
+*.aab
+# Local archive of material that is outside the public release
+OldMaterial/
+# Reports written when a teacher runs Tools/validate_kit.py
+Checkpoints/

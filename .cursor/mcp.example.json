@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "blender-workshop": {
+      "command": "cmd",
+      "args": ["/c", "uvx", "--python", "3.11", "mcp-for-blender"],
+      "env": {"UV_PYTHON_PREFERENCE": "only-managed", "DISABLE_TELEMETRY": "true"}
+    },
+    "unity-workshop": {"url": "http://localhost:8080/mcp"}
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "resolved_package_refs": {
+    "474bcb49853aa07438625e644c072ee6": "com.unity.render-pipelines.universal@029be7ffa662/Runtime/UniversalAdditionalLightData.cs.meta",
+    "a79441f348de89743a2939f4d699eac1": "com.unity.render-pipelines.universal@029be7ffa662/Runtime/UniversalAdditionalCameraData.cs.meta",
+    "650dd9526735d5b46b79224bc6e94025": "com.unity.render-pipelines.universal@029be7ffa662/Shaders/Unlit.shader.meta",
+    "933532a4fcc9baf4fa0491de14d08ed7": "com.unity.render-pipelines.universal@029be7ffa662/Shaders/Lit.shader.meta",
+    "d0353a89b1f911e48b9e16bdc9f2e058": "com.unity.render-pipelines.universal@029be7ffa662/Editor/AssetVersion.cs.meta",
+    "126d619cf4daa52469682f85c1378b4a": "com.meta.xr.sdk.core@d4cd875f54ee/Prefabs/OVRCameraRig.prefab.meta"
+  },
+  "unresolved": []
+}

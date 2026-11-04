@@ -1,0 +1,30 @@
+{
+  "AsterGT": {
+    "renderers": 10,
+    "triangles": 72376
+  },
+  "NomaRobot": {
+    "renderers": 37,
+    "triangles": 14716
+  },
+  "MeridianCity": {
+    "renderers": 54,
+    "triangles": 181346
+  },
+  "JetFX": {
+    "renderers": 2,
+    "triangles": 3456
+  },
+  "Road_Straight12": {
+    "renderers": 3,
+    "triangles": 1012
+  },
+  "Road_Crosswalk12": {
+    "renderers": 3,
+    "triangles": 2668
+  },
+  "Road_Gap12": {
+    "renderers": 5,
+    "triangles": 3808
+  }
+}
