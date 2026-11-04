@@ -14,4 +14,4 @@ Updated through documentation. Git publication fields are filled when the reposi
 | File count | Validator PASS: 464 scanned files outside forbidden directories. |
 | Repository size | 106,673,238 bytes outside `Library`, `Temp`, `Obj`, `Logs`, `UserSettings`, `Build`, `Builds`, and `.vs`. No file at or above 50 MB in that set. |
 | Git LFS | Not used. No binary reached the 50 MB warning or the 100 MB GitHub limit. |
-| Remote | This commit is the candidate for `https://github.com/mayedc/AIVRTuturial_ResourcePack`. Visibility is public when the push succeeds. |
+| Remote | Pushed to `https://github.com/mayedc/AIVRTuturial_ResourcePack` on `main`. Verified clone SHA `0f92c6c672e94f56d72681e982f0851b129b339d`. |

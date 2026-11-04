@@ -13,6 +13,7 @@ $Root = (Resolve-Path -LiteralPath $Root).Path
 
 $archiveName = 'Old' + 'Material'
 $forbiddenDirs = @("Library", "Temp", "Obj", "Logs", "UserSettings", "Build", "Builds", ".vs")
+$skipDirs = $forbiddenDirs + @(".git", ".vscode", ".idea")
 $required = @(
     "Assets",
     "Packages\manifest.json",
@@ -110,7 +111,7 @@ Get-ChildItem -LiteralPath $Root -Recurse -File -Force -ErrorAction SilentlyCont
     $full = $_.FullName
     $rel = $full.Substring($Root.Length).TrimStart('\','/')
     $top = ($rel -split '[\\/]')[0]
-    if ($forbiddenDirs -contains $top) { return }
+    if ($skipDirs -contains $top) { return }
     $bytes += $_.Length
     $posix = $rel -replace '\\','/'
     if ($_.Name -match '[^\x00-\x7F]') {
