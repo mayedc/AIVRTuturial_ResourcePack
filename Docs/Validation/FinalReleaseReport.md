@@ -2,7 +2,7 @@
 
 Repository URL: https://github.com/mayedc/AIVRTuturial_ResourcePack
 Repository Visibility: public
-Latest Commit SHA: 0f92c6c672e94f56d72681e982f0851b129b339d
+Latest Commit SHA: d9d19690e3527e09aa1db3ce7bd9b08c360e047d
 Release Tag: v1.0.0
 Unity Editor Version: 6000.3.27f2
 Blender Version: 5.2.2 LTS recorded in the FBX creator string. Blender was not launched during validation.
@@ -18,4 +18,4 @@ Language Audit Result: PASS. No Chinese text and no non-ASCII filenames in the s
 License Audit Result: PASS for files in this repository. Meta XR Core prefab bytes were not added. See `Docs/AssetLicenses.md`.
 Clean Clone Result: PASS for clone, package restore, compilation, and desktop Play Mode. Blender recolor exercise NOT VERIFIED because Blender was not installed.
 Documentation Result: PASS. Required teaching docs and `Docs/ToSlide.md` are in the repository. Relative Markdown links in the clone resolved.
-Remaining Limitations: Jet flight is off unless `allowJetFlight` is enabled. No headset test and no APK. No screenshots are shipped. This report is added after the SHA above, so the tag commit is the commit that contains this file. Read the tag for that commit. The verified Play Mode commit is the SHA written here.
+Remaining Limitations: Jet flight is off unless `allowJetFlight` is enabled. No headset test and no APK. No screenshots are shipped. The SHA above is the `v1.0.0` tag. The clean-clone Play Mode pass used parent commit `0f92c6c672e94f56d72681e982f0851b129b339d`, and the tag adds this report. A follow-up commit on main records this SHA and does not move the tag.
