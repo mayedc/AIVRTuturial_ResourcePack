@@ -1,24 +1,5 @@
-# Adjust prepared speed
+# Exercise 2A — Implement speed control
 
-Objective: change the existing speed component and keep the crosswalk yield.
+Through Unity MCP, confirm the open scene is our copy of Workshop_Desktop. Read the Console and inspect AsterGT. Edit the existing WorkshopSpeedControl.cs. Implement a target initially at 0.85 m/s, clamp finite inputs to 0.25–2.0 m/s, and keep the last valid target if the input is NaN or infinity. Make CanAdjustSpeed true so the existing desktop slider can call SetSpeedMps. Keep the drive, braking and references. Work from the starter code and these requirements.
 
-Paths:
-
-- Scene: `Assets/AI_VR_Workshop_V4/Scenes/Workshop_Desktop.unity`
-- Component: `WorkshopSpeedControl` on `AsterGT`
-- Drive: `WorkshopDrive` on the same object
-- Panel: `WorkshopDesktopPanel` on `AI_VR_Workshop_V4`
-
-Rules:
-
-- If you must save, duplicate the scene first with `Workshop V4/Save active scene as new checkpoint`.
-- Do not delete the teacher scene.
-- Do not add a second `WorkshopDrive`.
-- Do not change route distances.
-- Leave `allowJetFlight` false unless the teacher asks for the jet.
-
-Success:
-
-- The target stays inside 0.25 to 2 metres per second.
-- Play Mode still reaches `Yield` near 7.5 m and `AwaitChoice` near 32 m.
-- The Console has no new compile errors.
+Compile and report the Console result. In Play, compare observed cruise at 0.85 and 1.20 m/s. Verify that the car still yields to the robot and holds before the gap. Record the changed file and what you actually observed.

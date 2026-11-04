@@ -1,13 +1,12 @@
-# Assessment rubric
+# Workshop review
 
-Scores are for the student copy and the notes, not for a Quest pass.
+| Criterion | Evidence of completion |
+|---|---|
+| Agent connection | Live readback from Blender and Unity with file or scene and versions |
+| Asset edit | Separate student blend and FBX with a changed M_BodyPaint and stable geometry |
+| Unity integration | One car visual on the original root in a scene copy, retained route references, visible yield and gap hold |
+| Behavior change | Two observed speeds, intact yield, explicit flight, landing, final stop, and restart |
+| Tracked cockpit | One rig under DriverEyeAnchor, one active camera and listener, separate record of seated view and head tracking |
+| Evidence | English notes identifying the files, versions, actions and observed results |
 
-| Criterion | Complete | Partial | Missing |
-|---|---|---|---|
-| Prepared-asset rule | Teacher Blender file and teacher scenes still match the repository | A copy exists but the teacher file also changed | Teacher file overwritten or deleted |
-| Blender color | `M_BodyPaint` changed on a copy; other materials kept | Color changed with extra unexplained edits | No color change, or the wrong material |
-| Speed control | New target inside 0.25–2 and Play still yields at the crosswalk | Speed changed but the yield was not observed | Drive component replaced or the route no longer stops |
-| XR explanation | Student names `DriverEyeAnchor`, the disabled desktop camera, and the missing rig, and writes NOT VERIFIED or a real device result | Hierarchy described without the hardware line | Claims a Quest pass from the Editor alone |
-| Notes | English, relative paths, versions recorded | Notes exist but skip a version | No deliverable |
-
-Jet flight is optional and is not required for a grade. Comfort comes before the jet.
+Use partial credit when a student can show a verified intermediate state. Record device availability separately from the student's work.

@@ -1,37 +1,20 @@
 # Acceptance matrix
 
-Use only these states: passed on this machine, failed on this machine, not run, or needs a visual decision. A report from another computer is evidence about that computer.
+Record the date, machine, software versions, scene or file, and the result. Use passed, failed, not run, or needs visual review for each check. Earlier release results are recorded in [historical validation](Validation/FinalReleaseReport.md).
 
-| Gate | State of this package | Still required before class |
-|---|---|---|
-| Older starter and image references | Reviewed. Reference images are not in the package. | Compare this tree with the classroom Windows machine. |
-| Source models | `.blend` and `.fbx` files are in `SourceArt`. | Reopen them in Blender on the classroom machine. |
-| Geometry, skeleton, animation | Not remeasured during packaging. | Visual check, hidden faces, and joint limits. |
-| Unity file consistency | Scenes, meshes, materials, and `.meta` files were copied together. | Import in the editor and read the Console. |
-| CP0 tools and versions | Not run in this packaging step. | Read both MCP connections and write the version record. |
-| CP1 import and recolor | Not run as a student MCP exercise on this copy. | One student-copy import, recolor, save, and reopen. |
-| CP2 compile and import | Not recompiled during packaging. | No compile errors, missing scripts, empty meshes, or magenta materials. Run the validate menu. |
-| CP3 desktop route | Not played during packaging. | Both sample speeds, a full yield, the gap stop, pause, restart, and both ways to continue. |
-| CP4 XR baseline | Meta prefab reference is present and unresolved. No headset was connected. | Tracking, scale, seat height, both eyes, curtain, and pause input. |
-| CP5 Quest session | Not run. | Frame time, sustained play, and a separate jet comfort note. |
-| Visual acceptance | Needs a visual decision. | Judge the models in Blender or Unity. Preview PNGs were withheld because they contained a local user path. |
+| Gate | Evidence |
+|---|---|
+| CP0 · Setup | Both MCP readbacks, editor and package versions, zero compile errors, Windows and Link preparation recorded separately |
+| CP1 · Blender | Student blend reopens, only M_BodyPaint changed, FBX exports with expected bounds and orientation |
+| CP2 · Unity import | Scene checkpoint, one car visual, correct scale and materials, route references retained |
+| CP3 · Desktop starter | Cruise at 0.85 m/s, full crossing stop, robot clearance, stable wait at z = 32 m, pause and restart. No speed or flight control before coding. |
+| CP3 · Desktop exercise | Target is bounded, actual cruise changes, crossing yield is retained, explicit flight lands at z = 48 m and comes to rest at z = 58 m. Pause and restart are checked. |
+| CP4 · Cockpit | Rig on a scene copy, one active HMD camera and one listener, unit rig scale and documented tracking origin |
+| CP5 · Device | Wired Link, both eyes, seated view and responsive head tracking witnessed on the headset |
 
-## CP3 cases
+## Desktop details
 
-1. At 0.25, 0.85, and 2 m/s the car stops at z = 7.5. It stays still until the robot reaches x = 4.5.
-2. Negative, oversized, and non-finite speed inputs: finite values clamp to the range, and non-finite values leave the last valid value.
-3. Pause and resume in Ready, while moving, Yield, AwaitChoice, JetFlight, FadeOut, and FadeIn. The timer and the robot both stop.
-4. Restart from each stage returns the car, resets the robot pose and position, turns the jets off, and clears the curtain.
-5. `BeginJetFlight` does nothing while jet flight is disabled. Fade transfer is refused when the curtain is missing. A missing robot reference holds the car and reports an error.
-6. No road surface or bridging collider covers z = 37 to 43. At the landing z = 48 the whole car is past the gap.
-
-## Restore points
-
-- CP0: version record and the untouched teacher tree.
-- CP1: the student's own `.blend` and FBX.
-- CP2: a scene copy saved after the first clean import.
-- CP3: a scene copy saved after the desktop route.
-- CP4: a scene copy saved after the headset picture is actually shown.
-- CP5: device notes. If you only have a desktop, leave CP5 as not run.
-
-Each row needs the date, the person, the software versions, the file path, and either the success evidence or the original error text. Restore a copy. Do not pour a clean package over a student folder. A file hash shows that a copy is intact. It does not show that a headset is compatible.
+- A finite out-of-range speed clamps after Exercise 2A. A non-finite input leaves the last valid value. Test the 0.85 and 1.20 m/s cruise separately.
+- Trigger flight outside the gap hold and confirm that the car continues its current stage. At the gap, verify a hold before the explicit flight command.
+- Pause keeps the route and robot still. Restart restores the starting position, robot pose, and jets off.
+- The road has separate colliders on both sides of the gap. Verify that no added collider bridges z = 37 to 43.

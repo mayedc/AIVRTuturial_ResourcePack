@@ -1,106 +1,27 @@
-# AIVRTuturial_ResourcePack
+# AI Era: VR Development with AI Agent, Blender, and Unity
 
-## AI-Assisted VR Driving Workshop
+A three-lesson driving workshop for MDIT 310. Open the prepared Unity project, recolor Aster GT in Blender, change its driving behavior in Unity, and attach a tracked cockpit view for wired Quest Link.
 
-A reusable Unity and Blender teaching resource pack for AI-assisted VR development. Students modify prepared assets. They do not generate the car, the robot, or the street from scratch.
+## Start here
 
-## Overview
+1. Follow the [Windows and Cursor setup](Docs/WindowsSetup.md). Use the Unity Editor version in `ProjectSettings/ProjectVersion.txt` and open the repository root in Unity Hub.
+2. Follow [Lesson 1](Docs/Lesson01_Setup.md) to download the pack, open the project, and read back Blender and Unity state through MCP.
+3. In [Lesson 2](Docs/Lesson02_Unity.md), recolor a copy of the car, export FBX, and bring the visual into a copy of `Workshop_Desktop.unity`. In Play, the starter drives at a fixed 0.85 m/s target, yields to the robot, and waits before the gap.
+4. In [Lesson 3](Docs/Lesson03_MetaQuest.md), implement the speed and flight exercises, verify the desktop run, and set up the cockpit rig in a separate scene copy.
 
-The desktop scene drives a prepared car along a straight futuristic street. The car starts, stops for a robot at the crosswalk, continues, and can cross a road gap with a teacher-enabled jet or a fade transfer. A second scene is prepared for Meta Quest 3 and OpenXR. Headset playback was not verified for this release.
+The [teacher guide](Docs/TeacherGuide.md) covers timing and recovery points. Use the [acceptance matrix](Docs/Acceptance_Matrix.md) to record the checks you actually ran.
 
-## Learning objectives
+## What's in the pack
 
-- Tell a reference idea, a prepared 3D model, and a running Unity scene apart.
-- Use Cursor with Blender to recolor one named material on a student copy.
-- Use Cursor with Unity to change `WorkshopSpeedControl` and watch the yield still happen.
-- Read an XR camera hierarchy and state what is, and is not, proven on Quest 3.
+- `SourceArt/Blender` and `SourceArt/FBX`: Aster GT, Noma Robot, Meridian City, JetFX, and three road modules. The Blender folder also has an assembled master.
+- `Assets/AI_VR_Workshop_V4`: Unity meshes, materials, prefabs, route scripts, and scenes. See the [asset catalogue](Docs/02_Asset_Catalog_and_Reuse.md) and [project architecture](Docs/ProjectArchitecture.md).
+- `Prompts`: scoped instructions for each Agent exercise.
+- `Answers`: teacher reference scripts and archived originals, outside Unity's imported Assets. Start the exercises from the runtime files.
 
-## Key features
+## Classroom platform
 
-- Prepared vehicle `AsterGT`, cockpit materials, and `DriverEyeAnchor`.
-- Prepared robot `NomaRobot` with `WorkshopRobotWalk`.
-- Street content from `MeridianCity` plus road modules for a straight, a crosswalk, and a gap.
-- Autonomous route in `WorkshopDrive`: approach, yield, gap, optional jet, landing, final stage.
-- Desktop panel for speed, pause, and restart.
-- OpenXR settings with Quest 3 selected. Meta XR Core camera prefab is not included.
+Windows, Cursor, Blender, Unity, and one Quest 3 or 3S with a tested data cable per group. Set up Quest Link, the PC OpenXR runtime, and the compatible Meta XR Core package before class. The Meta SDK is an external dependency. The shipped Meta scene is a historical rig reference, and the class starts from a copy of the desktop scene. See the [XR checklist](Docs/05_XR_and_Quest_Acceptance.md).
 
-## Software requirements
+Previous release runs are under [historical validation](Docs/Validation/FinalReleaseReport.md). Record current desktop, live MCP, and headset results separately.
 
-| Software | Version used for this pack |
-|---|---|
-| Unity Editor | 6000.3.27f2 |
-| URP | 17.3.0 (`Assets/Settings/PC_RPAsset.asset`) |
-| Input System | 1.20.1 |
-| OpenXR | 1.16.1 |
-| Blender | 5.2.2 LTS recorded in the FBX creator string. This release did not launch Blender. |
-| Cursor | Current desktop app. MCP examples are in `.cursor/mcp.example.json`. |
-| Git | Needed only to clone the public repository. |
-
-## Hardware requirements
-
-- Desktop lesson: a Windows PC that can open this Unity project. The validation machine used a Standalone Windows editor target.
-- Lesson 3 headset: a Meta Quest 3 or Quest 3S is listed in the OpenXR feature. A physical headset test is NOT VERIFIED for this release.
-- Android build support was present on the validation Editor (min SDK 32, ARM64, IL2CPP). No APK was built.
-
-## Architecture
-
-`WorkshopDrive` and `WorkshopSpeedControl` sit on `AsterGT`. The panel sits on `AI_VR_Workshop_V4`. The eye anchor is a child of the car at local position (-0.44, 1.24, -0.12). The route distances are 7.5 m at the crossing, 32 m at the gap hold, 48 m at the landing, and 58 m at the end. Details: `Docs/ProjectArchitecture.md`.
-
-## Installation and quick start
-
-1. Clone the repository. Open the repository root in Unity `6000.3.27f2`.
-2. Wait until package restore and script compilation finish. Console compile errors must be zero.
-3. Open `Assets/AI_VR_Workshop_V4/Scenes/Workshop_Desktop.unity`.
-4. Enter Play. The upper-left panel can change speed, pause, and restart.
-5. The car yields at the crosswalk. Jet flight stays off until `allowJetFlight` is enabled on `WorkshopDrive`.
-
-See `Docs/QuickStart.md` and `Docs/WindowsSetup.md`.
-
-## Three-lesson curriculum
-
-| Lesson | Document | Students change |
-|---|---|---|
-| 1. Blender | `Docs/Lesson01_Blender.md` | A copy of `M_BodyPaint` on `SourceArt/Blender/AsterGT.blend` |
-| 2. Unity | `Docs/Lesson02_Unity.md` | `WorkshopSpeedControl.targetSpeedMps` in the desktop scene |
-| 3. Quest | `Docs/Lesson03_MetaQuest.md` | Inspection and, only with hardware, a device test. Do not claim a pass without a headset. |
-
-## Blender MCP and Unity MCP
-
-Example config: `.cursor/mcp.example.json`. Do not commit a machine-local `.cursor/mcp.json`. Package `com.coplaydev.unity-mcp` is a git dependency, not vendored source. Setup steps are in `Docs/WindowsSetup.md`.
-
-## Exercises
-
-- Vehicle recolor: `Docs/Lesson01_Blender.md` and `Prompts/Blender/RecolorBody.md`.
-- Speed control: `Docs/Lesson02_Unity.md` and `Prompts/Unity/AdjustSpeed.md`.
-
-## Desktop scenario testing
-
-Play Mode on `Workshop_Desktop.unity` was executed for this release. Results are in `Docs/Validation/SceneTestResults.md`. Menu `Workshop V4/Run desktop play mode probe` repeats the timed observation and writes a log under `Logs/`, which is gitignored.
-
-## Meta Quest 3 preparation
-
-`Workshop_MetaVR.unity` keeps `DesktopCamera` disabled under `DriverEyeAnchor`. The Meta rig GUID `126d619cf4daa52469682f85c1378b4a` does not resolve because `com.meta.xr.sdk.core` is not in the manifest. Quest 3 hardware validation: NOT VERIFIED.
-
-## Known limitations
-
-- Jet flight is serialized off. Enabling it is a teacher control, not a comfort certification.
-- No LOD, occlusion bake, or device frame-time measurement.
-- No screenshots are shipped. Missing images are marked missing in `Docs/ToSlide.md`.
-- Product name in Player Settings is still `AI_VR_Driving`.
-- `Workshop_XR_Setup.unity` matches the desktop scene and is not an enabled build scene.
-
-## Troubleshooting
-
-`Docs/Troubleshooting.md`.
-
-## Asset credits and license
-
-Original course models, scripts, shaders, notes, prompts, and skills are under the MIT `LICENSE`. Unity, Blender, Cursor, and Meta software are not relicensed. Table: `Docs/AssetLicenses.md`.
-
-## More documents
-
-- `Docs/TeacherGuide.md`
-- `Docs/StudentChecklist.md`
-- `Docs/Compatibility.md`
-- `Docs/ReleaseChecklist.md`
-- `CHANGELOG.md`
+Original course models, code, and material are under the MIT [license](LICENSE). See [asset credits](Docs/AssetLicenses.md) for third-party boundaries.

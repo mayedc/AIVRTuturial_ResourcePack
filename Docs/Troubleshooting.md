@@ -6,7 +6,7 @@ Open this repository root, not a parent folder and not an older project. Read th
 
 ## The car sits at the gap
 
-`allowJetFlight` is false. That is the saved teaching default. The panel offers fade transfer at `AwaitChoice`. Jet flight appears only after the flag is enabled. The release Play Mode test enabled the flag at runtime and did not save the scene.
+A steady hold before the gap is the expected starter result. Complete [Exercise 2B](Lesson03_MetaQuest.md) to add the command and flight path.
 
 ## Pause does nothing
 
@@ -22,7 +22,7 @@ Stop. Restore `SourceArt/Blender/AsterGT.blend` from git. Future edits start wit
 
 ## Quest view is black or the rig is missing
 
-The Meta prefab is not in this pack. `DesktopCamera` is disabled on purpose in `Workshop_MetaVR.unity`. Do not enable it and call the result VR. Hardware result stays NOT VERIFIED until a headset is used.
+Start from a copy of the current desktop checkpoint. Verify the installed rig, Link session, selected OpenXR runtime and Standalone initialization in the VR copy. See the [XR checklist](05_XR_and_Quest_Acceptance.md).
 
 ## Validator fails before a push
 

@@ -19,7 +19,7 @@ The teaching root contains the city, the car, the robot, and two road colliders.
 | Comfort transfer | Fade to black, move to z = 48 m, fade in. If the curtain reference is missing, the transfer is refused. |
 | Route end | z = 58 m |
 
-`WorkshopSpeedControl.SetSpeedMps(float)` is the student control. It sets a target speed. It does not skip braking or the yield. Pause freezes the route, the gait, and the stage timer. Restart restores the car and the robot. Jet flight uses a fixed-time path, so the speed slider affects the ground sections only.
+The starter uses a fixed target and holds before the gap. Exercise 2A implements `WorkshopSpeedControl.SetSpeedMps(float)` for ground movement. Exercise 2B adds a commanded flight. Pause and restart remain on the existing route.
 
 This is a teaching sequence. It is not a driving dynamics model, a planner, or a safety certification.
 
@@ -41,7 +41,7 @@ This is a teaching sequence. It is not a driving dynamics model, a planner, or a
 | A second speed component | `WorkshopDrive` already requires `WorkshopSpeedControl` on the same object. |
 | Robot does not cross | The drive stage is Yield, and `pedestrian` plus `pedestrianWalk` are assigned. |
 | Car waits at the gap | `AwaitChoice` is the checkpoint. Continue with comfort transfer, or enable jet flight. |
-| Jet button is hidden | `allowJetFlight` defaults to false. |
+| Jet button is hidden | Complete Exercise 2B to enable the button. |
 | An FBX edit does not change the scene | The scene shows the native meshes. Replace only the `StudentVisual` child. |
 | Pose is wrong after restart | Two animators may both be active. Use the reset on the teaching components. |
 

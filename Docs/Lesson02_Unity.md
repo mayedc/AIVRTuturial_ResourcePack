@@ -1,52 +1,11 @@
-# Lesson 02 — Unity speed and the crosswalk
+# Lesson 2 — From Blender material to a running Unity scene (45 minutes)
 
-## Objectives
+Use the first 25 minutes for the [Blender lab](Lesson01_Blender.md). Use the remaining 20 minutes to integrate the vehicle visual into the prepared desktop scene.
 
-- Inspect `Assets/AI_VR_Workshop_V4/Scenes/Workshop_Desktop.unity` through Cursor and Unity MCP, or in the Editor if MCP is down.
-- Change `WorkshopSpeedControl` on `AsterGT`.
-- Show that the car still stops at the crosswalk and still reaches the gap.
+1. In Unity, use **Workshop V4 > Save active scene as new checkpoint**. Open the copy under `Assets/AI_VR_Workshop_V4/Scenes/`.
+2. Import the group's FBX into a separate folder such as `Assets/StudentWork/Group03`. Confirm scale, direction and materials. If needed, extract or remap the imported body material to a separate URP Lit material using the chosen base color.
+3. Ask the Agent to add the FBX as the new `StudentVisual` child of `AsterGT`. Align it with the original. Disable the old vehicle mesh renderers individually as needed. Keep the car root, drive and speed components, the eye anchor, and the jet and curtain references. Keep both road colliders and the robot.
+4. Run **Workshop V4 > Validate active workshop scene**. Check the Console and the Game view for material problems, duplicate geometry and placement. Save CP2.
+5. In Play, observe the fixed 0.85 m/s target, full stop at the crossing, robot clearance, and wait at the gap. Try pause and restart. Save the run notes with CP3. See [desktop checks](Acceptance_Matrix.md).
 
-## Prerequisites
-
-Lesson 1 concept: students edit prepared content. Unity `6000.3.27f2` has compiled this project with zero errors.
-
-## Duration
-
-90 minutes.
-
-## Required software
-
-Unity `6000.3.27f2`, this project, Cursor. Unity MCP is optional if the Editor is available.
-
-## Steps
-
-1. Open the desktop scene. Confirm `WorkshopDrive` and `WorkshopSpeedControl` are on `AsterGT`, and `WorkshopDesktopPanel` is on `AI_VR_Workshop_V4`.
-2. Read `targetSpeedMps`. The saved value is 0.85. The component clamps to 0.25–2.
-3. Duplicate the scene to a student checkpoint if the class must keep the teacher scene byte-stable. Menu `Workshop V4/Save active scene as new checkpoint` writes a new scene under `Assets/AI_VR_Workshop_V4/Scenes/`. Do not delete `Workshop_Desktop.unity`.
-4. Set a new target, for example 1.6, on the student copy or as a temporary Play Mode change.
-5. Enter Play. The panel slider calls `SetSpeedMps`.
-6. Confirm the yield: stage `Yield` near z = 7.5 m while the robot crosses, then `ApproachGap`, then `AwaitChoice` near z = 32 m.
-7. Do not enable `allowJetFlight` unless the teacher asks for the jet demonstration.
-
-## Copyable prompt
-
-Use `Prompts/Unity/AdjustSpeed.md`.
-
-## Expected results
-
-A higher target produces a higher cruise than 0.85 m/s and the crosswalk stop still happens. The release test observed 1.31 m/s after `SetSpeedMps(1.6)` on the original scene in Play Mode, then restarted. That test did not save the scene.
-
-## Validation checklist
-
-- Console has no compile errors.
-- `Workshop V4/Validate active workshop scene` reports no missing mesh, material, or drive reference.
-- Play Mode shows `Yield` before the car passes the crossing.
-- Pause and Restart on the panel return the car to the start.
-
-## Troubleshooting
-
-If the car never leaves `Ready`, Play Mode is not ticking. If it never leaves `AwaitChoice`, jet flight is still off. That is the saved default.
-
-## Deliverable
-
-The speed value used, the observed crosswalk stop, and whether the teacher scene was left unsaved.
+The Unity scenes use native meshes. Editing the original Blender asset, source FBX, or prefab does not update the unpacked scene objects automatically.

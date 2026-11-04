@@ -6,14 +6,13 @@ namespace AIVRWorkshop.V4
     [RequireComponent(typeof(WorkshopSpeedControl))]
     public sealed class WorkshopDrive : MonoBehaviour
     {
-        public enum Stage { Ready, ApproachCrossing, Yield, ApproachGap, AwaitChoice, JetFlight, FadeOut, FadeIn, Arrive, Complete }
+        public enum Stage { Ready, ApproachCrossing, Yield, ApproachGap, AwaitChoice, JetFlight = 5, Arrive = 8, Complete }
         public Transform pedestrian;
         public WorkshopRobotWalk pedestrianWalk;
         public GameObject jets;
         [Tooltip("Assign an opaque overlay renderer on the XR camera; see XR guide.")]
         public Renderer comfortCurtain;
-        [Tooltip("Off by default. When enabled, the car flies the gap on arrival instead of waiting.")]
-        public bool allowJetFlight;
+        public bool CanFly => false;
         [Min(0.1f)] public float acceleration = 0.65f;
         public bool paused;
         [SerializeField] private Stage stage;
@@ -23,7 +22,7 @@ namespace AIVRWorkshop.V4
         private float timer, crossingX;
         private Vector3 origin, pedestrianOrigin;
         private Material curtainMaterial;
-        private const float StopAt = 7.5f, GapHold = 32f, Landing = 48f, End = 58f;
+        private const float StopAt = 7.5f, GapHold = 32f;
 
         private void Awake()
         {
@@ -45,20 +44,11 @@ namespace AIVRWorkshop.V4
         }
         public void SetPaused(bool value) => paused = value;
         public void TogglePause() => paused = !paused;
-        [ContextMenu("Continue: teacher-enabled jet flight")]
         public void BeginJetFlight()
         {
-            if (Application.isPlaying && stage == Stage.AwaitChoice && allowJetFlight)
-            { stage = Stage.JetFlight; timer = 0; if (jets != null) jets.SetActive(true); }
+            // Exercise 2B: start a flight only on request while holding at the gap.
         }
-        [ContextMenu("Continue: fade and relocate")]
-        public void BeginComfortTransfer()
-        {
-            if (!Application.isPlaying || stage != Stage.AwaitChoice) return;
-            if (comfortCurtain == null)
-            { Debug.LogWarning("Assign a camera curtain before using VR fade transfer."); return; }
-            stage = Stage.FadeOut; timer = 0;
-        }
+
         private void Curtain(float alpha)
         {
             if (curtainMaterial == null) return;
@@ -74,7 +64,11 @@ namespace AIVRWorkshop.V4
             CurrentSpeedMps = Mathf.MoveTowards(CurrentSpeedMps, goal, Mathf.Max(.1f, acceleration) * dt);
             float step = Mathf.Min(remaining, CurrentSpeedMps * dt);
             transform.position += Vector3.forward * step;
-            if (remaining < .01f) { transform.position = new Vector3(origin.x, origin.y, origin.z + target); CurrentSpeedMps = 0; }
+            if (At(target))
+            {
+                transform.position = origin + Vector3.forward * target;
+                CurrentSpeedMps = 0;
+            }
         }
         private bool At(float z) => transform.position.z - origin.z >= z - .011f;
         private void Update()
@@ -102,22 +96,8 @@ namespace AIVRWorkshop.V4
                     if (At(GapHold)) { stage = Stage.AwaitChoice; timer = 0; }
                     break;
                 case Stage.AwaitChoice:
-                    if (allowJetFlight) BeginJetFlight();
+                    // Keep the car at the gap until the student implements the flight.
                     break;
-                case Stage.JetFlight:
-                    float t = Mathf.Clamp01(timer / 10f);
-                    // Smooth start/end, no camera roll or pitch. Still requires comfort validation.
-                    float u = t * t * (3 - 2 * t);
-                    transform.position = origin + new Vector3(0, 3f * Mathf.Pow(Mathf.Sin(Mathf.PI * t), 2), Mathf.Lerp(GapHold, Landing, u));
-                    if (t >= 1) { if (jets != null) jets.SetActive(false); stage = Stage.Arrive; timer = 0; } break;
-                case Stage.FadeOut:
-                    Curtain(Mathf.Clamp01(timer));
-                    if (timer >= 1.2f) { transform.position = origin + Vector3.forward * Landing; stage = Stage.FadeIn; timer = 0; } break;
-                case Stage.FadeIn:
-                    Curtain(1 - Mathf.Clamp01(timer));
-                    if (timer >= 1) { Curtain(0); stage = Stage.Arrive; timer = 0; } break;
-                case Stage.Arrive:
-                    Advance(End, dt); if (At(End)) stage = Stage.Complete; break;
             }
         }
         private void OnDestroy() { if (curtainMaterial != null) Destroy(curtainMaterial); }

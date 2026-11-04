@@ -14,13 +14,20 @@ namespace AIVRWorkshop.V4
             GUILayout.Label("ASTER / AI VR DRIVING WORKSHOP");
             GUILayout.Label("State: " + drive.CurrentStage);
             GUILayout.Label("Speed target: " + speed.TargetSpeedMps.ToString("0.00") + " m/s");
-            speed.SetSpeedMps(GUILayout.HorizontalSlider(speed.TargetSpeedMps, .25f, 2f));
+            if (speed.CanAdjustSpeed)
+                speed.SetSpeedMps(GUILayout.HorizontalSlider(speed.TargetSpeedMps, .25f, 2f));
+            else
+                GUILayout.Label("Fixed speed · exercise 2A");
             if (GUILayout.Button(drive.paused ? "Resume" : "Pause")) drive.TogglePause();
             if (GUILayout.Button("Restart route")) drive.Restart();
             if (drive.CurrentStage == WorkshopDrive.Stage.AwaitChoice)
             {
-                if (GUILayout.Button("Comfort: fade transfer")) drive.BeginComfortTransfer();
-                if (drive.allowJetFlight && GUILayout.Button("Teacher-enabled jet flight")) drive.BeginJetFlight();
+                if (drive.CanFly)
+                {
+                    if (!drive.paused && GUILayout.Button("Fly across the gap")) drive.BeginJetFlight();
+                }
+                else
+                    GUILayout.Label("Holding at the gap · exercise 2B");
             }
             GUILayout.EndArea();
         }

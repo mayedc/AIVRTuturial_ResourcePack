@@ -1,6 +1,6 @@
 # Compatibility
 
-This page matches `Docs/Validation/CompatibilityMatrix.md`.
+Use the [class setup](WindowsSetup.md) and record versions on the actual machines.
 
 | Item | Version or state |
 |---|---|
@@ -12,7 +12,7 @@ This page matches `Docs/Validation/CompatibilityMatrix.md`.
 | Unity MCP package | git lock `81542a7e86292b5c4c21b1782c5af23b567f45ce` |
 | Pipeline package used for validation | 0.9.1-exp.1 |
 | Blender file producer | 5.2.2 LTS in the FBX creator string |
-| Desktop Play Mode | PASS, see `Docs/Validation/SceneTestResults.md` |
+| Desktop Play Mode | See the [historical release report](Validation/SceneTestResults.md) and run the current [acceptance checks](Acceptance_Matrix.md). |
 | Quest 3 hardware | NOT VERIFIED |
 | Meta XR Core | Not included |
 

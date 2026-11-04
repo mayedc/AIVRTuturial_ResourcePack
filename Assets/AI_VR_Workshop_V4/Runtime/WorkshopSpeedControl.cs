@@ -2,17 +2,15 @@ using UnityEngine;
 
 namespace AIVRWorkshop.V4
 {
-    /// Student exercise: this component exposes one bounded, visible control.
     [DisallowMultipleComponent]
     public sealed class WorkshopSpeedControl : MonoBehaviour
     {
-        [Range(0.25f, 2f)] public float targetSpeedMps = 0.85f;
-        public float TargetSpeedMps => float.IsNaN(targetSpeedMps) || float.IsInfinity(targetSpeedMps) ? 0.85f : Mathf.Clamp(targetSpeedMps, 0.25f, 2f);
+        public bool CanAdjustSpeed => false;
+        public float TargetSpeedMps => 0.85f;
+
         public void SetSpeedMps(float metresPerSecond)
         {
-            if (!float.IsNaN(metresPerSecond) && !float.IsInfinity(metresPerSecond))
-                targetSpeedMps = Mathf.Clamp(metresPerSecond, 0.25f, 2f);
+            // Exercise 2A: store a finite target clamped to 0.25–2.0 m/s.
         }
-        private void OnValidate() => targetSpeedMps = TargetSpeedMps;
     }
 }

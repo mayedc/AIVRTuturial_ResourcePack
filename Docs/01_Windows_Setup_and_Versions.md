@@ -1,6 +1,6 @@
 # Windows setup and versions
 
-This folder is a Unity project. Open `AIVRTutorial_ResourcePack` itself. Do not copy an older starter `Packages/manifest.json` over this one.
+This folder is a Unity project. Open `AIVRTuturial_ResourcePack` itself. Do not copy an older starter `Packages/manifest.json` over this one.
 
 | Item | Recorded choice |
 |---|---|
@@ -8,7 +8,7 @@ This folder is a Unity project. Open `AIVRTutorial_ResourcePack` itself. Do not 
 | Render pipeline | URP 17.3.0. Current materials use URP Lit and URP Unlit. `WorkshopSurface.shader` and `WorkshopGlass.shader` remain as teaching source and are not assigned by the current materials. Built-in and HDRP were not accepted. |
 | Blender | Source files were saved from Blender 5.2. Open the same minor version when you can. Older Blender may not open the `.blend` files; use the FBX and then check materials and the skeleton. |
 | OpenXR | 1.16.1 is in `Packages/packages-lock.json`. Android Meta Quest Support is enabled for Quest, Quest 2, Quest Pro, Quest 3, and Quest 3S. |
-| Meta XR Core | Not installed. `Workshop_MetaVR.unity` still references its camera rig. See [XR and Quest acceptance](05_XR_and_Quest_Acceptance.md). |
+| Meta XR Core | External dependency. Prepare the class-tested version before the VR exercise. `Workshop_MetaVR.unity` still references its camera rig. See [XR and Quest acceptance](05_XR_and_Quest_Acceptance.md). |
 | Cursor / MCP | Install on the classroom machine and record the tested version. Do not change a working global configuration during a lesson. |
 
 Before class, fill a CP0 record: Windows version, GPU and driver, Blender version, Unity version, URP version, Cursor version, Python or uv version, both MCP versions or commit hashes, OpenXR and XR Management versions, Quest system version, and the connection method. A blank cell is not a locked version.
@@ -23,7 +23,7 @@ Blender Python can change the open scene. Class work uses a student copy: read t
 
 ## Unity MCP
 
-The project manifest includes [CoplayDev/unity-mcp](https://github.com/CoplayDev/unity-mcp). `packages-lock.json` currently pins commit `81542a7e86292b5c4c21b1782c5af23b567f45ce`. The manifest line still says `#main`. Do not ask a class to float on `main`.
+The project manifest includes [CoplayDev/unity-mcp](https://github.com/CoplayDev/unity-mcp). `packages-lock.json` currently pins commit `81542a7e86292b5c4c21b1782c5af23b567f45ce`. The manifest uses that same commit.
 
 Start the local MCP service from the Unity window and put its address in Cursor. The example is `http://localhost:8080/mcp`. Match that address to the [transport documentation](https://github.com/CoplayDev/unity-mcp/blob/beta/website/docs/architecture/transports.md) and to the value shown by the installed package. Do not expose the port on the public internet.
 

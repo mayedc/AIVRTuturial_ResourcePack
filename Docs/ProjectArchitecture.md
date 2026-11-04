@@ -21,9 +21,9 @@
 
 ## Route
 
-`WorkshopDrive` stages: `Ready` (about 3 s), `ApproachCrossing` to 7.5 m, `Yield` while the pedestrian moves, `ApproachGap` to 32 m, `AwaitChoice`. If `allowJetFlight` is true, `JetFlight` runs for 10 s with a 3 m height arc to 48 m, then `Arrive` to 58 m and `Complete`. Fade transfer is the other continuation and needs the curtain.
+`WorkshopDrive` stages: `Ready` (about 3 s), `ApproachCrossing` to 7.5 m, `Yield` while the pedestrian moves, `ApproachGap` to 32 m, `AwaitChoice`. The starter stays in `AwaitChoice`. Exercise 2B adds an explicit `JetFlight` command and the landing and arrival stages.
 
-`WorkshopSpeedControl` clamps the target. Braking uses `acceleration` (saved 0.65) inside `WorkshopDrive`. Students are not asked to edit that formula.
+`WorkshopSpeedControl` supplies a fixed 0.85 m/s target until Exercise 2A implements a bounded target. Braking uses `acceleration` (saved 0.65) inside `WorkshopDrive`. Students are not asked to edit that formula.
 
 ## Rendering and input
 

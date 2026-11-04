@@ -1,17 +1,12 @@
-# Release checklist
+# Student starter checks
 
-Updated through documentation. Git publication fields are filled when the repository is pushed.
-
-| Check | Status |
+| Check | Result or next action |
 |---|---|
-| Unity version | 6000.3.27f2 |
-| Required dependencies | URP 17.3.0, Input System 1.20.1, OpenXR 1.16.1, XR Management 4.7.0, test framework 1.6.0, unity-mcp git lock recorded in `Packages/packages-lock.json` |
-| Desktop test | PASS. See `Docs/Validation/SceneTestResults.md`. |
-| Meta Quest hardware | NOT VERIFIED |
-| Documentation | Lesson, teacher, and ToSlide files added in English |
-| Privacy | PASS. `Tools/ValidateRepository.ps1` failures 0 on the pre-git scan. Local `Library`, `Temp`, `Logs`, `UserSettings`, and generated project files are warnings and gitignored. |
-| License | PASS for files in this folder. Meta prefab excluded. See `Docs/AssetLicenses.md`. |
-| File count | Validator PASS: 464 scanned files outside forbidden directories. |
-| Repository size | 106,673,238 bytes outside `Library`, `Temp`, `Obj`, `Logs`, `UserSettings`, `Build`, `Builds`, and `.vs`. No file at or above 50 MB in that set. |
-| Git LFS | Not used. No binary reached the 50 MB warning or the 100 MB GitHub limit. |
-| Remote | Pushed to `https://github.com/mayedc/AIVRTuturial_ResourcePack` on `main`. Verified clone SHA `0f92c6c672e94f56d72681e982f0851b129b339d`. |
+| Base and dependencies | Project declares Unity 6000.3.27f2. Unity MCP manifest and lock use the same Git commit. |
+| Static consistency | Run `python Tools/validate_kit.py` with PyYAML. Check the scene, material, mesh and document results. |
+| Blender on macOS | Blender 5.2.2 LTS reopened all eight blend files and imported the seven source FBXs. The student-car test appended the collection, changed M_BodyPaint, reopened the saved copy and reimported the export. |
+| Unity on macOS | In Unity 6000.3.28f1 batch Play Mode, the starter held at 32 m with a 0.85 m/s cruise. The reference reached 58 m at rest after a commanded flight, with a 1.20 m/s ground cruise and a 3.00 m peak. The recolored FBX imported with bounds about 2.41 × 1.61 × 5.14 m. |
+| Unity test scope | The editor updated the Collab Proxy package on the temporary macOS copy and logged an unrelated Unity Search indexing exception. Route assertions ran in batch mode. Inspect the rendered scene and confirm the intended Windows editor separately. |
+| Windows and live MCP | Verify Unity import and Play, Blender-to-Unity visual replacement, and both live Cursor readbacks on classroom PCs. |
+| Quest 3 / 3S | Verify wired Link, the tested external SDK, eye-level tracking and both-eye seated view on the actual classroom equipment. |
+| History | [v1.0.0 evidence](Validation/FinalReleaseReport.md) applies to the earlier release. See [Answers](../Answers/README.md) for the archived code. |

@@ -1,53 +1,11 @@
-# Teacher guide
+# Teacher guide — three lessons, 135 minutes
 
-## Classroom preparation
+| Lesson | Timing | Demonstrate | Student evidence |
+|---|---:|---|---|
+| [1 · Agent and setup](Lesson01_Setup.md) | 25 + 20 min | Explain tool calls, CLI, MCP and verification. Download and open the prepared project. | Cursor returns live project and scene information from Blender and Unity. |
+| [2 · Recolor and integrate](Lesson02_Unity.md) | 25 + 20 min | Append and recolor in Blender. Import the new car visual and run the existing scene. | New material on the car, crosswalk yield and stable gap hold. |
+| [3 · Behavior and tracked view](Lesson03_MetaQuest.md) | 22 + 23 min | Implement speed and flight, verify in desktop Play, then attach a tracked cockpit in a scene copy. | Observed speed, explicit flight and landing. Separate seated headset result. |
 
-Install Unity `6000.3.27f2`, Blender that opens the 5.2.2 LTS files, and Cursor before students arrive. Run Play on `Assets/AI_VR_Workshop_V4/Scenes/Workshop_Desktop.unity` once. Confirm compilation is clean. Quest developer mode, Link, or an APK toolchain is homework for the teacher, not class time.
+Prepare a clean student project and an independent instructor solution. Preinstall the Unity Editor, Blender, Cursor, both MCP connectors, the Quest Link PC app and the tested Meta rig package. Verify package restore, accounts, network, cables and tracking before students arrive. Use the [Windows guide](WindowsSetup.md) and [XR checklist](05_XR_and_Quest_Acceptance.md) to record the actual versions.
 
-Each lesson is 90 minutes. If time is short, cut the extension, not the rule that students edit copies.
-
-## Install requirements
-
-See `Docs/WindowsSetup.md`. Pin MCP versions you actually tested. The example file `.cursor/mcp.example.json` is not a live secret store.
-
-## Demo sequence
-
-1. Show `AsterGT`, `NomaRobot`, and the street in the desktop scene. Say these meshes already exist.
-2. Enter Play. Narrate Ready, crosswalk yield, and the hold at the gap.
-3. Pause and Restart from the panel.
-4. Only after the class has seen the hold, enable `allowJetFlight` on a copy if you want the jet arc. The saved project leaves it off.
-5. Open the Meta scene and show the disabled `DesktopCamera` and the missing rig. Say hardware is NOT VERIFIED unless you just tested a headset.
-
-## Teacher-prepared assets
-
-`SourceArt/Blender`, `SourceArt/FBX`, the scenes `Workshop_Desktop.unity` and `Workshop_MetaVR.unity`, prefabs under `Assets/AI_VR_Workshop_V4/Prefabs`, and the route distances inside `WorkshopDrive`.
-
-## Student-editable components
-
-- Blender material `M_BodyPaint` on a student copy.
-- `WorkshopSpeedControl.targetSpeedMps` (0.25 to 2).
-- A duplicated scene created with `Workshop V4/Save active scene as new checkpoint`.
-
-## Protected components
-
-Do not delete or retarget, on the teacher scenes:
-
-- `WorkshopDrive` references: pedestrian, walk, jets, comfort curtain.
-- `DriverEyeAnchor` local pose.
-- Waypoint-free route constants in `WorkshopDrive` (students do not need to edit the state machine).
-- OpenXR loader assets.
-- The missing Meta prefab instance. Replacing it belongs on a checkpoint scene.
-
-## Recovery checkpoints
-
-- Git history of this repository after publication.
-- `Workshop V4/Save active scene as new checkpoint` before a risky scene edit.
-- Do not run `Tools` art generators (`build_unity_assets.py` and the other builders) during class. They are teacher rebuild tools.
-
-## Classroom troubleshooting
-
-Use `Docs/Troubleshooting.md`. If MCP is down, teach the Editor and Blender directly and mark the agent step unfinished.
-
-## Rubric
-
-`Docs/AssessmentRubric.md`.
+Use the same pattern for each Agent task: inspect the project, describe the edit and permitted scope, make one change, verify it in the application and save a checkpoint. Keep a ready copy of each last good checkpoint to recover within the period. See the [acceptance matrix](Acceptance_Matrix.md) for the evidence to collect.

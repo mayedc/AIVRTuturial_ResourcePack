@@ -50,7 +50,7 @@ namespace AIVRWorkshop.V4.Editor
             {
                 if (drive.pedestrian == null || drive.pedestrianWalk == null || drive.jets == null || drive.comfortCurtain == null)
                     errors.Add("Route reference missing");
-                if (drive.allowJetFlight) report.AppendLine("CAUTION: jet flight enabled; requires comfort acceptance.");
+                if (drive.CanFly) report.AppendLine("CAUTION: jet flight enabled; requires comfort acceptance.");
             }
             report.AppendLine("Unity Editor validation (not runtime or Quest acceptance)");
             report.AppendLine("UTC: " + DateTime.UtcNow.ToString("O"));

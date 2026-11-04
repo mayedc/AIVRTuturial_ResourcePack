@@ -1,51 +1,15 @@
-# Lesson 03 — Meta Quest 3 scene
+# Lesson 3 — Speed, flight, and the tracked cockpit (45 minutes)
 
-## Objectives
+## 00–22 | Exercise 2 — Implement and test vehicle behavior
 
-- Read the camera hierarchy in `Assets/AI_VR_Workshop_V4/Scenes/Workshop_MetaVR.unity`.
-- Explain what OpenXR is configured to do, and what is missing.
-- Test on a Quest 3 only when a headset is actually connected. Otherwise record NOT VERIFIED.
+- **7 minutes**. Open the Lesson 2 checkpoint, record the baseline cruise, and use the [speed prompt](../Prompts/Unity/AdjustSpeed.md) to implement the bounded control. Compare 0.85 and 1.20 m/s in Play and verify the crosswalk and gap stops.
+- **10 minutes**. Use the [flight prompt](../Prompts/03_Yield_and_Jet_Check.md) to implement a scripted arc from the gap hold to the landing. Require an explicit command at the gap. Reuse the existing car and jet objects.
+- **5 minutes**. Check Console, flight, landing, final stop and restart in the desktop scene. Save a checkpoint. The instructor can restore a working copy from the reference answers if a group needs to move on.
 
-## Prerequisites
+## 22–45 | Exercise 3 — Attach a tracked cockpit
 
-Lessons 1 and 2. A teacher has decided between PC VR Link and an Android APK. Do not switch paths mid-failure.
-
-## Duration
-
-90 minutes. Device setup happens before class.
-
-## Required software
-
-Unity `6000.3.27f2`, OpenXR 1.16.1, Android Build Support if an APK will be made. Meta XR Core is not in this repository. Install it only under Meta's own license, in a class copy, if you need `OVRCameraRig`.
-
-## Steps
-
-1. Open `Workshop_MetaVR.unity`. Do not enter Play and call it a headset test.
-2. Find `AsterGT` / `DriverEyeAnchor`. Local eye position is (-0.44, 1.24, -0.12). Local scale is (1, 1, 1).
-3. Find `DesktopCamera`. Its Camera and Audio Listener are disabled. Enabled camera count on the validation pass was 0.
-4. Find the missing prefab named `Workshop_OVRCameraRig` (GUID `126d619cf4daa52469682f85c1378b4a`). `ComfortCurtain` is parented to that missing transform.
-5. Read `Assets/XR/XRGeneralSettingsPerBuildTarget.asset` and the Android Meta Quest feature. Quest 3 is enabled.
-6. If a headset is connected and a rig is installed on a class copy, check one active HMD camera, one listener, and that no script writes the car pose onto the head. Record the device result in the teacher's own notes.
-7. If no headset is present, write: Quest 3 hardware validation: NOT VERIFIED.
-
-## Copyable prompt
-
-Use `Prompts/XR/InspectHierarchy.md`.
-
-## Expected results
-
-Students can point at the eye anchor, the disabled desktop camera, and the missing Meta prefab. They do not claim a Quest pass from the Editor alone.
-
-## Validation checklist
-
-- Desktop scene Play Mode already passed, or the teacher says it did not.
-- This scene was not saved over by a student experiment.
-- Hardware line is either a real device note or NOT VERIFIED.
-
-## Troubleshooting
-
-A missing prefab is expected in this repository. Installing a random camera rig into the teacher scene without a checkpoint will break the curtain parent. Duplicate the scene first.
-
-## Deliverable
-
-A hierarchy note and an explicit hardware status. No APK is required for a passing inspection grade.
+- **5 minutes**. Start the prepared Windows Quest Link session. Confirm the headset, installed package and selected PC runtime.
+- **3 minutes**. Locate `DriverEyeAnchor` and `DesktopCamera` and explain what the car root and headset tracking each control.
+- **7 minutes**. Duplicate the last good scene. Use the [XR prompt](../Prompts/04_XR_and_Quest.md) to attach the tested rig and disable the desktop camera and listener.
+- **5 minutes**. With the car stationary and the user seated, confirm picture in both eyes, neutral view and head tracking. Use [the XR checklist](05_XR_and_Quest_Acceptance.md).
+- **3 minutes**. Record CP4/CP5 results and wrap up. If Link fails, inspect the hierarchy, record the failure and preserve the desktop result.
