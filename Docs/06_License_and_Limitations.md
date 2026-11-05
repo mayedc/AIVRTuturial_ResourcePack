@@ -1,6 +1,6 @@
 # License and limitations
 
-Original files in this package are under the MIT `LICENSE` at the repository root: the course models, materials, scripts, shaders, skills, prompts, and these notes. Keep that copyright notice in substantial copies.
+Original files in this package are under the MIT `LICENSE` at the repository root: the course Blender/FBX models, UnitySource C# and configuration files, skills, prompts, and these notes. Keep that copyright notice in substantial copies.
 
 That license does not grant rights in Unity, Blender, Cursor, MCP servers, or Meta software, and it does not cover reference photographs or third-party brands. This package does not ship those programs or their license keys.
 
@@ -18,6 +18,6 @@ That license does not grant rights in Unity, Blender, Cursor, MCP servers, or Me
 
 Doors and the hood do not open. The cabin is not an ergonomics study. The robot is rigid armor, not a soft skinned capture. The city is one straight route and has no interiors. The jets are glowing meshes, not a simulation. The teaching shaders and a Blender render will not match.
 
-The desktop scene and the asset GUIDs in this Windows copy match the project they were copied from. This packaging step did not re-run Play Mode, did not build an APK, and did not connect a Quest 3. Historical notes from another machine are archived outside this folder and are not a pass for this copy.
+**Plan B includes no shipped Unity scene, prefab or GUID-stable asset bundle.** The student generates their own in a separate URP project. This repository revision has not compiled its new UnitySource builder in a live Editor or completed a Quest 3/3S retest. Earlier logs in [historical validation](Validation/FinalReleaseReport.md) apply to the prior full-project layout, not this branch.
 
 Students do not need an online 3D generator, a paid asset, or a model downloaded during class.
