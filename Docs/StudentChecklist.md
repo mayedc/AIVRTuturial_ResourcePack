@@ -1,10 +1,13 @@
 # Student checklist
 
-- [ ] I opened the prepared Unity project and read back both live MCP connections.
-- [ ] I saved my own Blender file, edited only M_BodyPaint, and exported an FBX.
-- [ ] I added the new car visual to a Unity scene copy and kept the car root and drive references.
-- [ ] In the starter, I saw the crossing yield and a fixed-speed stop before the gap.
-- [ ] After coding, I measured the different cruise speed and verified the yield again.
-- [ ] I commanded a flight at the gap, saw a landing and final stop, and restarted the route.
-- [ ] I saved a separate XR scene and verified the tracked rig is attached to DriverEyeAnchor.
-- [ ] I recorded the checks I actually saw through Quest Link, including both eyes, seat position and head tracking.
+- [ ] I created an empty local folder, opened Cursor first and had Cursor **clone** the GitHub repository; no ZIP download.
+- [ ] Cursor read the README and checked compatible versions of Cursor, Blender, Unity, Quest Link, account/Pro classroom access, terminal and folder permissions.
+- [ ] I opened an **empty Blender scene** and a **blank URP Unity project** before MCP setup.
+- [ ] Cursor checked and installed or updated both MCP components; I enabled the Blender and Unity software-side services.
+- [ ] Cursor read actual Blender and Unity state through **live MCP tools**, not just a status icon. I recorded the versions and failures/retries.
+- [ ] I saved my own `.blend`, changed only `M_BodyPaint` and exported the verified car FBX.
+- [ ] **After the Blender export**, Cursor used Unity MCP to import/reuse reference assets and assemble a new scene; any manual `.unitypackage` fallback is labelled manual.
+- [ ] I verified car orientation/material, a single visual, the route, robot, colliders, scripts, scene and Console errors.
+- [ ] I observed the starter crossing yield and stop before the gap, plus pause and restart.
+- [ ] After coding, I tested speed adjustment, commanded flight/landing and restart in Play.
+- [ ] I saved a separate XR scene and verified the rig and a real headset only if tested; otherwise marked not tested.
