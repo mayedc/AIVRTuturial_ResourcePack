@@ -1,5 +1,10 @@
-Use the workshop-blender-edit skill for Lesson 2.
+# Legacy entry — Blender import and recolor
 
-Inspect the current Blender scene through MCP and save a student copy before editing. Append the collection `01_AsterGT_Editable` from `SourceArt/Blender/AsterGT.blend`. If that car is already imported correctly, keep it and do not import it again. Save a new `.blend` under the student work folder.
+**This file is retained for existing course links. It must NOT be executed as the former one-shot import + recolor + export workflow.**
 
-Set `M_BodyPaint` to red, linear RGBA 0.55, 0.025, 0.045, 1. Change only that material. Keep geometry, object names, tires, glass, the skeleton, the eye point, and the scale. Capture the same view before and after, read the material back, and compare the object count and bounds. Save As. Do not overwrite the teacher file. Export a new FBX and report its path and the checks you ran.
+Students now run these **separately**:
+1. [Prompt 1.1: inspect eight prepared Blender models](01_1_Review_All_Blender_Models.md). No edits.
+2. [Prompt 1.2: choose a car color and recolor a student Blender copy](01_2_Choose_Car_Color.md). The student's input takes precedence; the default is red. No FBX export or Unity work yet.
+3. [Prompt 1.3: export/import/build the Unity scene](01_3_Export_And_Build_Unity.md), only after visual approval.
+
+**STOP** here: ask the student to copy Prompt 1.1 now. Do not execute any of these links automatically. Follow `AGENTS.md` and keep teacher assets unchanged.
