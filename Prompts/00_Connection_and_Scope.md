@@ -1,7 +1,7 @@
-Use the workshop-quality-check skill for a connection check only.
+# Prompt 00 — verify live connections and project scope
 
-Read the README and [Windows setup](../Docs/01_Windows_Setup_and_Versions.md). Discover the Blender and Unity MCP tools that are actually available. Do not create geometry.
+Read [workflow](../Docs/Cursor_First_Workflow.md) and [MCP setup](00_Install_Update_MCP.md). Discover the Blender and Unity MCP tools that are actually available in Cursor. Do not create geometry, edit the teacher project, or infer that terminal access equals MCP connectivity.
 
-Through MCP, return the Blender file path, Blender version, object count, and whether `VehicleRoot` exists. Also return the Unity project path, editor version, active scene, and Console error count.
+The expected **CP0** setup is an empty Blender scene and a blank Unity URP project. Through real **read-only MCP tool calls**, return Blender application version, current file or unsaved state, object count and whether `VehicleRoot` is present; return Unity project path, editor version, active scene and Console error count. A blank scene may legitimately have no `VehicleRoot`.
 
-State how the exercise folder differs from the teacher originals. Keep an existing MCP configuration. If a connection is missing, name the missing piece. Do not invent a tool result and do not replace system configuration. Finish with a table of connected, failed, or not tested, plus the software versions you actually read. A command-line tool is not an MCP success.
+If a connection is absent, identify missing add-on/server/UPM package, Cursor configuration, service, transport, permissions or wrong Unity instance. Apply safe reversible fixes from [MCP setup prompt](00_Install_Update_MCP.md) and retry live reads. Preserve user config and student files. Report CONNECTED/FAILED/NOT TESTED with actual evidence. Once the Blender work is saved and the workshop Unity scene is later assembled, recheck the Unity MCP target and full scene references.
