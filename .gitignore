@@ -1,4 +1,9 @@
-# Unity-generated and local state
+# Local student work and generated Unity projects
+StudentWork/
+StudentProjects/
+UnityProjects/
+WorkshopStudentGenerated/
+# Unity-generated/local state
 [Ll]ibrary/
 [Tt]emp/
 [Oo]bj/
@@ -30,13 +35,12 @@ Recordings/
 .env.*
 !.env.example
 !.cursor/local-app-paths.example.json
-# Backups for Blender scripts and large local output
+# Blender backups and local captures
 *.blend1
 *.blend2
-# Generated APKs belong in releases, not repository history
+Checkpoints/
+OldMaterial/
+# Generated binary packages do not belong in source-first Git history
 *.apk
 *.aab
-# Local archive of material that is outside the public release
-OldMaterial/
-# Reports written when a teacher runs Tools/validate_kit.py
-Checkpoints/
+*.unitypackage

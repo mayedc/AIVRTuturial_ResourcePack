@@ -1,29 +1,78 @@
-# AI Era: VR Development with AI Agent, Blender, and Unity
+# AI Era — Build a VR Driving Scene with Cursor, Blender and Unity
 
-A three-lesson MDIT 310 driving workshop. **Start in Cursor, connect Blender and Unity through MCP, recolor Aster GT, then assemble and validate the Unity scene with the Agent.** A ready-made desktop scene remains as a teacher/reference fallback, not the student's first step.
+**A student-led, source-first AI Agent workshop.** Students use Cursor + Blender MCP + Unity MCP to inspect eight Blender models, customize a car, **build their own Unity scene from four FBXs**, implement an interactive speed control and gap flight, and test the driver's view with a Quest headset.
 
-## Student start (Cursor-first)
+> **Plan B:** This repository does **not** provide a ready-made Unity scene, prefab asset bundle or `.unitypackage`. Every student's Unity scene is assembled inside **their own separate blank URP Unity project**. The first source-first version is awaiting a fresh-clone Unity/Quest retest; older validation logs apply only to historical releases.
 
-1. Create a **new, empty local folder** (for example `D:\AI_VR_Workshop`), open that folder in Cursor, and ask Cursor to clone this repository **into that empty folder**. Do not download/extract a ZIP or start by opening the provided Unity project in Unity Hub. See [Quick start](Docs/QuickStart.md) and [Cursor-first workflow](Docs/Cursor_First_Workflow.md).
-2. Have Cursor read this README and run the [preflight prompt](Prompts/00_Clone_Preflight.md). Check Git, compatible Cursor, Blender, Unity Editor/Hub, Quest Link (Meta Link PC app), Windows/USB/OpenXR, required account or classroom Cursor Pro access, write permissions, and required package versions **before** proceeding.
-3. Open an **empty Blender scene** and a **temporary blank URP Unity project** for the MCP connection check (not the supplied workshop scene). In Cursor, run the [MCP install/update/verification prompt](Prompts/00_Install_Update_MCP.md). Cursor installs or updates compatible MCP components, students start/enable the in-app services, and Cursor reads back both applications. Do not infer connection from a green icon alone.
-4. Run [1.1 inspect eight Blender models](Prompts/01_1_Review_All_Blender_Models.md) and [1.2 choose vehicle paint](Prompts/01_2_Choose_Car_Color.md), stopping for student review and color approval.
-5. Run [1.3 export and build Unity](Prompts/01_3_Export_And_Build_Unity.md); after the student's complete Play check, independently run [1.4 speed and flight](Prompts/01_4_Speed_And_Gap_Flight.md).
-6. Start VR only after desktop completion: [02_1 XR/Meta/Link setup](Prompts/02_1_XR_Setup_And_Device_Check.md), then [02_2 driver's tracked camera and headset Play](Prompts/02_2_Attach_Driver_Camera_And_Test.md). Each step stops for student confirmation.
+## Learning outcomes
 
-[Teacher guide](Docs/TeacherGuide.md) · [Student checklist](Docs/StudentChecklist.md) · [Acceptance matrix](Docs/Acceptance_Matrix.md) · [Troubleshooting](Docs/Troubleshooting.md)
+- **3D asset editing:** read real Blender models through MCP and recolor only the student car's `M_BodyPaint`.
+- **Agent-assisted scene construction:** import the approved car + NomaRobot/MeridianCity/JetFX FBXs; create and validate Unity objects, colliders, scripts, material mappings and the camera.
+- **Interactive behavior:** implement bounded speed control and an explicitly commanded flight over a real 6m road gap.
+- **Immersive validation:** enable Standalone OpenXR/Meta XR and check a tracked driver's-eye view **in the physical Quest headset**.
 
-## Contents and migration status
+## Start here (students)
 
-- `SourceArt/Blender` and `SourceArt/FBX`: Aster GT, Noma Robot, Meridian City, JetFX and three road modules.
-- `Assets/AI_VR_Workshop_V4`: **legacy internal Unity asset path** containing reusable meshes, materials, scripts and scenes. Do not rename it by hand: scene GUIDs, assembly definitions, namespaces, menus and references must migrate together and compile in Unity. Any migration of the old asset path must be done in Unity with preserved `.meta` GUIDs, assembly references and full scene tests; it is outside the student sequence.
-- `Prompts` and `.cursor/skills`: scoped Agent instructions. `Answers`: instructor reference code outside imported Assets.
-- `ProjectSettings/ProjectVersion.txt` and `Packages/manifest.json`: **historical project compatibility inputs**, not a command to overwrite a student's newer working configuration.
+1. Create a new **empty local folder**, open it in **Cursor**, and copy [00 Clone & preflight](Prompts/00_Clone_Preflight.md). Cursor clones this repository into the folder; do not download a ZIP first.
+2. Open **empty Blender** and a **separate blank Unity URP project**. Copy [00 MCP installation & live verification](Prompts/00_Install_Update_MCP.md) to connect both applications. Confirm live scene/project reads.
+3. Independently copy each prompt in the sequence below. **Cursor stops at every student checkpoint; never execute the entire list automatically.**
 
-The repository currently includes a full Unity reference project, **not a verified, exported Unity package**. Do not claim that MCP import or a classroom `.unitypackage` has already been tested. The teacher must produce and test that package using Unity before distributing it. The old desktop scene and prior validation remain available as recovery references.
+| Stage | Copy this prompt | Student checkpoint |
+|---|---|---|
+| 1.1 | [Inspect all 8 Blender models](Prompts/01_1_Review_All_Blender_Models.md) | Student examines every model |
+| 1.2 | [Choose and recolor the car](Prompts/01_2_Choose_Car_Color.md) | Student approves their chosen paint (blank = red) |
+| 1.3 | [Build the Unity scene from FBXs](Prompts/01_3_Export_And_Build_Unity.md) | Student personally Plays the full fixed-speed route and gap hold |
+| 1.4 | [Implement speed and jet flight](Prompts/01_4_Speed_And_Gap_Flight.md) | Student tests speed, explicit jet, landing, pause/restart |
+| 02_1 | [XR/Meta/Quest Link readiness](Prompts/02_1_XR_Setup_And_Device_Check.md) | Student verifies installed rig, OpenXR and active PC Link session |
+| 02_2 | [Attach driver's XR camera](Prompts/02_2_Attach_Driver_Camera_And_Test.md) | Student confirms stereo, seat alignment and head tracking in headset |
 
-## Compatibility
+See [quick start](Docs/QuickStart.md), [teacher guide](Docs/TeacherGuide.md), [student checklist](Docs/StudentChecklist.md), [acceptance matrix](Docs/Acceptance_Matrix.md) and [troubleshooting](Docs/Troubleshooting.md).
 
-Start from Unity **6.3.27f2 / 6000.3.27f2 or a newer compatible Unity 6 editor** (with the project URP/Input/OpenXR packages validated), Blender **5.2.2 or newer capable of opening these source files**, a current compatible Cursor release, and a compatible Windows Quest Link PC app for the available Quest 3/3S. Newer versions are acceptable **after** package import and live-tool checks; a higher version number alone is not proof of compatibility. Cursor Pro is a classroom/account requirement only if the teaching plan needs Pro features; MCP itself does not imply a paid Blender/Unity service.
+## Required software and equipment
 
-Historical validation does not prove current live MCP, Windows-machine portability or headset operation. See [Compatibility](Docs/Compatibility.md) and [XR acceptance](Docs/05_XR_and_Quest_Acceptance.md). Original course assets/code are under [MIT](LICENSE); third-party limits are in [asset credits](Docs/AssetLicenses.md).
+- **Windows PC**, supported GPU, local write permissions and internet access to GitHub, Blender MCP package registry and Unity Package Manager.
+- **Unity 6**, with the blank **URP template** and a tested-compatible Editor (historical baseline `6000.3.27f2`); **Blender 5.2.2** baseline or newer after real import checks; Cursor, Git and uv/uvx for MCP.
+- CoplayDev Unity MCP and ahujasid Blender MCP, installed/verified through Prompt 00.
+- For VR only: compatible Quest 3 / 3S, USB-C **data** cable, Windows Meta Quest Link/Meta Horizon Link app, verified Standalone OpenXR and compatible Meta XR rig package. **Headset hardware is not needed to complete the desktop portion.**
+- Cursor Pro is required only if the course or account's selected Cursor features require it; the Blender/Unity MCP projects do not inherently require a subscription.
+
+Historical package versions are in [compatibility](Docs/Compatibility.md). A higher version number alone is not an execution pass.
+
+## Repository map
+
+| Location | Purpose |
+|---|---|
+| `SourceArt/Blender/` | Eight editable original Blender files (read-only teacher sources during student exercises) |
+| `SourceArt/FBX/` | Seven source exports; students independently export their custom car |
+| `Prompts/` | Eight student-operated instructions and explicit stage gates |
+| `UnitySource/Config/` | Single JSON scene specification: expected geometry, paths, speeds and driver eye point |
+| `UnitySource/Runtime/Starter/` | Four C# starter scripts with exercises 1.4A/1.4B intentionally unfinished |
+| `UnitySource/Editor/` | Unity Editor-only source for safe scene construction and structural validation |
+| `Answers/Reference/` | Teacher-only replacement solutions; **not imported in 1.3** |
+| `Tools/Validation/` | Dependency-free repository checks |
+| `Docs/Validation/` | **Historical evidence**, not a claim that current Plan B ran in Unity/Quest |
+| `.cursor/skills/` | Additional scoped instructions for the teaching Agent |
+
+**Student outputs** go into Git-ignored `StudentWork/<group>/` for Blender/FBX, and the student-selected **separate Unity project** in `Assets/WorkshopStudentGenerated/`. Do not create a second Unity project inside the Git repository, commit local Unity caches, or overwrite teacher originals.
+
+### 1.3 construction contract
+
+Cursor copies four approved FBXs and `UnitySource` into the **blank student Unity project**, then invokes **Tools > Workshop > Build Student Scene From FBX**. The Editor code creates `Workshop_Desktop_Student.unity`, one vehicle root, robot and city hierarchy, jets, driver's eye, camera, colliders and Starter controls, then checks them using **Tools > Workshop > Validate Student Scene (1.3)**.
+
+The builder **does not overwrite an existing student scene** and does not produce an HMD success claim. Imported axes, car appearance, robot animation and the full Play route must still be verified in the real Editor. [Build contract](UnitySource/README.md) · [Scene integration guide](Docs/03_Unity_Integration.md).
+
+## Validation status
+
+| Scope | Current evidence |
+|---|---|
+| Repository structure and links | [Static validator](Tools/Validation/validate_source_first.py), GitHub Actions source checks |
+| Current source-first C# compilation and scene creation | **NOT TESTED on a real Unity Editor as part of this revision** |
+| Current source-first full desktop Play | **NOT TESTED**; requires a clean blank-project test |
+| Current source-first 02_2 Quest Link/stereo/head tracking | **NOT TESTED**; requires a real headset retest |
+| Earlier Blender/Unity/VR workshop | User-tested on a prior local build, but **not equivalent to testing this new builder** |
+
+Run `python Tools/Validation/validate_source_first.py` to validate source presence, spec, Markdown links and stage protections. This does not replace Unity compilation or a physical headset test. See [release acceptance](Docs/ReleaseChecklist.md).
+
+## License and credits
+
+Original course materials are MIT licensed under [LICENSE](LICENSE); Unity, Blender, Meta XR SDK and MCP packages have their own terms. Review [asset licenses](Docs/AssetLicenses.md) before importing new third-party models. Do not commit software installations or proprietary SDK assets.
