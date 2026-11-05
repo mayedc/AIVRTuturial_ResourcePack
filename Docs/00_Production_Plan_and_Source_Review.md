@@ -1,4 +1,6 @@
-# Production plan and source review
+# Historical production plan and source review (pre-Plan B)
+
+> Archived narrative for the earlier 2026 release. The **current** student workflow is [source-first](Cursor_First_Workflow.md), creating a scene from FBXs in a separate blank URP Unity project; the time allocations, original scene and teacher assembly statements below are historical.
 
 The workshop has three 90-minute lessons. Students import, recolor, adjust speed, and experience a prepared route. Teachers own modeling, animation, scene assembly, and device setup.
 

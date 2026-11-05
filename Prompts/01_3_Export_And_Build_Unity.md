@@ -1,22 +1,32 @@
-# Prompt 1.3 — Export approved Blender vehicle and build a Unity starter scene
+# Prompt 1.3 — Build the entire Unity desktop scene from FBX sources (Plan B)
 
-Only run this after the student completed **1.1 (all-model review)** and approved **1.2 (their own body color)**. Verify Blender MCP and Unity MCP through *actual live reads*. Reply in Simplified Chinese. **DO NOT implement speed control or jet flight: those belong to 1.4.**
+Run **only after** the student has inspected eight Blender files in 1.1 and visually approved the recolored **student** Aster GT in 1.2. This is a **source-first build**, not a copy of a teacher scene or `.unitypackage`. Reply in **Simplified Chinese**. **STOP at the 1.3 student Play gate**; do not automatically execute 1.4 or 02_1/02_2.
 
-## A. Export student's approved car
+## A. Identify the right projects and outputs
 
-1. Read `AGENTS.md`, `Docs/02_Asset_Catalog_and_Reuse.md`, `Docs/03_Unity_Integration.md` and `Docs/Acceptance_Matrix.md`. Locate the approved `StudentWork/S01/AsterGT_Color.blend` (adapt S01 to the group). Stop if missing/unapproved. Do not replace the student's color with a hardcoded red.
-2. Through Blender MCP verify body material, mesh hierarchy, scale, bounds and `DriverEyeAnchor`. Export **only the car** to `StudentWork/S01/AsterGT_Color.fbx`, metres, **-Z Forward / Y Up**, evaluated modifiers, no unrelated cameras/lights. Detect any existing FBX and avoid overwriting unrelated work. Verify actual output path, size, orientation and approximate bounds.
+1. Read `AGENTS.md`, `UnitySource/README.md`, `UnitySource/Config/WorkshopSceneSpec.json`, `Docs/03_Unity_Integration.md`, and `Docs/Acceptance_Matrix.md`. Via live Blender and Unity MCP readbacks confirm the **Git repository root**, the active **separate student blank URP Unity project**, exact scene, Unity version and Console. Refuse to modify the repository's teacher originals or an unrelated existing Unity project.
+2. Locate the actually approved `StudentWork/<group>/AsterGT_Color.blend` and its chosen `M_BodyPaint` value (default red only if the student did not choose a color). From Blender MCP export **only the car hierarchy** to `StudentWork/<group>/AsterGT_Color.fbx`, metres, **-Z Forward / Y Up**, applied modifiers, no camera/lights. If that FBX path contains unrelated student work, use a unique checkpoint. Read back the exported file; do not substitute the teacher's `AsterGT.fbx`.
+3. Confirm the **three repository FBX sources** exist: `SourceArt/FBX/NomaRobot.fbx`, `MeridianCity.fbx`, `JetFX.fbx`. The optional Road_* FBXs are for inspection/extensions; do not layer road tiles onto an existing city road without a placement plan. **There is deliberately no `Assets/AI_VR_Workshop_V4`, `Workshop_Desktop.unity`, reference Prefab or .unitypackage in the source-first workflow.** Do not call `Tools/Install-Workshop.ps1`.
 
-## B. Unity import and assembly
+## B. Copy minimal source code and import the FBXs
 
-3. Verify the **student blank URP Unity project** is the correct active instance (project path, packages, scene and Console). Check whether required class assets are already installed. The GitHub repo contains a full reference Unity project, not a verified .unitypackage.
-4. Prefer a teacher-tested `.unitypackage`, if supplied. Otherwise if the target asset folder is absent, review the path/expected effects and run the existing `Tools/Install-Workshop.ps1` to copy `Assets/AI_VR_Workshop_V4` into the verified **student** Unity project. Preserve `.meta` references; never copy twice, overwrite teacher data, or claim FBX alone includes roads/robot/scripts. If an MCP operation is unsupported, identify it and instruct a **manual Assets > Import Package > Custom Package** only if a verified package exists; then reverify MCP.
-5. With Unity MCP, duplicate the reference desktop scene into **student-only** `Assets/AI_VR_Workshop_V4/Scenes/Workshop_Desktop_Student.unity` (or safely reuse a confirmed separate student checkpoint); never overwrite `Workshop_Desktop.unity`. Import the approved FBX to a student asset folder and attach **one** `StudentVisual` under `AsterGT`; hide only duplicate native body renderers in the student scene.
-6. Preserve one `WorkshopDrive`, one `WorkshopSpeedControl`, `WorkshopRobotWalk`, city, robot, jets, camera and eye anchor. Check vehicle forward **+Z**, metres (about 2.41 × 1.61 × 5.14 in Unity), student's paint, no second mover, and two road colliders leaving the **z=37 to 43 gap** uncovered. Do not blindly add a second -90° rotation or 0.01 scaling after values have been corrected.
-7. Check missing scripts and Unity Console errors (expected zero), validate scene references and save the student scene. Preserve **starter** speed control/flight code unchanged.
+4. In the **student Unity project only**, create `Assets/WorkshopStudentGenerated/` with `Runtime/`, `Editor/`, `Config/`, `Imported/`, `Materials/`, and `Scenes/`. After checking for conflicts and creating a checkpoint, copy:
+   - `UnitySource/Runtime/Starter/*.cs` → `Runtime/` (four scripts: `WorkshopDrive`, `WorkshopSpeedControl`, `WorkshopRobotWalk`, `WorkshopDesktopPanel`).
+   - `UnitySource/Editor/*.cs` → `Editor/` (the editor builder + structural validator).
+   - `UnitySource/Config/WorkshopSceneSpec.json` → `Config/`.
+   - The approved student `AsterGT_Color.fbx` and the three other course FBXs → `Imported/`.
+   Never overwrite an existing student C# file, scene, or `.meta` without a deliberate conflict resolution. Do not import both Starter and Reference types. The `Answers` folder is outside the active Unity project and is **not** a 1.3 import source.
+5. Through Unity MCP refresh/import the assets and wait for recompilation. Verify the source-first scripts compile in the **active** student project; report missing-package or shader errors rather than masking them. The URP project should use its own compatible Package Manager dependencies; never overwrite an entire student's manifest with repository historical pins.
 
-## C. Mandatory student Play checkpoint
+## C. Build and verify a new student-only scene
 
-8. Explicitly hand control to the student to **press Unity Play manually** and observe the **whole route**, not just start-up: cruise target eventually **0.85 m/s**, vehicle yields before crossing, robot crosses, car holds at **z=32 m** before the 6 m gap, Pause/Resume and Restart work. Ask the student to confirm custom body look and heading.
-9. Present a **PASS / FAIL / NOT TESTED** list, only marking items actually seen by the student or measured across the relevant time span. An 8-second `ApproachCrossing` sample at 0.44 m/s does **not** validate the route; mark this **WAITING FOR STUDENT PLAY**. Do not fabricate visual success.
-10. **STOP**. Tell the student: “First complete the Unity Play tasks yourself (yielding, the robot, gap parking, pause, restart). Once confirmed, independently copy Prompt 1.4.” Never autonomously run 1.4 or modify runtime scripts in this step.
+6. Through supported Unity MCP editor invocation, or by calling the reviewed **Tools > Workshop > Build Student Scene From FBX** menu item, run `AIVRWorkshop.Student.EditorTools.WorkshopSceneBuilder.Build`. This tool creates `Assets/WorkshopStudentGenerated/Scenes/Workshop_Desktop_Student.unity` from those four FBXs and `WorkshopSceneSpec.json`; it does **not** load a preexisting Unity teaching scene or use a `.unitypackage`. If the editor tool cannot be invoked through MCP, explain the exact Unity menu action to the student and then verify its result with Unity MCP.
+7. Verify: city, car and robot actually visible; **one** `AsterGT` root and **one** `StudentVisual` car art; vehicle approximate bounds **2.41 × 1.61 × 5.14 m**, **nose faces Unity +Z**, wheels meet the road; **one** robot skeleton with walk-bone bindings, no competing Animator; `JetFX` under the car initially inactive; `DriverEyeAnchor` at the configured car-local driver position and one `DesktopCamera`; desktop control panel; two separate road colliders ending/starting at z=37/43 with an **open 6 m gap**. **Use actual Unity Scene/Game views**, not only serialized file paths, to confirm orientation and visual fidelity. If bounds, skeleton or material appearance are wrong, stop and repair only the generated student scene/import settings; never copy a teacher prefab as a shortcut.
+8. Run **Tools > Workshop > Validate Student Scene (1.3)** through the editor/Unity MCP, and separately verify Console compilation with zero blocking errors. The validator checks **structure, not visually correct materials or real-time motion**. Save only the new student scene.
+
+## D. Mandatory student-operated Play gate
+
+9. Hand control to the student: **manually press Unity Play** in `Workshop_Desktop_Student.unity`; inspect the **entire starter route**, not only the first seconds: a stable 0.85 m/s target, yielding before the crosswalk, visible walking robot, clearance, holding at **z=32** before the unbridged gap, Pause/Resume and Restart. The vehicle must **not fly** yet and the speed slider must remain locked. Mark each check **STUDENT OBSERVED PASS / FAIL / NOT TESTED**.
+10. Return actual created paths and readback evidence (FBX, scene, importer, scripts, Console), unresolved issues and a compact gate checklist. A static compile or the first 8s of Play does **not** satisfy full route/robot verification. Explicitly wait for the student's confirmation.
+
+**STOP.** The student independently copies `Prompts/01_4_Speed_And_Gap_Flight.md` **only after 1.3 Play passes**.

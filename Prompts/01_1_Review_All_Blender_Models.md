@@ -2,7 +2,7 @@
 
 You guide a student, not an end-to-end automation. Read `AGENTS.md` and `Docs/02_Asset_Catalog_and_Reuse.md`. Reply in **Simplified Chinese**. Run **ONLY stage 1.1**. Do NOT recolor, save over any teacher source, export FBX, import Unity assets, edit Unity scenes, write code, or run 1.2–1.4.
 
-**Preflight:** Confirm the repository root and a live Blender MCP readback of the current file/scene. If leftover S01 test artwork or unsaved work is open, preserve it and stop for the teacher's rollback prompt; never discard other people's edits. Verify these eight named file paths without a whole-drive scan:
+**Preflight:** Confirm the repository root and a live Blender MCP readback of the current file/scene. If old student test artwork or unsaved work is open, preserve it and report a safe manual checkpoint; never discard other people's edits. There is no S01-specific rollback step in the classroom workflow. Verify these eight named file paths without a whole-drive scan:
 
 | Model | Exact source path | Inspect in the Blender viewport |
 |---|---|---|

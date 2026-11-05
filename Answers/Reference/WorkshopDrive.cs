@@ -1,126 +1,126 @@
 using UnityEngine;
 
-namespace AIVRWorkshop.V4
+namespace AIVRWorkshop.Student
 {
+    // Instructor reference implementation of 1.4B.
+    // This REPLACES the existing student WorkshopDrive.cs; it is not a second script to import.
     [DisallowMultipleComponent]
     [RequireComponent(typeof(WorkshopSpeedControl))]
     public sealed class WorkshopDrive : MonoBehaviour
     {
-        public enum Stage { Ready, ApproachCrossing, Yield, ApproachGap, AwaitChoice, JetFlight = 5, Arrive = 8, Complete }
+        public enum Stage { Ready, ApproachCrossing, Yield, ApproachGap, AwaitChoice, JetFlight, Arrive, Complete }
         public Transform pedestrian;
         public WorkshopRobotWalk pedestrianWalk;
         public GameObject jets;
-        [Tooltip("Assign an opaque overlay renderer on the XR camera; see XR guide.")]
         public Renderer comfortCurtain;
-        public bool CanFly => true;
         [Min(0.1f)] public float acceleration = 0.65f;
         public bool paused;
-        [SerializeField] private Stage stage;
+        [SerializeField] private Stage stage = Stage.Ready;
         public Stage CurrentStage => stage;
         public float CurrentSpeedMps { get; private set; }
+        public bool CanFly => Application.isPlaying && !paused && stage == Stage.AwaitChoice;
+
         private WorkshopSpeedControl speed;
-        private float timer, crossingX;
         private Vector3 origin, pedestrianOrigin;
-        private Material curtainMaterial;
-        private const float StopAt = 7.5f, GapHold = 32f, Landing = 48f, End = 58f;
+        private float timer, crossingX;
+        private const float Crossing = 7.5f, GapHold = 32f, Landing = 48f, End = 58f;
 
         private void Awake()
         {
-            speed = GetComponent<WorkshopSpeedControl>(); origin = transform.position;
+            speed = GetComponent<WorkshopSpeedControl>();
+            origin = transform.position;
             if (pedestrian != null) pedestrianOrigin = pedestrian.position;
-            if (comfortCurtain != null) curtainMaterial = comfortCurtain.material;
             Restart();
         }
-        [ContextMenu("Restart workshop route")]
+
         public void Restart()
         {
             if (!Application.isPlaying) return;
-            transform.position = origin; stage = Stage.Ready; timer = 0;
-            CurrentSpeedMps = 0; crossingX = -4.5f; paused = false;
+            transform.position = origin;
+            stage = Stage.Ready; timer = 0f; crossingX = -4.5f;
+            paused = false; CurrentSpeedMps = 0f;
             if (pedestrian != null) pedestrian.position = pedestrianOrigin;
             if (pedestrianWalk != null) pedestrianWalk.ResetPose();
             if (jets != null) jets.SetActive(false);
-            Curtain(0);
+            if (comfortCurtain != null) comfortCurtain.enabled = false;
         }
         public void SetPaused(bool value) => paused = value;
         public void TogglePause() => paused = !paused;
         public void BeginJetFlight()
         {
-            if (!Application.isPlaying || paused || stage != Stage.AwaitChoice) return;
-
-            CurrentSpeedMps = 0;
-            stage = Stage.JetFlight;
-            timer = 0;
+            if (!CanFly) return;
+            CurrentSpeedMps = 0f;
+            stage = Stage.JetFlight; timer = 0f;
             if (jets != null) jets.SetActive(true);
-        }
-
-        private void Curtain(float alpha)
-        {
-            if (curtainMaterial == null) return;
-            curtainMaterial.SetColor("_Color", new Color(0, 0, 0, alpha));
-            if (curtainMaterial.HasProperty("_BaseColor")) curtainMaterial.SetColor("_BaseColor", new Color(0, 0, 0, alpha));
-            comfortCurtain.enabled = alpha > 0;
         }
         private void Advance(float target, float dt)
         {
-            float remaining = Mathf.Max(0, target - (transform.position.z - origin.z));
-            float safeSpeed = Mathf.Sqrt(2f * Mathf.Max(.1f, acceleration) * remaining);
-            float goal = Mathf.Min(speed.TargetSpeedMps, safeSpeed);
-            CurrentSpeedMps = Mathf.MoveTowards(CurrentSpeedMps, goal, Mathf.Max(.1f, acceleration) * dt);
-            float step = Mathf.Min(remaining, CurrentSpeedMps * dt);
-            transform.position += Vector3.forward * step;
+            float remaining = Mathf.Max(0f, target - (transform.position.z - origin.z));
+            float brakingSpeed = Mathf.Sqrt(2f * Mathf.Max(0.1f, acceleration) * remaining);
+            float goal = Mathf.Min(speed.TargetSpeedMps, brakingSpeed);
+            CurrentSpeedMps = Mathf.MoveTowards(CurrentSpeedMps, goal, Mathf.Max(0.1f, acceleration) * dt);
+            transform.position += Vector3.forward * Mathf.Min(remaining, CurrentSpeedMps * dt);
             if (At(target))
             {
                 transform.position = origin + Vector3.forward * target;
-                CurrentSpeedMps = 0;
+                CurrentSpeedMps = 0f;
             }
         }
-        private bool At(float z) => transform.position.z - origin.z >= z - .011f;
+        private bool At(float z) => transform.position.z - origin.z >= z - 0.011f;
         private void Update()
         {
             if (paused) { if (pedestrianWalk != null) pedestrianWalk.walking = false; return; }
-            // Clamp long editor stalls; the state machine never jumps across safety holds.
-            float dt = Mathf.Min(Time.deltaTime, .05f); timer += dt;
+            float dt = Mathf.Min(Time.deltaTime, 0.05f);
+            timer += dt;
             switch (stage)
             {
                 case Stage.Ready:
-                    if (timer >= 3) { stage = Stage.ApproachCrossing; timer = 0; } break;
+                    if (timer >= 3f) { stage = Stage.ApproachCrossing; timer = 0f; }
+                    break;
                 case Stage.ApproachCrossing:
-                    Advance(StopAt, dt);
-                    if (At(StopAt)) { stage = Stage.Yield; timer = 0; } break;
+                    Advance(Crossing, dt);
+                    if (At(Crossing)) { stage = Stage.Yield; timer = 0f; }
+                    break;
                 case Stage.Yield:
-                    CurrentSpeedMps = 0;
-                    if (pedestrian == null) { paused = true; Debug.LogError("Missing pedestrian: route held at crossing."); break; }
-                    if (timer < 1) break;
-                    crossingX = Mathf.MoveTowards(crossingX, 4.5f, .6f * dt);
-                    pedestrian.position = new Vector3(origin.x + crossingX - 1.8f, pedestrianOrigin.y - .12f + Mathf.SmoothStep(0, .12f, Mathf.InverseLerp(3.9f, 4.3f, Mathf.Abs(crossingX))), pedestrianOrigin.z);
+                    CurrentSpeedMps = 0f;
+                    if (pedestrian == null) { paused = true; Debug.LogError("Missing pedestrian: vehicle held at crossing."); break; }
+                    if (timer < 1f) break;
+                    crossingX = Mathf.MoveTowards(crossingX, 4.5f, 0.6f * dt);
+                    pedestrian.position = new Vector3(
+                        origin.x + crossingX - 1.8f,
+                        pedestrianOrigin.y - 0.12f +
+                          Mathf.SmoothStep(0f, 0.12f, Mathf.InverseLerp(3.9f, 4.3f, Mathf.Abs(crossingX))),
+                        pedestrianOrigin.z);
                     if (pedestrianWalk != null) pedestrianWalk.walking = crossingX < 4.5f;
-                    if (crossingX >= 4.5f) { stage = Stage.ApproachGap; timer = 0; } break;
+                    if (crossingX >= 4.5f) { stage = Stage.ApproachGap; timer = 0f; }
+                    break;
                 case Stage.ApproachGap:
                     Advance(GapHold, dt);
-                    if (At(GapHold)) { stage = Stage.AwaitChoice; timer = 0; }
+                    if (At(GapHold)) { stage = Stage.AwaitChoice; timer = 0f; }
                     break;
                 case Stage.AwaitChoice:
+                    CurrentSpeedMps = 0f;
                     break;
                 case Stage.JetFlight:
                     float t = Mathf.Clamp01(timer / 10f);
-                    float progress = t * t * (3f - 2f * t);
-                    float height = 3f * Mathf.Pow(Mathf.Sin(Mathf.PI * t), 2);
-                    transform.position = origin + new Vector3(0, height, Mathf.Lerp(GapHold, Landing, progress));
+                    float u = t * t * (3f - 2f * t);
+                    float lift = 3f * Mathf.Pow(Mathf.Sin(Mathf.PI * t), 2f);
+                    transform.position = origin + new Vector3(0f, lift, Mathf.Lerp(GapHold, Landing, u));
                     if (t >= 1f)
                     {
                         transform.position = origin + Vector3.forward * Landing;
                         if (jets != null) jets.SetActive(false);
-                        stage = Stage.Arrive;
-                        timer = 0;
+                        stage = Stage.Arrive; timer = 0f; CurrentSpeedMps = 0f;
                     }
                     break;
                 case Stage.Arrive:
                     Advance(End, dt);
-                    if (At(End)) stage = Stage.Complete;
+                    if (At(End)) { stage = Stage.Complete; CurrentSpeedMps = 0f; }
+                    break;
+                case Stage.Complete:
+                    CurrentSpeedMps = 0f;
                     break;
             }
         }
-        private void OnDestroy() { if (curtainMaterial != null) Destroy(curtainMaterial); }
     }
 }

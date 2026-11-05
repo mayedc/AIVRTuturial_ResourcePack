@@ -1,14 +1,12 @@
-# Student checklist
+# Student checklist — source-first
 
-- [ ] I created an empty local folder, opened Cursor first and had Cursor **clone** the GitHub repository; no ZIP download.
-- [ ] Cursor read the README and checked compatible versions of Cursor, Blender, Unity, Quest Link, account/Pro classroom access, terminal and folder permissions.
-- [ ] I opened an **empty Blender scene** and a **blank URP Unity project** before MCP setup.
-- [ ] Cursor checked and installed or updated both MCP components; I enabled the Blender and Unity software-side services.
-- [ ] Cursor read actual Blender and Unity state through **live MCP tools**, not just a status icon. I recorded the versions and failures/retries.
-- [ ] I saved my own `.blend`, changed only `M_BodyPaint` and exported the verified car FBX.
-- [ ] **After the Blender export**, Cursor used Unity MCP to import/reuse reference assets and assemble a new scene; any manual `.unitypackage` fallback is labelled manual.
-- [ ] I verified car orientation/material, a single visual, the route, robot, colliders, scripts, scene and Console errors.
-- [ ] I observed the starter crossing yield and stop before the gap, plus pause and restart.
-- [ ] After coding, I tested speed adjustment, commanded flight/landing and restart in Play.
-- [ ] After passing desktop 1.1–1.4, I independently ran [02_1 XR/Meta/Quest Link self-check](../Prompts/02_1_XR_Setup_And_Device_Check.md) and verified a **real tracked camera prefab** plus the PC Link environment.
-- [ ] I then ran [02_2 driver-eye camera binding](../Prompts/02_2_Attach_Driver_Camera_And_Test.md) in a **separate VR scene** and personally checked both eyes, seated driver view and head tracking in the headset (otherwise marked NOT TESTED).
+- [ ] Open an empty local folder in Cursor, clone GitHub, confirm software versions, Git and workspace write access.
+- [ ] Start empty Blender and a **separate blank URP Unity project**, enable both MCP tools and verify live read-only results.
+- [ ] In [1.1](../Prompts/01_1_Review_All_Blender_Models.md) inspect all eight Blender models; in [1.2](../Prompts/01_2_Choose_Car_Color.md) approve a student car copy with chosen body paint.
+- [ ] In [1.3](../Prompts/01_3_Export_And_Build_Unity.md) export my customized FBX; import it and NomaRobot/MeridianCity/JetFX FBXs and UnitySource into my blank Unity project. **No old Unity scene or .unitypackage**.
+- [ ] Cursor creates one new Workshop_Desktop_Student scene from sources; I inspect car nose/scale/paint, robot walking bones, gap geometry, eye anchor, and Console.
+- [ ] I manually Play the whole **fixed-speed** starter route (0.85 m/s, yield, robot, stop z=32, pause, restart); **no speed slider or jet yet**.
+- [ ] In [1.4](../Prompts/01_4_Speed_And_Gap_Flight.md) I implement and observe bounded speed, explicit flight, jets off on landing, end at z=58, pause and restart.
+- [ ] In [02_1](../Prompts/02_1_XR_Setup_And_Device_Check.md) I confirm Standalone OpenXR, a real Meta camera rig prefab and the Quest Link environment.
+- [ ] In [02_2](../Prompts/02_2_Attach_Driver_Camera_And_Test.md) I duplicate my completed desktop scene to VR, wear the HMD and see stereo/driver-eye tracking, or mark NOT TESTED.
+- [ ] Record actual app versions, files, observations, blockers and PASS/FAIL/NOT TESTED. My files remain outside teacher sources and Git.

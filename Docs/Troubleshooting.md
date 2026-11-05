@@ -1,23 +1,19 @@
-# Troubleshooting — Cursor-first workflow
+# Troubleshooting — source-first Blender / Unity / Quest
 
-## Local clone
-Create an empty writable folder, open it in Cursor and let Cursor run `git clone https://github.com/mayedc/AIVRTuturial_ResourcePack.git .`. If the folder is not empty, stop or choose a new empty folder. Check `git --version` and network. Do not delete existing student work.
+## Clone / MCP
+Open an empty local folder in Cursor; use [preflight](../Prompts/00_Clone_Preflight.md), which refuses destructive reclones. Start blank Blender and an independent blank URP Unity project. Use [MCP setup](../Prompts/00_Install_Update_MCP.md). Verify live object/scene/project readback from both applications, not only a green icon. For failures, check uvx PATH, Blender add-on N-panel, Unity MCP Package Manager, correct Unity project/instance, firewall/permissions and Console.
 
-## Blender MCP fails
-Check `uvx` (including absolute Windows executable path), Python version, `mcp-for-blender` add-on installed/enabled, Blender's 3D View `N` sidebar service, local port and Cursor MCP server. Update compatible older installations using `uvx mcp-for-blender@latest update` after inspecting changes; restart Blender and Cursor if needed. **Retest an actual MCP read** of scene/file/version/object count, not only a status icon.
+## Import/Unity build
+**There is no provided Unity scene, .unitypackage or Assets/AI_VR_Workshop_V4 folder.** Copy exactly the four FBXs, Starter scripts, Editor scripts and JSON spec listed in [UnitySource](../UnitySource/README.md) to the **student's separate blank URP Unity project**. Confirm correct case-sensitive filenames under Assets/WorkshopStudentGenerated/Imported. Do not import Reference scripts in addition to Starter scripts.
 
-## Unity MCP fails
-Check the currently open **blank URP Unity** project, Package Manager's `com.coplaydev.unity-mcp` from CoplayDev, package restoration, Console errors and correct Unity instance. In **Window > MCP for Unity**, start/configure the service and detected client. Match Cursor endpoint/transport to the installed version; retest live project/scene/Console MCP reads. When switching Unity projects repeat verification.
+If the Editor menu item is missing, wait for Unity compilation; check the first C# Console error, Editor script path and assemblies. If the builder reports that the scene already exists, it is **protecting student edits**: inspect the existing scene, do not delete or overwrite it. If it reports invalid FBX dimensions or missing Noma bone names, inspect the imported object hierarchy, scale/axes, material and model rig. Never restore an old teacher scene as a hidden shortcut.
 
-## Blender to Unity import fails
-The supplied repo is a **full Unity reference project**, not a tested `.unitypackage`. FBX is only a visual. Teacher must validate a Unity export package with scene, scripts, prefabs, materials and dependencies in a separate instructor Unity copy before class. Where MCP cannot install scripts or packages, students import the **verified package** manually via **Assets > Import Package > Custom Package**, then resume MCP scene assembly/checks. Do not claim success if blocked.
+The scene validator checks structure only. Car paint, glass transparency, nose direction, two distinct road colliders and robot animation require **actual** Unity Scene view and Play checks.
 
-## Unity compile or behavior fails
-Use compatible Unity 6 and required URP/Input/XR dependencies. Read first Console error; never blindly replace `Packages/manifest.json` or delete the package lock. Legacy `AI_VR_Workshop_V4` and `AIVRWorkshop.V4` require a GUID-preserving migration in Unity; do not rename only directory strings.
+## Vehicle behavior
+In 1.3 the speed is fixed at 0.85 m/s and the car is **meant to stop at z=32**. Do not implement flight before Play passes. In 1.4 edit only student-owned WorkshopSpeedControl.cs and WorkshopDrive.cs, preserving namespace and script references; do not copy duplicate C# classes or rerun the builder after editing. Flight requires an explicit button click from AwaitChoice while unpaused. Check that JetFX is on only in the air and z=58 ends at rest.
 
-The starter holds at the gap intentionally. If pause/robot fails, verify `WorkshopDesktopPanel.drive`, `WorkshopDrive`, `WorkshopRobotWalk` and object references; avoid duplicate movers or FBX animation. If the body appears twice, disable duplicate mesh renderers and check student FBX axes and URP material.
+## XR and Link
+Use [02_1](../Prompts/02_1_XR_Setup_And_Device_Check.md) to verify **actual Meta rig prefab**, Standalone OpenXR and physical PC Link environment, then [02_2](../Prompts/02_2_Attach_Driver_Camera_And_Test.md) on a **new student VR scene**. Avoid duplicate tracked cameras, double eye-height offsets and second movement components. CP5 passes only if the student wears the headset and confirms stereo and head tracking. Stop movement on discomfort.
 
-## Quest Link
-Follow [02_1 configuration, Meta camera prefab and PC Link diagnosis](../Prompts/02_1_XR_Setup_And_Device_Check.md) first. An OpenXR package or old rig GUID is not proof of a tracked camera. If this passes, use [02_2 driver-eye VR scene and real headset test](../Prompts/02_2_Attach_Driver_Camera_And_Test.md): preserve desktop scene, one active HMD camera/listener, seated tracking origin and no double height offset. A headset pass requires student observation of both eyes and head tracking.
-
-Never commit `.cursor/mcp.json`, generated `Library`/`Logs`/`UserSettings` or credentials. See [acceptance matrix](Acceptance_Matrix.md).
+Do not commit Unity caches, local MCP credentials or student outputs. The old reports in Docs/Validation are historical, not current runtime passes.

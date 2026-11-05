@@ -1,14 +1,14 @@
-# Slide source map
+# Slide source map — source-first workshop
 
-The class uses three 45-minute lessons. Each block has an explicit result to show.
+Use these sources when preparing instructor slides. Do not imply there is a prebuilt Unity scene in GitHub.
 
-| Block | Time | Source | Capture for the lesson |
-|---|---:|---|---|
-| A · Agent introduction | 25 min | [Lesson 1](Lesson01_Setup.md) | Real car and street preview, plus one instructor portrait if supplied |
-| B · Project and MCP setup | 20 min | [Windows setup](WindowsSetup.md) | GitHub download, project root in Hub, and both real connection readbacks |
-| C · Blender | 25 min | [Blender lab](Lesson01_Blender.md) | Append collection, body material before and after, FBX export |
-| D · Unity integration | 20 min | [Lesson 2](Lesson02_Unity.md) | StudentVisual hierarchy, Game view at the crosswalk and gap |
-| E · Speed and flight | 22 min | [Lesson 3](Lesson03_MetaQuest.md) | Cruise comparison, explicit fly control, airborne frame and landing |
-| F · Quest Link | 23 min | [XR checklist](05_XR_and_Quest_Acceptance.md) | Link state, rig hierarchy and a real headset mirror if verified |
+| Block | Source | Suggested real classroom evidence |
+|---|---|---|
+| A · Agent/MCP introduction | [Lesson 1](Lesson01_Setup.md) | Cursor clone, Blender and Unity live MCP readbacks |
+| B · Blender models | [Blender lab](Lesson01_Blender.md) | Eight actual source files in Blender, selected body paint before/after |
+| C · Unity source build | [Lesson 2](Lesson02_Unity.md) | Student-selected FBX imported, generated scene hierarchy and driver camera |
+| D · Play and interaction | [1.4 exercise](../Prompts/01_4_Speed_And_Gap_Flight.md) | Yield, robot walk, full stop at gap, slider and explicit jet flight |
+| E · XR and Link | [VR lesson](Lesson03_MetaQuest.md) | XR Management, resolved Meta rig, live PC Link confirmation |
+| F · Physical cockpit | [02_2 headset task](../Prompts/02_2_Attach_Driver_Camera_And_Test.md) | Student-attested stereo, seated viewpoint, natural head tracking |
 
-Add captures from the classroom revision. Record the source file or scene and software version with each capture. The pack includes the model and scene sources.
+Record actual version/scene names on every slide. Historical reports are not current Source-first passes. Avoid distributing images of a user's private workspace or device ID.

@@ -1,54 +1,32 @@
-# Asset catalog and reuse
+# Blender/FBX source catalog — no prebuilt Unity scene
 
-## Files
+This GitHub repo contains the teacher-original Blender and FBX sources, not a Unity scene, native mesh asset bundle or ready-made Prefab.
 
-| Stem | Contents | What a student may edit |
+| Model | Teacher sources | Student use |
 |---|---|---|
-| AsterGT | Two-seat wedge, about 4.9 m long | Body surface, tires, hubs, brakes, glass, lamp strips, seats, trim, screen, yoke, jet nozzles |
-| NomaRobot | Armored figure, about 1.8 m | Fifteen bones, armor regions, joints, five-finger hands, in-place walk on frames 1-31 |
-| MeridianCity | 8 m road with buildings on both sides | Shopfronts, floors, facades, glass, canopies, lamps, signs, bollards, plants, crosswalk, 6 m gap |
-| JetFX | Two jet beams and a shock ring | Emissive meshes toggled at runtime. This is not a particle or fluid simulation. |
-| Road_Straight12 | 12 m straight module | Lane lines, curbs, sidewalk |
-| Road_Crosswalk12 | 12 m crosswalk module | Nine crossing stripes and a stop line |
-| Road_Gap12 | 6 m open gap inside a 12 m module | Deck ends, hazard edges, girders |
-| Workshop_Master.blend | Assembly of the main assets | Full car, robot, and street for a driver view. Blender only. |
+| AsterGT | SourceArt/Blender/AsterGT.blend + SourceArt/FBX/AsterGT.fbx | Review car body/cockpit, then recolor the student's own Blender copy and export AsterGT_Color.fbx |
+| NomaRobot | Blender + FBX | Inspect skeleton and in-place walk; import FBX in Unity |
+| MeridianCity | Blender + FBX | Inspect street, crosswalk and real gap; import FBX in Unity |
+| JetFX | Blender + FBX | Inspect jet beams; import FBX inactive in Unity until 1.4 |
+| Road_Straight12 | Blender + FBX | Optional road module, not imported by default |
+| Road_Crosswalk12 | Blender + FBX | Optional road module, not imported by default |
+| Road_Gap12 | Blender + FBX | Optional road module, not imported by default |
+| Workshop_Master | SourceArt/Blender/Workshop_Master.blend | Visual reference only, not a Unity scene |
 
-The first seven names have both `.blend` and `.fbx` under `SourceArt`. Counts of objects and triangles are in `SourceArt/asset_metrics.json` and `SourceArt/unity_asset_metrics.json`.
+First seven models are available as .blend and .fbx in SourceArt. Historical geometry statistics live in SourceArt/asset_metrics.json.
 
-Unity scenes do not instance the seven prefabs. They contain an unpacked hierarchy that references the same mesh and material GUIDs. Editing a prefab does not update `Workshop_Desktop.unity` or `Workshop_MetaVR.unity`.
+## Orientation and student art
 
-## Units, axes, and names
+Blender uses metres, +Z up, vehicle -Y forward. The approved student FBX is exported -Z Forward / Y Up. In Unity the car root moves +Z; expected renderer bounds are approximately 2.41 × 1.61 × 5.14 metres. Unity importers can introduce 0.01 scaling or extra rotations, so inspect the **real** bounds and nose direction, not just the file name.
 
-- Blender: metres, +Z up, car and robot face -Y.
-- Unity native assets: metres, +Y up, car faces +Z. The wheels meet the ground and the vehicle root sits on the ground.
-- FBX export already converts axes. After import, read the bounds and the nose direction. If the importer adds a rotation, correct a `Visual` child and leave the drive root on +Z.
-- `VehicleRoot` is the art parent. `DriverEyeAnchor` is the driver eye point: Blender (-0.44, 0.12, 1.24), Unity (-0.44, 1.24, -0.12). It is not a per-person XR calibration.
-- `M_BodyPaint` is the only classroom recolor target. Leave `M_Glass`, `M_Rubber`, `M_Trim`, and the light materials alone.
-- The Unity robot uses rigid armor pieces and `WorkshopRobotWalk`. It does not depend on Humanoid retargeting.
-- A Blender `.001` suffix on a repeated part is still a separate editable object.
+Blender driver point: (-0.44,0.12,1.24); expected Unity driver eye: (-0.44,1.24,-0.12), relative to the vehicle root. This is a scene reference, not a personal headset calibration.
 
-## Classroom Blender steps
+Only M_BodyPaint changes in 1.2; keep windows, rubber, trim, geometry, bones and eye point. The student color is not necessarily red. FBX import does not carry all Blender node shaders: the source-first builder creates student-owned URP materials. Verify transparent glass and body paint visually.
 
-Save a student copy such as `StudentWork/S01/AsterGT_Color_v01.blend` before any MCP edit. The basic exercise does not change topology, bones, scale, or object names. Compare screenshots from the same camera. Tires, glass, and the interior must keep their colors.
+## Robot and road
 
-To practice Append from an empty scene, append `AsterGT.blend/Collection/01_AsterGT_Editable`. That keeps curves and modifiers. An FBX import is evaluated mesh and drops the modifier stack.
+The builder expects imported rigid walk bones Thigh_L/R, Shin_L/R and Foot_Sole_L/R; WorkshopRobotWalk animates limbs and WorkshopDrive translates the crossing root. Disable an imported Animator that would double-animate those same bones. If the FBX names differ, inspect/repair rather than marking animation passed.
 
-## Round trip into Unity
+MeridianCity is the default visible road; do not stack Road_* models at the same coordinates. The builder creates two collider segments with a **real collision gap from z=37 to z=43**; student Play must show a stable hold before the gap.
 
-1. From the student Blender copy, export `VehicleRoot` and its descendants to a new FBX. Omit cameras and lights. Use -Z forward and Y up, the same axes as the teacher export.
-2. Import it under a student folder. Do not drop a `.blend` into `Assets`, or Unity will try its own Blender export.
-3. Inspect scale, materials, and facing in a separate scene. FBX will not reproduce Blender shader nodes. Map the existing teaching materials or a student material copy.
-4. Native meshes and FBX do not stay in sync. To change the look on the route, keep `WorkshopDrive`, `WorkshopSpeedControl`, `DriverEyeAnchor`, the curtain, and the jet references. Hide the original body renderers and parent the new FBX under a `StudentVisual` child. Do not show both bodies.
-5. If the FBX brings its own eye point or jet anchors, keep the existing eye point as the only XR parent. Re-check the view and the nose direction.
-
-## Robot animation
-
-The Blender and FBX files contain a skeleton and `Noma_Walk_InPlace_1s` at 30 fps, frames 1-31, with the first and last frames repeated. The designed walk speed is 0.6 m/s. The Unity scenes drive the armor with `WorkshopRobotWalk`. `WorkshopDrive` moves the crossing root.
-
-A teacher who wants the FBX clip must set the Rig to Generic, check the clip, Loop Time, and the feet, then disable `WorkshopRobotWalk` and use one Animator. Do not play both systems, and do not add Root Motion on top of the scripted translation. That swap is not the tested path in this package.
-
-## Modules and cost
-
-Road tiles repeat every 12 m along the route. The deck is 8 m wide and the outer sidewalk span is 12.6 m. The gap is real geometry. Do not cover the city with one collider that bridges the gap. The scene uses two road colliders.
-
-Unity merges surfaces by material, keeps the robot skeleton, and groups the city in 12 m blocks. There is no LOD, lightmap, or occlusion bake. Current materials are URP Lit and Unlit. Unity lighting will not match a Blender Cycles preview.
+Student outputs stay in Git-ignored StudentWork/<group> and in a **separate URP project**, according to [UnitySource](../UnitySource/README.md). Do not regenerate teacher meshes during class with old build scripts.

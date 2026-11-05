@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "studentScenePath": "Assets/WorkshopStudentGenerated/Scenes/Workshop_Desktop_Student.unity",
+  "importDirectory": "Assets/WorkshopStudentGenerated/Imported",
+  "carFbx": "AsterGT_Color.fbx",
+  "robotFbx": "NomaRobot.fbx",
+  "cityFbx": "MeridianCity.fbx",
+  "jetFbx": "JetFX.fbx",
+  "carStart": [
+    1.8,
+    0,
+    0
+  ],
+  "driverEyeLocal": [
+    -0.44,
+    1.24,
+    -0.12
+  ],
+  "robotStart": [
+    -4.5,
+    0.1,
+    14
+  ],
+  "expectedCarBounds": [
+    2.41,
+    1.61,
+    5.14
+  ],
+  "roadMainCenter": [
+    0,
+    -0.18,
+    12.5
+  ],
+  "roadMainSize": [
+    8,
+    0.36,
+    49
+  ],
+  "roadLandingCenter": [
+    0,
+    -0.18,
+    55.5
+  ],
+  "roadLandingSize": [
+    8,
+    0.36,
+    25
+  ],
+  "crosswalkStopZ": 7.5,
+  "gapHoldZ": 32,
+  "roadGapStartZ": 37,
+  "roadGapEndZ": 43,
+  "flightLandingZ": 48,
+  "routeEndZ": 58,
+  "defaultSpeedMps": 0.85,
+  "minSpeedMps": 0.25,
+  "maxSpeedMps": 2,
+  "robotWalkSpeedMps": 0.6
+}

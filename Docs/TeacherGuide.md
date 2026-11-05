@@ -1,13 +1,15 @@
-# Teacher guide — three lessons, 135 minutes
+# Teacher guide — source-first workshop
 
-| Lesson | Time | Demonstrate | Student evidence |
-|---|---:|---|---|
-| [1 · Cursor-first setup](Lesson01_Setup.md) | 20 + 25 min | Create empty folder, open Cursor, clone repository, check software/pro/permissions; start blank Blender and URP Unity; install/update MCP through Cursor; enable services and read both live tools. | Git remote, preflight report, Blender/Unity MCP readbacks (CP0). |
-| [2 · Blender then Unity](Lesson02_Unity.md) | 25 + 20 min | Append/recolor Aster GT and export FBX **before** Unity scene assembly; use Unity MCP to import needed classroom assets and build/validate scene. | Reopened .blend, FBX, correct Unity visual/scene, yield/gap test (CP1–3). |
-| [3 · VR cockpit](Lesson03_MetaQuest.md) | 02_1 + 02_2 | Check XR Plug-in Management, Meta XR camera asset and Quest Link; then bind a tracked camera in a VR-only scene and have the student Play in headset. | CP4 configuration and CP5 student-observed headset evidence. |
+Students construct a new Unity scene from FBXs with Cursor; they **do not** open a supplied Unity project.
 
-Before class, install/test **compatible-or-newer** Cursor, Blender, Unity Editor, Quest Link, uv/Python, and package dependencies; confirm the class's Cursor Pro entitlement policy, write and terminal permissions, GitHub access, power, GPU, USB data cables and OpenXR runtime. Never infer a paid subscription is required by either open-source MCP.
+| Lesson | Student tasks | Required observation |
+|---|---|---|
+| [1 · Cursor/MCP](Lesson01_Setup.md) | Clone; prepare empty Blender and separate blank URP Unity; install and connect MCP tools | Real read-only MCP readbacks |
+| [2 · Blender → Unity](Lesson02_Unity.md) | 1.1 inspect, 1.2 custom car color, 1.3 import four FBXs/build full Unity scene, 1.4 change speed and implement flight | Student .blend/.fbx, generated Unity scene, complete Play and interactive tests |
+| [3 · VR](Lesson03_MetaQuest.md) | 02_1 OpenXR/Meta/PC Link; 02_2 attach tracked rig and wear headset | Student-confirmed device and CP5 stereo/head tracking |
 
-**Critical teacher preparation:** the repository holds a **full reference Unity project** and historical checks; no exported `.unitypackage` has yet been validated. Any teacher-prepared package should be exported and **clean-import tested** in a separate Unity Editor copy, including scripts, URP and robot dependencies, before the classroom. Teacher packaging is not one of the student Prompts. Maintain a backup reference scene. The 20-minute Unity portion assumes that prepared package is available; without it, use demonstration/recovery time and do not claim a full automated build.
+The previous three-by-45-minute schedule is a teaching **target**, not a measured time for installing Unity/Meta packages. Prepare compatible Windows GPU/Quest Link setup, USB-C data cable, Unity 6 URP, Blender, Cursor, Git and uv/uvx **before class**, or allocate recovery time.
 
-Use [current workflow](Cursor_First_Workflow.md), [acceptance matrix](Acceptance_Matrix.md) and [XR checks](05_XR_and_Quest_Acceptance.md) for gate definitions. Record real software/tool versions and failures rather than copying historical passes.
+**Teacher release gate:** perform a clean Git clone and open a fresh blank Unity project at a separate path. Ensure no previously generated Assets/AI_VR_Workshop_V4 scripts or Prefabs exist on that machine. Copy/import four FBXs and UnitySource, compile C#, build the scene through the real Editor, verify car nose, glass, Noma skeleton, walking animation and gap, then full Play and headset. Static link/spec checks do not prove runtime. Store any emergency teacher demo separately; students must never depend on it.
+
+[Acceptance matrix](Acceptance_Matrix.md) · [Troubleshooting](Troubleshooting.md) · [Source-first architecture](ProjectArchitecture.md).
