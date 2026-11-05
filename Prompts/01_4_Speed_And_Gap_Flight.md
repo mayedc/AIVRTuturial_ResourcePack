@@ -2,7 +2,7 @@
 
 **Gate:** run only when the student has personally completed and confirmed the **entire 1.3 Unity Play** (0.85 m/s cruise, crossing yield, robot, z=32 m gap hold, pause and restart). If it was only sampled at 8 seconds or any item is untested, **STOP and return to 1.3**. Reply in Simplified Chinese.
 
-**学生希望测试的速度（留空为 1.20 m/s）：** ________
+**The speed at which the student wishes to conduct the test (leave blank for 1.20 m/s): ** ________
 
 Keep the original teacher scene and original repository scripts unchanged. Work only in the verified student Unity project's `Workshop_Desktop_Student.unity` and its student-owned code copy, backed up first. Read `AGENTS.md`, `Docs/03_Unity_Integration.md`, `Prompts/Unity/AdjustSpeed.md` and the original/runtime code, using `Answers/Original` for comparison; do not blindly paste ready-made `Answers/Reference`. Verify active Unity project and Console through Unity MCP.
 
