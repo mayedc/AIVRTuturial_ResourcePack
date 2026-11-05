@@ -1,15 +1,17 @@
-# Lesson 3 — Speed, flight, and the tracked cockpit (45 minutes)
+# Lesson 3 — VR configuration and driver's seat cockpit
 
-## 00–22 | Exercise 2 — Implement and test vehicle behavior
+**Prerequisite:** the student has already tested and passed 1.1–1.4, including speed control and the commanded gap flight on the desktop. Do not re-run those scripts here.
 
-- **7 minutes**. Open the Lesson 2 checkpoint, record the baseline cruise, and use the [speed prompt](../Prompts/Unity/AdjustSpeed.md) to implement the bounded control. Compare 0.85 and 1.20 m/s in Play and verify the crosswalk and gap stops.
-- **10 minutes**. Use the [flight prompt](../Prompts/03_Yield_and_Jet_Check.md) to implement a scripted arc from the gap hold to the landing. Require an explicit command at the gap. Reuse the existing car and jet objects.
-- **5 minutes**. Check Console, flight, landing, final stop and restart in the desktop scene. Save a checkpoint. The instructor can restore a working copy from the reference answers if a group needs to move on.
+## 02_1 — XR/Meta SDK/Quest Link readiness
 
-## 22–45 | Exercise 3 — Attach a tracked cockpit
+Copy [02_1 XR setup and device self-check](../Prompts/02_1_XR_Setup_And_Device_Check.md). Cursor reads the active Unity project through MCP, examines **XR Plug-in Management > Standalone > OpenXR**, OpenXR settings, the installed **Meta XR Core SDK**, and a real supported **tracked XR rig/camera prefab**. If all are compatible and healthy, report without reinstalling. Otherwise install via Unity Package Manager and the **official Meta XR Core SDK**, with user sign-in and license steps done manually.
 
-- **5 minutes**. Start the prepared Windows Quest Link session. Confirm the headset, installed package and selected PC runtime.
-- **3 minutes**. Locate `DriverEyeAnchor` and `DesktopCamera` and explain what the car root and headset tracking each control.
-- **7 minutes**. Duplicate the last good scene. Use the [XR prompt](../Prompts/04_XR_and_Quest.md) to attach the tested rig and disable the desktop camera and listener.
-- **5 minutes**. With the car stationary and the user seated, confirm picture in both eyes, neutral view and head tracking. Use [the XR checklist](05_XR_and_Quest_Acceptance.md).
-- **3 minutes**. Record CP4/CP5 results and wrap up. If Link fails, inspect the hierarchy, record the failure and preserve the desktop result.
+The student connects Quest 3/3S with a USB-C **data cable**, starts the Windows Meta Quest Link / Meta Horizon Link desktop app, **launches Link from the headset**, checks the PC OpenXR runtime and personally confirms they are seeing the **PC Link environment**. Cursor must stop for this check: do not attach a VR camera yet.
+
+## 02_2 — Attach driver's XR camera and test while wearing headset
+
+After 02_1 succeeds, copy [02_2 attach driver XR camera and Play](../Prompts/02_2_Attach_Driver_Camera_And_Test.md). Cursor duplicates the verified desktop student scene into a VR-only scene and parents **one** tested tracked rig to `AsterGT/DriverEyeAnchor`, verifying local transforms and **eye-level vs floor origin** without double height offset. The desktop camera and listener are disabled **only** in the VR scene.
+
+The student then sits safely, wears the headset, verifies the PC Link session, recenters and manually presses Unity Play **first with the car stationary**. Confirm both eyes, correct driver-seat position, forward view, natural head rotation and positional tracking. Cursor checks the hierarchy and fixes VR-only alignment if needed; never pretend the Editor can observe what the student sees.
+
+Record **CP4 structural configuration** and **CP5 student-observed headset testing** separately as PASS/FAIL/NOT TESTED. For the detailed checklist, see [Quest Link and cockpit acceptance](05_XR_and_Quest_Acceptance.md).
