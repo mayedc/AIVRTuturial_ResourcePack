@@ -1,0 +1,29 @@
+# Prompt 02_2 — Attach one tracked XR rig to the driver's seat and test in headset
+
+Run this **only after Prompt 02_1** has verified compatible **Standalone OpenXR**, usable **Meta XR rig / tracked camera prefab**, no blocking Unity compile errors, **active Quest Link PC session**, and the student's self-check confirmation. Reply in **Simplified Chinese**. This prompt covers **scene binding + student headset testing only**; do not reinstall packages or rebuild vehicle logic.
+
+## 1. Preserve the completed desktop lesson
+
+1. Through Unity MCP confirm the exact **student project**, active scene, `AsterGT` route, and working 1.1–1.4 desktop speed/flight/crossing checkpoint. If missing, stop instead of replacing it.
+2. **Save a new scene**, e.g. `Assets/AI_VR_Workshop_V4/Scenes/Workshop_VR_Student.unity`, by duplicating the verified student desktop scene `Workshop_Desktop_Student.unity`. Never overwrite `Workshop_Desktop_Student.unity`, `Workshop_Desktop.unity`, or the legacy `Workshop_MetaVR.unity` (its old Meta prefab reference may be unresolved). Create a backup/checkpoint and confirm the scene copy is the one open.
+3. Recheck the active project/renderer and the actual Meta rig prefab through Unity MCP. **Do not instantiate another rig** if a valid tracked rig is already present: inspect/reuse it. If the current project cannot load a rig, return to 02_1 and do not fabricate success.
+
+## 2. Locate the real driver viewpoint and bind tracking
+
+4. In the **VR student scene only**, locate `AsterGT/DriverEyeAnchor`; read hierarchy, `Transform`, `DesktopCamera`, and any already present XR rig. The existing **Unity local** eye anchor is approximately `(-0.44, 1.24, -0.12)` m relative to the car/anchor parent, but verify the *actual current scene* rather than assuming these coordinates in a modified student project. The car root continues to face **+Z**, and its mover/route must remain unchanged.
+5. Using Unity MCP / supported Editor API, instantiate **one** verified Meta XR rig (e.g. `OVRCameraRig` or compatible Meta XR rig) **as a child of `DriverEyeAnchor`**, with **local position (0,0,0), local rotation (0,0,0), local scale (1,1,1)** for an **eye-level tracking origin**. Check the actual rig hierarchy and **CenterEyeAnchor/tracked camera**. Do **not** forcibly animate the tracked camera or parent directly under an independently moving camera with a second tracking script.
+6. If the rig is **floor-origin** rather than eye-level, do **not** add a second 1.24 m offset blindly. Inspect configured tracking origin and neutral center-eye local height; calculate a single appropriate **tracking-origin compensation** after a seated recenter so the measured neutral eye is aligned with `DriverEyeAnchor`. Prefer the instructor-tested **eye-level/seated** configuration for the first check; if not supported, record the actual compensating offset and revalidate in headset. Avoid adding compensation to both rig root and camera.
+7. Disable only the **Camera** and **AudioListener** on `DesktopCamera` in the new VR scene; preserve the object and original desktop scene. Require exactly **one active tracked HMD camera and one enabled AudioListener**, an XR runtime that initializes, no missing scripts or unresolved rig GUIDs, and no duplicate XR origin / second mover. Keep the `ComfortCurtain` reference but disabled for the stationary first test; do not remove vehicle, road, robot, or jet scripts.
+8. Save the VR scene; through Unity MCP read back and report exact scene path, `DriverEyeAnchor` world/local transform, rig parent + local transform, tracking-origin mode, tracked camera path, active camera/listener counts, scene references, Standalone OpenXR provider and Console. Distinguish **structural scene validation (CP4)** from **physical headset validation (CP5)**.
+
+## 3. Student-operated VR Play (do not claim success on their behalf)
+
+9. Instruct the student to **sit in a safe, stationary position**, secure the USB Link cable, put on the Quest headset, launch/verify the **PC Link session** and recenter their view while seated. Clear nearby objects; start with the car **stationary** rather than auto-running a moving or flying demo.
+10. Ask the student to **manually press Unity Play**, then visibly confirm **both eyes render**, the intended driver-seat position (not roof/wheels/passenger seat), forward view through the windshield, correct scale/horizon, natural **head rotation and positional tracking** without car/root double movement, no black image or duplicate stereo camera. Compare what the student sees to the expected cockpit/driver line of sight.
+11. If alignment is wrong, stop Play, read **tracking origin, current center-eye offset and rig parent** through MCP, fix only the VR student rig transform or tracking-origin configuration, save and ask the student to repeat the seated check. Do not change `AsterGT` geometry/route or disable tracking to hide the problem. If headset is disconnected, refer back to 02_1.
+12. Only **after stationary view passes**, optionally let the student test **a brief controlled route segment** with the teacher present, checking that the view travels with the car and pause/restart still work. Avoid compulsory full-motion flight in headset; stop if there is discomfort.
+13. Record **CP4** (scene + rig/camera structure) and **CP5** (actual student-observed Link, stereo, seat alignment, head tracking) separately as `PASS`, `FAIL`, or `NOT TESTED`, including applied calibration and remaining blockers. **Only say "VR stage complete" if the student confirms CP5.**
+
+**STOP.** No automatic changes to packaged teacher scenes or unrelated Prompts, and never treat Unity Console success as a real VR headset pass.
+
+References: `Docs/05_XR_and_Quest_Acceptance.md` and https://developers.meta.com/vr/documentation/unity/unity-core-sdk/
