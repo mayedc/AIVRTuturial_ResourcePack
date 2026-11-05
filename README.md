@@ -7,16 +7,16 @@ A three-lesson MDIT 310 driving workshop. **Start in Cursor, connect Blender and
 1. Create a **new, empty local folder** (for example `D:\AI_VR_Workshop`), open that folder in Cursor, and ask Cursor to clone this repository **into that empty folder**. Do not download/extract a ZIP or start by opening the provided Unity project in Unity Hub. See [Quick start](Docs/QuickStart.md) and [Cursor-first workflow](Docs/Cursor_First_Workflow.md).
 2. Have Cursor read this README and run the [preflight prompt](Prompts/00_Clone_Preflight.md). Check Git, compatible Cursor, Blender, Unity Editor/Hub, Quest Link (Meta Link PC app), Windows/USB/OpenXR, required account or classroom Cursor Pro access, write permissions, and required package versions **before** proceeding.
 3. Open an **empty Blender scene** and a **temporary blank URP Unity project** for the MCP connection check (not the supplied workshop scene). In Cursor, run the [MCP install/update/verification prompt](Prompts/00_Install_Update_MCP.md). Cursor installs or updates compatible MCP components, students start/enable the in-app services, and Cursor reads back both applications. Do not infer connection from a green icon alone.
-4. Use [Lesson 2 / Blender](Docs/Lesson01_Blender.md) to append and recolor the prepared Aster GT in a **student copy**, then export a validated FBX. Do not open the prepared Unity teaching scene before the Blender checkpoint.
-5. Only **after the Blender export**, use the [Blender-to-Unity build prompt](Prompts/01_Agent_Blender_Unity.md). Cursor should automate asset transfer, import, scene setup, reference checks and validation through the live Unity MCP. A teacher-generated `.unitypackage` is the supported manual-import fallback where MCP/script installation is blocked; see [packaging prompt](Prompts/06_Cursor_Refactor_And_Package.md).
-6. Follow [Lesson 3](Docs/Lesson03_MetaQuest.md) for speed, commanded flight, desktop checks and the separately verified Quest Link cockpit.
+4. Run [1.1 inspect eight Blender models](Prompts/01_1_Review_All_Blender_Models.md) and [1.2 choose vehicle paint](Prompts/01_2_Choose_Car_Color.md), stopping for student review and color approval.
+5. Run [1.3 export and build Unity](Prompts/01_3_Export_And_Build_Unity.md); after the student's complete Play check, independently run [1.4 speed and flight](Prompts/01_4_Speed_And_Gap_Flight.md).
+6. Start VR only after desktop completion: [02_1 XR/Meta/Link setup](Prompts/02_1_XR_Setup_And_Device_Check.md), then [02_2 driver's tracked camera and headset Play](Prompts/02_2_Attach_Driver_Camera_And_Test.md). Each step stops for student confirmation.
 
 [Teacher guide](Docs/TeacherGuide.md) · [Student checklist](Docs/StudentChecklist.md) · [Acceptance matrix](Docs/Acceptance_Matrix.md) · [Troubleshooting](Docs/Troubleshooting.md)
 
 ## Contents and migration status
 
 - `SourceArt/Blender` and `SourceArt/FBX`: Aster GT, Noma Robot, Meridian City, JetFX and three road modules.
-- `Assets/AI_VR_Workshop_V4`: **legacy internal Unity asset path** containing reusable meshes, materials, scripts and scenes. Do not rename it by hand: scene GUIDs, assembly definitions, namespaces, menus and references must migrate together and compile in Unity. The [Cursor migration prompt](Prompts/06_Cursor_Refactor_And_Package.md) handles this.
+- `Assets/AI_VR_Workshop_V4`: **legacy internal Unity asset path** containing reusable meshes, materials, scripts and scenes. Do not rename it by hand: scene GUIDs, assembly definitions, namespaces, menus and references must migrate together and compile in Unity. Any migration of the old asset path must be done in Unity with preserved `.meta` GUIDs, assembly references and full scene tests; it is outside the student sequence.
 - `Prompts` and `.cursor/skills`: scoped Agent instructions. `Answers`: instructor reference code outside imported Assets.
 - `ProjectSettings/ProjectVersion.txt` and `Packages/manifest.json`: **historical project compatibility inputs**, not a command to overwrite a student's newer working configuration.
 
