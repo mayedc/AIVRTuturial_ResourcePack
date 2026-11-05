@@ -1,7 +1,0 @@
-{
-  "name": "AIVRWorkshop.V4.Editor",
-  "rootNamespace": "AIVRWorkshop.V4.Editor",
-  "references": ["AIVRWorkshop.V4.Runtime"],
-  "includePlatforms": ["Editor"],
-  "autoReferenced": true
-}
