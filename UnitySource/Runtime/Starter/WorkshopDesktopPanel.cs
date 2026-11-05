@@ -1,0 +1,37 @@
+using UnityEngine;
+
+namespace AIVRWorkshop.Student
+{
+    // IMGUI is for desktop lessons; XR setup is a separate stage.
+    public sealed class WorkshopDesktopPanel : MonoBehaviour
+    {
+        public WorkshopDrive drive;
+        public WorkshopSpeedControl speed;
+        public bool showDesktopControls = true;
+
+        private void OnGUI()
+        {
+            if (!showDesktopControls || drive == null || speed == null) return;
+            GUILayout.BeginArea(new Rect(16, 16, 310, 260), GUI.skin.box);
+            GUILayout.Label("ASTER / AI VR DRIVING WORKSHOP");
+            GUILayout.Label("State: " + drive.CurrentStage);
+            GUILayout.Label("Speed target: " + speed.TargetSpeedMps.ToString("0.00") + " m/s");
+            if (speed.CanAdjustSpeed)
+                speed.SetSpeedMps(GUILayout.HorizontalSlider(speed.TargetSpeedMps, 0.25f, 2f));
+            else
+                GUILayout.Label("Fixed speed - complete exercise 1.4A");
+            if (GUILayout.Button(drive.paused ? "Resume" : "Pause")) drive.TogglePause();
+            if (GUILayout.Button("Restart route")) drive.Restart();
+            if (drive.CurrentStage == WorkshopDrive.Stage.AwaitChoice)
+            {
+                if (drive.CanFly)
+                {
+                    if (!drive.paused && GUILayout.Button("Fly across the gap")) drive.BeginJetFlight();
+                }
+                else
+                    GUILayout.Label("Holding before gap - exercise 1.4B");
+            }
+            GUILayout.EndArea();
+        }
+    }
+}
