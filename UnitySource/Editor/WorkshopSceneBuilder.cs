@@ -30,8 +30,9 @@ namespace AIVRWorkshop.Student.EditorTools
 
         public static SceneSpec ReadSpec()
         {
-            if (!File.Exists(SpecPath)) throw new InvalidOperationException("Missing " + SpecPath + ". Copy the file from UnitySource/Config first.");
-            var spec = JsonUtility.FromJson<SceneSpec>(File.ReadAllText(SpecPath));
+            var specAsset = AssetDatabase.LoadAssetAtPath<TextAsset>(SpecPath);
+            if (specAsset == null) throw new InvalidOperationException("Missing " + SpecPath + ". Import the file from UnitySource/Config first.");
+            var spec = JsonUtility.FromJson<SceneSpec>(specAsset.text);
             if (spec == null || spec.schemaVersion != 1)
                 throw new InvalidOperationException("Unsupported WorkshopSceneSpec schemaVersion.");
             if (spec.studentScenePath != "Assets/WorkshopStudentGenerated/Scenes/Workshop_Desktop_Student.unity" ||
@@ -47,6 +48,15 @@ namespace AIVRWorkshop.Student.EditorTools
                 throw new InvalidOperationException("Incomplete three-component vectors in scene specification.");
             if (Mathf.Abs(spec.roadGapStartZ - 37f) > 0.01f || Mathf.Abs(spec.roadGapEndZ - 43f) > 0.01f)
                 throw new InvalidOperationException("Expected an open roadway gap between z=37 and z=43.");
+            foreach (var value in spec.expectedCarBounds)
+                if (float.IsNaN(value) || float.IsInfinity(value) || value <= 0f)
+                    throw new InvalidOperationException("Expected car bounds must be positive and finite.");
+            foreach (var value in spec.roadMainSize)
+                if (float.IsNaN(value) || float.IsInfinity(value) || value <= 0f)
+                    throw new InvalidOperationException("Main road collider size must be positive and finite.");
+            foreach (var value in spec.roadLandingSize)
+                if (float.IsNaN(value) || float.IsInfinity(value) || value <= 0f)
+                    throw new InvalidOperationException("Landing road collider size must be positive and finite.");
             return spec;
         }
 
@@ -216,7 +226,8 @@ namespace AIVRWorkshop.Student.EditorTools
             if (EditorApplication.isPlayingOrWillChangePlaymode)
                 throw new InvalidOperationException("Exit Play Mode before scene construction.");
             var spec = ReadSpec();
-            if (File.Exists(spec.studentScenePath))
+            if (AssetDatabase.LoadAssetAtPath<SceneAsset>(spec.studentScenePath) != null ||
+                File.Exists(Path.Combine(Directory.GetParent(Application.dataPath).FullName, spec.studentScenePath)))
             {
                 Debug.LogWarning("Student scene already exists: " + spec.studentScenePath +
                     ". Build was skipped; no objects were duplicated and no student work was overwritten. Use Validate Student Scene.");

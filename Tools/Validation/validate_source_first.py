@@ -6,6 +6,7 @@ from pathlib import Path
 import json
 import re
 import sys
+import ast
 
 ROOT = Path(__file__).resolve().parents[2]
 errors = []
@@ -70,6 +71,13 @@ for md in markdown_files:
         if not (md.parent / url).exists():
             errors.append(f"Broken Markdown link: {md.relative_to(ROOT)} -> {link}")
 
+# Syntax-parse repository-owned Python without importing bpy or launching Unity.
+for python_source in (ROOT / "Tools").rglob("*.py"):
+    try:
+        ast.parse(python_source.read_text(encoding="utf-8"), filename=str(python_source))
+    except (SyntaxError, UnicodeError) as err:
+        errors.append(f"Invalid Python source: {python_source.relative_to(ROOT)}: {err}")
+
 # Stage gates and trusted code copies.
 p13 = (ROOT / "Prompts/01_3_Export_And_Build_Unity.md").read_text(encoding="utf-8") if (ROOT / "Prompts/01_3_Export_And_Build_Unity.md").exists() else ""
 p14 = (ROOT / "Prompts/01_4_Speed_And_Gap_Flight.md").read_text(encoding="utf-8") if (ROOT / "Prompts/01_4_Speed_And_Gap_Flight.md").exists() else ""
@@ -80,6 +88,9 @@ check("Workshop_Desktop_Student.unity" in p13, "1.3 must save separate student s
 check("only after" in p14.lower() and "BeginJetFlight" in p14, "1.4 stage gate or flight is missing.")
 check("File.Exists(spec.studentScenePath)" in build, "Builder must reject overwriting an existing scene.")
 check("PrefabUtility.InstantiatePrefab" in build, "Builder must instantiate source FBX models.")
+validator = (ROOT / "UnitySource/Editor/WorkshopSceneValidator.cs").read_text(encoding="utf-8")
+check("Validate Student Scene (1.4)" in validator, "Missing post-exercise structural validation entry point.")
+check("Validate Student Scene (1.4)" in p14, "1.4 must invoke the correct post-exercise validator.")
 for suffix in ("WorkshopDrive", "WorkshopSpeedControl"):
     ref = ROOT / f"Answers/Reference/{suffix}.cs"
     start = ROOT / f"UnitySource/Runtime/Starter/{suffix}.cs"

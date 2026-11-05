@@ -18,7 +18,7 @@ namespace AIVRWorkshop.Student.EditorTools
             return t.gameObject;
         }
 
-        public static void ValidateOrThrow(Scene scene, WorkshopSceneBuilder.SceneSpec spec)
+        public static void ValidateOrThrow(Scene scene, WorkshopSceneBuilder.SceneSpec spec, bool requireStarter = true)
         {
             if (!scene.IsValid() || !scene.isLoaded) throw new InvalidOperationException("Student scene must be open and loaded.");
             var roots = scene.GetRootGameObjects();
@@ -54,9 +54,10 @@ namespace AIVRWorkshop.Student.EditorTools
             if (walk.leftThigh == null || walk.rightThigh == null || walk.leftFoot == null ||
                 walk.rightFoot == null || walk.leftShin == null || walk.rightShin == null)
                 throw new InvalidOperationException("Robot bones unassigned.");
-            if (drive.CanFly || speed.CanAdjustSpeed)
+            if (requireStarter && (drive.CanFly || speed.CanAdjustSpeed))
                 throw new InvalidOperationException("This is a 1.3 starter. Do not implement 1.4 features before Play approval.");
-            Debug.Log("Student scene structure PASS. Not equivalent to visual, full-route Play, or headset validation.");
+            Debug.Log("Student scene structure PASS (" + (requireStarter ? "1.3 starter" : "1.4 interactive") +
+                "). This does NOT establish Play, driver-view, robot motion or headset acceptance.");
         }
 
         [MenuItem("Tools/Workshop/Validate Student Scene (1.3)")]
@@ -64,6 +65,19 @@ namespace AIVRWorkshop.Student.EditorTools
         {
             var spec = WorkshopSceneBuilder.ReadSpec();
             ValidateOrThrow(SceneManager.GetActiveScene(), spec);
+        }
+
+        [MenuItem("Tools/Workshop/Validate Student Scene (1.4)")]
+        public static void ValidateInteractive()
+        {
+            var spec = WorkshopSceneBuilder.ReadSpec();
+            var scene = SceneManager.GetActiveScene();
+            ValidateOrThrow(scene, spec, false);
+            var car = scene.GetRootGameObjects().Single(x => x.name == "WorkshopStudentRoot")
+                .transform.Find("AsterGT");
+            if (!car.GetComponent<WorkshopSpeedControl>().CanAdjustSpeed)
+                throw new InvalidOperationException("1.4 speed adjustment has not been enabled.");
+            Debug.Log("1.4 STRUCTURAL checks passed. The student must separately Play-test speed, explicit flight, landing, pause and restart.");
         }
     }
 }

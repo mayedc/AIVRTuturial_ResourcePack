@@ -14,7 +14,7 @@ The student project is a **separate directory** from this Git repository.
 | `StudentWork/<group>/AsterGT_Color.fbx` | `Assets/WorkshopStudentGenerated/Imported/AsterGT_Color.fbx` |
 | `SourceArt/FBX/NomaRobot.fbx`, `MeridianCity.fbx`, `JetFX.fbx` | `Assets/WorkshopStudentGenerated/Imported/...` |
 
-Copy dependencies only **after checking project identity and destination conflicts**. Preserve imported FBX `.meta` files on subsequent runs; do not overwrite a student's modified scripts. Allow Unity to compile, then use **Tools > Workshop > Build Student Scene From FBX** (or call the menu method through verified Unity MCP). Use **Tools > Workshop > Validate Student Scene (1.3)** to check the structure.
+Copy dependencies only **after checking project identity and destination conflicts**. Preserve imported FBX `.meta` files on subsequent runs; do not overwrite a student's modified scripts. Allow Unity to compile, then use **Tools > Workshop > Build Student Scene From FBX** (or call the menu method through verified Unity MCP). Use **Tools > Workshop > Validate Student Scene (1.3)** to check the starter structure. After 1.4 edits, use **Tools > Workshop > Validate Student Scene (1.4)** for non-Play structural checks; only real student Play counts as behavioral acceptance.
 
 The builder refuses to overwrite an existing `Workshop_Desktop_Student.unity`; this deliberately prevents wiping student work in 1.4. It does not regenerate scene content on rerun.
 
