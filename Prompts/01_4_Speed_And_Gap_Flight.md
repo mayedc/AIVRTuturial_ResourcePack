@@ -4,7 +4,7 @@
 
 **The speed at which the student wishes to conduct the test (leave blank for 1.20 m/s): ** ________
 
-Keep the original teacher scene and original repository scripts unchanged. Work only in the verified student Unity project's `Workshop_Desktop_Student.unity` and its student-owned code copy, backed up first. Read `AGENTS.md`, `Docs/03_Unity_Integration.md`, `Prompts/Unity/AdjustSpeed.md` and the original/runtime code, using `Answers/Original` for comparison; do not blindly paste ready-made `Answers/Reference`. Verify active Unity project and Console through Unity MCP.
+Keep the original teacher scene and original repository scripts unchanged. Work only in the verified student Unity project's `Workshop_Desktop_Student.unity` and its student-owned code copy, backed up first. Read `AGENTS.md`, `Docs/03_Unity_Integration.md` and the original/runtime code, using `Answers/Original` for comparison; do not blindly paste ready-made `Answers/Reference`. Verify active Unity project and Console through Unity MCP.
 
 **1.4A — Speed control**
 1. Edit the student copy of `Assets/AI_VR_Workshop_V4/Runtime/WorkshopSpeedControl.cs` only after checking whether the reference pack is copied outside the teacher source. Implement `SetSpeedMps(float)` with `CanAdjustSpeed` enabled and existing UI slider wired. Default cruise target **0.85 m/s**; clamp finite targets to **0.25–2.0 m/s**, reject NaN/infinity without changing last valid target. Retain acceleration, braking, yield, gap hold and pause/restart behavior.
