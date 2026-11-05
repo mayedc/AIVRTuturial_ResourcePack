@@ -1,21 +1,27 @@
-# Quest Link and cockpit acceptance
+# Quest Link and cockpit acceptance: 02_1 then 02_2
 
-The class path is wired PCVR with a Quest 3 or Quest 3S on Windows. Use a USB data cable. Prepare the Quest Link PC app, the selected PC OpenXR runtime and an instructor-tested Meta XR Core version before class. Record the actual editor, package, headset and runtime versions in CP0. Follow [Unity's OpenXR setup](https://docs.unity3d.com/Packages/com.unity.xr.openxr@1.16/manual/project-configuration.html) and [Meta's Unity setup](https://developers.meta.com/vr/documentation/unity/unity-project-setup/).
+The class uses **Windows PCVR** with Quest 3/3S and a USB-C **data cable**. An installed OpenXR package alone is not a real tracked camera.
 
-## Set up the VR copy
+## 02_1: XR project and device self-check
 
-1. Save the tested desktop scene as a new checkpoint under `Assets/AI_VR_Workshop_V4/Scenes/`. Use a separate VR project copy if the desktop checkpoint must stay ready for machines without a headset.
-2. Connect Quest Link and confirm the headset can enter the PC session. In the VR project copy, enable **Initialize XR on Startup** under **XR Plug-in Management > Standalone**. The student starter has this option off so desktop Play can start without a runtime. The configured Standalone loader is OpenXR.
-3. Place one tested tracking rig under `AsterGT/DriverEyeAnchor`. Its neutral transform uses local position and rotation zero and scale one. The eye anchor is at (-0.44, 1.24, -0.12) m. Use the class-tested eye-level mode and recenter while seated. With floor tracking, account for the origin height before judging the eye point.
-4. Disable the Camera and Audio Listener components on `DesktopCamera`. Retain one enabled HMD camera and one listener. Preserve the route and keep the head pose driven by tracking.
-5. Keep `ComfortCurtain` disabled for this lesson and preserve its reference. The desktop panel is a desktop control. Start the first headset check with the car stationary, for example by pausing in the desktop Game view before the route starts.
+Run [02_1 XR Plug-in/Meta SDK/Quest Link](../Prompts/02_1_XR_Setup_And_Device_Check.md) on the **active student Unity VR project**, preserving the passed 1.1–1.4 desktop checkpoint. Through live Unity MCP, check **XR Plug-in Management > Standalone > OpenXR**, project validation, **Initialize XR on Startup** in a VR project copy, Meta XR Core SDK and a **resolved tracked rig prefab** such as OVRCameraRig. Distinguish a package in the manifest from a scene/camera that actually works. If missing, use the official Unity/Meta package routes; student completes login and license prompts.
 
-## Record CP4 and CP5
+The student opens the Meta Quest Link / Meta Horizon Link Windows app, connects a data-capable USB cable, launches **Link inside the headset**, checks the PC OpenXR runtime, and confirms a tracked **PC Link environment** appears. Cursor cannot infer that from USB power. Stage 02_1 stops for student self-check; camera binding is **not** done here.
 
-- CP4: project and scene, tracking origin, parent hierarchy, scale, active camera and listener.
-- CP5: actual Link connection, both eyes, seated neutral view and head turns. Record who checked each item and mark missing checks as not run.
-- The flight exercise is tested on desktop first. A seated stationary headset check completes the class exercise. Any moving or flight demo is supervised, optional, and recorded separately.
+## 02_2: Seat alignment and real headset Play
 
-## Historical scene reference
+Only after 02_1 is confirmed, run [02_2 attach tracked driver camera and test in headset](../Prompts/02_2_Attach_Driver_Camera_And_Test.md):
 
-`Workshop_MetaVR.unity` refers to the unbundled Meta rig GUID listed in [ExternalPackageReferences.json](ExternalPackageReferences.json). Its desktop camera is disabled and the missing rig cannot provide a live tracked camera. `Workshop_XR_Setup.unity` duplicates the desktop scene. Use a new copy of the class checkpoint for the exercise. The [archived release report](Validation/FinalReleaseReport.md) records the earlier validation scope.
+1. Duplicate the student-tested desktop scene into a **VR-only student scene**. Never overwrite `Workshop_Desktop.unity` or `Workshop_Desktop_Student.unity`.
+2. Parent **one** verified Meta XR rig under `AsterGT/DriverEyeAnchor`. The reference local anchor is approximately `(-0.44, 1.24, -0.12)` m in Unity, but read the student's actual current scene. An **eye-level** rig may use zero local offset with unit scale; a **floor-origin** rig requires measured tracking compensation rather than adding an extra blind 1.24 m offset.
+3. Disable `DesktopCamera` Camera and AudioListener only in the VR scene; keep **one active HMD camera** and **one AudioListener**. Preserve car/robot/road/jet scripts and `ComfortCurtain` reference. Keep the curtain disabled for stationary tests.
+4. Student sits safely, recenters the headset and manually presses Unity Play with car **stationary**. Verify both eyes, main-driver view, scale, forward view, rotation and positional head tracking. Fix misalignment only in the VR scene and retry.
+5. Optionally check a short supervised movement after stationary success; headset flight is not required.
+
+**CP4:** exact scene, project/packages, rig parent, tracking origin, offsets, camera/listener and Console. **CP5:** student-observed Link session, stereo image, driver-eye alignment and head tracking. Record each as PASS/FAIL/NOT TESTED. **No headset, no CP5 pass.**
+
+## Historical reference
+
+The shipped `Workshop_MetaVR.unity` references an unbundled Meta rig GUID in [ExternalPackageReferences.json](ExternalPackageReferences.json). It does not prove a tracked camera is currently usable; make a new student VR copy instead.
+
+Official sources: [Unity XR Plug-in Management](https://docs.unity.com/en-us/engine/6000.3/manual/xr/configuring-project-for/plugin-management), [Meta XR Core SDK](https://developers.meta.com/vr/documentation/unity/unity-core-sdk/), [Meta XR Plugin Management](https://developers.meta.com/vr/documentation/unity/unity-xr-plugin/).
