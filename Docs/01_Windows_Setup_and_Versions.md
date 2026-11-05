@@ -1,34 +1,12 @@
 # Windows setup and versions
 
-This folder is a Unity project. Open `AIVRTuturial_ResourcePack` itself. Do not copy an older starter `Packages/manifest.json` over this one.
+The student entry point is [Cursor-first workflow](Cursor_First_Workflow.md), not a ZIP download or immediate Unity Hub import.
 
-| Item | Recorded choice |
-|---|---|
-| Unity | Project version file says `6000.3.27f2`. A separate macOS note in the archived teacher pack mentioned `6000.3.28f1`. Repeat import and Play on the editor you will teach with. |
-| Render pipeline | URP 17.3.0. Current materials use URP Lit and URP Unlit. `WorkshopSurface.shader` and `WorkshopGlass.shader` remain as teaching source and are not assigned by the current materials. Built-in and HDRP were not accepted. |
-| Blender | Source files were saved from Blender 5.2. Open the same minor version when you can. Older Blender may not open the `.blend` files; use the FBX and then check materials and the skeleton. |
-| OpenXR | 1.16.1 is in `Packages/packages-lock.json`. Android Meta Quest Support is enabled for Quest, Quest 2, Quest Pro, Quest 3, and Quest 3S. |
-| Meta XR Core | External dependency. Prepare the class-tested version before the VR exercise. `Workshop_MetaVR.unity` still references its camera rig. See [XR and Quest acceptance](05_XR_and_Quest_Acceptance.md). |
-| Cursor / MCP | Install on the classroom machine and record the tested version. Do not change a working global configuration during a lesson. |
+Start with **Unity 6 6000.3.27f2 or newer compatible**, **Blender 5.2.2 or newer compatible**, a current compatible Cursor, Git, Python 3.10+ and uv/uvx. These are starting points, not a requirement to use one patch release forever. Verify newer Unity builds against the URP project packages and newer Blender builds against the source .blend. Historic URP/Input/OpenXR/XR Management baselines are recorded in [Compatibility](Compatibility.md).
 
-Before class, fill a CP0 record: Windows version, GPU and driver, Blender version, Unity version, URP version, Cursor version, Python or uv version, both MCP versions or commit hashes, OpenXR and XR Management versions, Quest system version, and the connection method. A blank cell is not a locked version.
+1. Create an empty local folder, open Cursor and run [clone/preflight prompt](../Prompts/00_Clone_Preflight.md). Check Cursor sign-in, classroom Pro entitlement if needed, filesystem and terminal permissions, Meta Quest Link PC app and XR hardware.
+2. Open an **empty Blender scene and blank URP Unity project**; use [MCP install/update prompt](../Prompts/00_Install_Update_MCP.md) to check existing software-side connectors, install missing, update outdated compatible packages, enable services and verify actual live readbacks in Cursor.
+3. Save and recolor a student Aster GT copy and export an FBX **before** assembling the Unity workshop scene through MCP.
+4. Import a teacher-verified workshop .unitypackage manually only if required; recheck Unity MCP after switching projects. Record actual versions and CP0–CP5 evidence.
 
-## Blender MCP
-
-Use the [mcp-for-blender](https://github.com/ahujasid/mcp-for-blender) server. On Windows, `uvx` can start it. If the Blender add-on cannot find the command, point it at the full `uvx.exe` path. Order: install uv, install the matching add-on, enable it and start the local connection, then enable the project MCP entry in Cursor.
-
-`.cursor/mcp.example.json` is an example to merge by hand. Pin `mcp-for-blender` to the version you tested. Do not overwrite an existing `.cursor/mcp.json`. Keep the example on local Python 3.11 and turn off unused online asset search, paid generation, and telemetry.
-
-Blender Python can change the open scene. Class work uses a student copy: read the scene, recolor, then save a new file.
-
-## Unity MCP
-
-The project manifest includes [CoplayDev/unity-mcp](https://github.com/CoplayDev/unity-mcp). `packages-lock.json` currently pins commit `81542a7e86292b5c4c21b1782c5af23b567f45ce`. The manifest uses that same commit.
-
-Start the local MCP service from the Unity window and put its address in Cursor. The example is `http://localhost:8080/mcp`. Match that address to the [transport documentation](https://github.com/CoplayDev/unity-mcp/blob/beta/website/docs/architecture/transports.md) and to the value shown by the installed package. Do not expose the port on the public internet.
-
-## Evidence of a real connection
-
-Run [Prompt 00](../Prompts/00_Connection_and_Scope.md). The agent must return the Blender file path, version, object count, and whether `VehicleRoot` exists, plus the Unity project path, editor version, active scene, and Console error count. A green status light or a generated config file is not that evidence.
-
-If MCP is down, teach the concept from the desktop applications and mark the practical as "connection not finished". Command-line art tools are for teachers. They are not a substitute for the MCP lesson.
+Do not overwrite working global MCP config or the project manifest and lock file. Keep .cursor/mcp.json local and untracked. Historic release evidence does not establish classroom MCP success.
