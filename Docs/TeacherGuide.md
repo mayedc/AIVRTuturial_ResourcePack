@@ -1,11 +1,13 @@
 # Teacher guide — three lessons, 135 minutes
 
-| Lesson | Timing | Demonstrate | Student evidence |
+| Lesson | Time | Demonstrate | Student evidence |
 |---|---:|---|---|
-| [1 · Agent and setup](Lesson01_Setup.md) | 25 + 20 min | Explain tool calls, CLI, MCP and verification. Download and open the prepared project. | Cursor returns live project and scene information from Blender and Unity. |
-| [2 · Recolor and integrate](Lesson02_Unity.md) | 25 + 20 min | Append and recolor in Blender. Import the new car visual and run the existing scene. | New material on the car, crosswalk yield and stable gap hold. |
-| [3 · Behavior and tracked view](Lesson03_MetaQuest.md) | 22 + 23 min | Implement speed and flight, verify in desktop Play, then attach a tracked cockpit in a scene copy. | Observed speed, explicit flight and landing. Separate seated headset result. |
+| [1 · Cursor-first setup](Lesson01_Setup.md) | 20 + 25 min | Create empty folder, open Cursor, clone repository, check software/pro/permissions; start blank Blender and URP Unity; install/update MCP through Cursor; enable services and read both live tools. | Git remote, preflight report, Blender/Unity MCP readbacks (CP0). |
+| [2 · Blender then Unity](Lesson02_Unity.md) | 25 + 20 min | Append/recolor Aster GT and export FBX **before** Unity scene assembly; use Unity MCP to import needed classroom assets and build/validate scene. | Reopened .blend, FBX, correct Unity visual/scene, yield/gap test (CP1–3). |
+| [3 · Code and headset](Lesson03_MetaQuest.md) | 22 + 23 min | Implement speed/flight, test desktop, attach tracked rig in separate scene and test wired Quest Link where available. | Runtime test and separate headset evidence (CP3–5). |
 
-Prepare a clean student project and an independent instructor solution. Preinstall the Unity Editor, Blender, Cursor, both MCP connectors, the Quest Link PC app and the tested Meta rig package. Verify package restore, accounts, network, cables and tracking before students arrive. Use the [Windows guide](WindowsSetup.md) and [XR checklist](05_XR_and_Quest_Acceptance.md) to record the actual versions.
+Before class, install/test **compatible-or-newer** Cursor, Blender, Unity Editor, Quest Link, uv/Python, and package dependencies; confirm the class's Cursor Pro entitlement policy, write and terminal permissions, GitHub access, power, GPU, USB data cables and OpenXR runtime. Never infer a paid subscription is required by either open-source MCP.
 
-Use the same pattern for each Agent task: inspect the project, describe the edit and permitted scope, make one change, verify it in the application and save a checkpoint. Keep a ready copy of each last good checkpoint to recover within the period. See the [acceptance matrix](Acceptance_Matrix.md) for the evidence to collect.
+**Critical teacher preparation:** the repository holds a **full reference Unity project** and historical checks; no exported `.unitypackage` has yet been validated. Run [Cursor teacher package/refactor prompt](../Prompts/06_Cursor_Refactor_And_Package.md) on a separate Unity copy, export and **clean-import test** the package, including script/URP/robot dependencies, prior to teaching the blank-project route. Maintain a backup reference scene. The 20-minute Unity portion assumes that prepared package is available; without it, use demonstration/recovery time and do not claim a full automated build.
+
+Use [current workflow](Cursor_First_Workflow.md), [acceptance matrix](Acceptance_Matrix.md) and [XR checks](05_XR_and_Quest_Acceptance.md) for gate definitions. Record real software/tool versions and failures rather than copying historical passes.

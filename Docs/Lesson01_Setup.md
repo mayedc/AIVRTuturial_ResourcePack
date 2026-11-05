@@ -1,12 +1,11 @@
-# Lesson 1 — Agent workflows and setup (45 minutes)
+# Lesson 1 — Cursor, Agent and MCP setup (45 minutes)
 
-## 00–25 | Agent workflows
+## 00–20 | Agent and local workspace
 
-Follow one task across Blender and Unity. Compare a manual command, a script, and an Agent that inspects the project and invokes a tool. Discuss how a command-line interface and Model Context Protocol can be used in the same workflow. Ask the class how they would verify a claimed material change.
+Explain CLI vs MCP, read/write permissions and verification. Students **create an empty local folder and open it in Cursor before any repository download**. Run [clone/preflight prompt](../Prompts/00_Clone_Preflight.md); Cursor clones the repository and reads README and the preflight checklist. Confirm installed compatible Cursor, Blender, Unity Hub/Editor, Quest Link app, required class Pro access and local write permission. Do not open the supplied workshop Unity scene.
 
-## 25–45 | Open the pack and verify connections
+## 20–45 | Connect two empty applications
 
-1. Download the class revision from GitHub, extract it to a local folder, and open the root containing `Assets`, `Packages`, and `ProjectSettings` in Unity Hub.
-2. Open `Assets/AI_VR_Workshop_V4/Scenes/Workshop_Desktop.unity`. In Cursor, open the same project root. Use the instructor-prepared software and MCP configuration. See [Windows setup](WindowsSetup.md).
-3. In Blender, open the prepared car for inspection or use the instructor's open session. Run [Prompt 00](../Prompts/00_Connection_and_Scope.md) through Cursor.
-4. Record CP0: Blender file, version and object count. Record Unity project, editor, scene and Console errors. If a connection is missing, record it and use the instructor's preloaded copy to follow the next demonstration.
+Students open an **empty Blender scene** and a **new blank URP Unity project**, then paste [MCP setup prompt](../Prompts/00_Install_Update_MCP.md). Cursor inspects whether Blender/Unity MCP components exist, installs missing or updates outdated compatible versions through upstream package tools; the student enables and starts the in-app services. Cursor then performs **actual read-only MCP calls** to both apps.
+
+Record CP0: Blender version and object count, Unity project path/editor version/scene/Console errors, both MCP versions and live tool readbacks. On failure, diagnose, repair and retry. An installation or a green status icon alone is not a pass. Do not alter teacher `.blend` or the completed workshop scenes. See [end-to-end workflow](Cursor_First_Workflow.md).

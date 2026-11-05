@@ -1,0 +1,16 @@
+# Cursor prompt — Blender export to MCP-built Unity scene
+
+Read `AGENTS.md`, `Docs/Cursor_First_Workflow.md`, `Docs/02_Asset_Catalog_and_Reuse.md` and `Docs/03_Unity_Integration.md`. Confirm both MCPs with real reads and that the student's **blank** Unity project is active. Work in new student-owned files only.
+
+**Phase A — Blender, before any teaching-scene import**
+1. Via Blender MCP, append `Collection/01_AsterGT_Editable` from `SourceArt/Blender/AsterGT.blend` into a student copy `StudentWork/<group>/AsterGT_Color.blend`. Do not overwrite the source. Detect and avoid double import.
+2. Change only `M_BodyPaint` (the teacher example uses red linear RGBA 0.55, 0.025, 0.045, 1). Keep geometry, wheels, bones, glass, dimensions and driver eye point unchanged. Read back material and object/bounds evidence. Save and reopen the copy.
+3. Export only the relevant car hierarchy to `StudentWork/<group>/AsterGT_Color.fbx`, with **-Z Forward / Y Up**, metres and evaluated modifiers. Read the exported file path and check orientation and bounds. Report CP1.
+
+**Phase B — Unity, only after CP1**
+4. Identify the current *blank URP Unity student project* and its actual compatible packages. Prefer an instructor-tested `.unitypackage` for workshop dependencies if one exists. Otherwise bring in permitted reference assets (with matching `.meta` files), scripts, materials and prefab/scene dependencies from the cloned repo. Use Cursor's local file/terminal operations for byte transfer if MCP cannot copy files, then ask Unity MCP to refresh/reimport. Do not pretend FBX alone builds the city, robot, road, jet and logic.
+5. Via Unity MCP create a **new** `Workshop_Desktop_Student` scene or duplicate a verified imported reference scene as a checkpoint. Do not overwrite `Workshop_Desktop.unity`. Set up/reconcile the city, road, crosswalk, 6 m gap with **two separate road colliders**, the robot and its walk script, `AsterGT` car root, `WorkshopDrive`, `WorkshopSpeedControl`, jet reference, `DriverEyeAnchor`, camera, light and desktop panel. Prefer existing reference geometry and scripts instead of regenerating it.
+6. Import `AsterGT_Color.fbx` and attach **one** aligned `StudentVisual` child under the car root. Disable duplicate visual renderers, preserve the original root and mover, map body paint to a compatible URP material, and check expected Unity forward (+Z), bounds and scale.
+7. Through Unity MCP read back scene hierarchy, material, missing scripts and Console errors. Compile, run the provided validator where compatible, save checkpoint, and record Play Mode results (0.85 m/s, robot yield, gap hold, pause/restart). Request a student-observed visual check rather than inventing results.
+
+**Fallback if MCP cannot insert scripts/packages:** report the exact unsupported operation. If a teacher-verified `.unitypackage` exists, instruct the student to use **Assets > Import Package > Custom Package**, then resume MCP after package restore. If no package exists, stop the failing portion and report it for the teacher's separate package-generation step; do not claim the automated scene is complete. Return a per-stage **DONE / MANUAL / BLOCKED / NOT TESTED** table with changed paths and checks.

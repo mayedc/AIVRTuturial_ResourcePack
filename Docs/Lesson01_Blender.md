@@ -1,9 +1,11 @@
 # Blender lab — Aster GT body paint (Lesson 2, first 25 minutes)
 
-1. Open an empty Blender scene, then save a student copy outside `SourceArt`, for example `StudentWork/Group03/AsterGT_Color.blend`.
-2. Ask the Agent to append `Collection/01_AsterGT_Editable` from `SourceArt/Blender/AsterGT.blend` via Blender MCP. Keep the existing vehicle if the collection is already there. Verify the vehicle root and `M_BodyPaint`.
-3. Use the [recolor prompt](../Prompts/Blender/RecolorBody.md). Compare the same view before and after. Read back the color and check that the object count and dimensions remain stable.
-4. Save and reopen the student file. Export the student car as FBX with **-Z Forward**, **Y Up** and evaluated modifiers. Keep the source materials and export the car collection only.
-5. Save the `.blend` and FBX as CP1. Record Blender version, material name, color and relative paths.
+**Prerequisites:** the GitHub repository was cloned from inside Cursor; an empty Blender scene and a blank URP Unity project have passed both live MCP readbacks. The supplied finished Unity workshop scene has **not** yet been opened.
 
-If the Agent cannot read back the scene, verify the Blender add-on and selected file. The teacher can show the same material edit directly while the connection is repaired.
+1. Use Blender MCP to append `Collection/01_AsterGT_Editable` from `SourceArt/Blender/AsterGT.blend` into an empty student scene, without duplicate imports.
+2. Save student copy `StudentWork/<group>/AsterGT_Color.blend` **before editing**; never overwrite the source model.
+3. Use [recolor prompt](../Prompts/Blender/RecolorBody.md); only modify `M_BodyPaint`, leaving glass, rubber, trim, geometry and eye anchor unchanged.
+4. Compare before/after appearance and read back material, object count, scale and bounds through Blender MCP. Save and reopen the student .blend.
+5. Export **only the car hierarchy** to `StudentWork/<group>/AsterGT_Color.fbx`, metres, **-Z Forward / Y Up**, evaluated modifiers; report actual path, orientation and bounds.
+
+Record CP1. **Only after the FBX is saved and checked** continue to [Unity assembly](../Prompts/01_Agent_Blender_Unity.md). If MCP is down, resolve the connection instead of silently claiming the GUI action was MCP-driven.
