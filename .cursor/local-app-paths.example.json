@@ -1,0 +1,14 @@
+{
+  "updated": "YYYY-MM-DD",
+  "apps": {
+    "cursor": "D:\\Path\\To\\Cursor.exe",
+    "blender": "D:\\Path\\To\\Blender\\blender.exe",
+    "unityHub": "D:\\Path\\To\\Unity Hub\\Unity Hub.exe",
+    "unityEditor": "D:\\Path\\To\\Unity\\Hub\\Editor\\6000.3.27f2\\Editor\\Unity.exe",
+    "questLink": "D:\\Path\\To\\Oculus\\Support\\oculus-client\\Client.exe",
+    "git": "C:\\Program Files\\Git\\cmd\\git.exe",
+    "python": "C:\\Path\\To\\python.exe",
+    "uv": "C:\\Path\\To\\uv.exe",
+    "uvx": "C:\\Path\\To\\uvx.exe"
+  }
+}

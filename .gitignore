@@ -25,9 +25,11 @@ Recordings/
 .vscode/
 # Credentials and machine-local MCP settings
 .cursor/mcp.json
+.cursor/local-app-paths.json
 .env
 .env.*
 !.env.example
+!.cursor/local-app-paths.example.json
 # Backups for Blender scripts and large local output
 *.blend1
 *.blend2
