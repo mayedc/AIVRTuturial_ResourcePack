@@ -2,10 +2,12 @@
 
 | Lesson | Timing | Demonstrate | Student evidence |
 |---|---:|---|---|
-| [1 · Agent and setup](Lesson01_Setup.md) | 25 + 20 min | Explain tool calls, CLI, MCP and verification. Download and open the prepared project. | Cursor returns live project and scene information from Blender and Unity. |
-| [2 · Recolor and integrate](Lesson02_Unity.md) | 25 + 20 min | Append and recolor in Blender. Import the new car visual and run the existing scene. | New material on the car, crosswalk yield and stable gap hold. |
-| [3 · Behavior and tracked view](Lesson03_MetaQuest.md) | 22 + 23 min | Implement speed and flight, verify in desktop Play, then attach a tracked cockpit in a scene copy. | Observed speed, explicit flight and landing. Separate seated headset result. |
+| [1 · Cursor-first + MCP](Lesson01_Setup.md) | 15 + 30 min | Empty folder in Cursor → `git clone ... .` → software/permission preflight → empty Blender/Unity sandbox → version-aware MCP install/update and live readback. | Git remote; installed versions; two actual MCP tool responses. |
+| [2 · Blender → Unity](Lesson02_Unity.md) | 25 + 20 min | Recolor in Blender **before opening workshop Unity**, export FBX; then open workshop through Hub, reverify Unity MCP, automate FBX import and student scene setup. | Saved colored Blender copy + FBX, validated Unity checkpoint, observed crossing yield and gap hold. |
+| [3 · Behavior and tracked view](Lesson03_MetaQuest.md) | 22 + 23 min | Speed and flight in desktop Play; optionally attach tested Meta rig/Quest Link in a separate copy. | Speed/flight evidence and separately observed headset checks. |
 
-Prepare a clean student project and an independent instructor solution. Preinstall the Unity Editor, Blender, Cursor, both MCP connectors, the Quest Link PC app and the tested Meta rig package. Verify package restore, accounts, network, cables and tracking before students arrive. Use the [Windows guide](WindowsSetup.md) and [XR checklist](05_XR_and_Quest_Acceptance.md) to record the actual versions.
+Prepare one instructor reference copy, a blank Unity MCP sandbox, and a tested Unity `.unitypackage` fallback **if** needed. Preinstall compatible Cursor, Git, Blender, Unity Hub/Editor, uv, Meta Horizon Link and test package/network access. Students, not the instructor, should perform the Cursor-terminal Git clone and use MCP installation/update workflow in Lesson 1. Confirm the class-selected Cursor Agent model's Pro/subscription/quota needs; don't imply all Cursor use requires Pro.
 
-Use the same pattern for each Agent task: inspect the project, describe the edit and permitted scope, make one change, verify it in the application and save a checkpoint. Keep a ready copy of each last good checkpoint to recover within the period. See the [acceptance matrix](Acceptance_Matrix.md) for the evidence to collect.
+Check each machine's file write/Agent permissions, Git access, firewall and Unity license. Back up `Packages/manifest.json`, `packages-lock.json`, and any MCP settings before upgrades. Newer tested-compatible versions are acceptable; version records are baselines, not mandatory exact pins.
+
+For each Agent step: inspect → narrowly edit a student copy → live tool readback → application validation → save checkpoint. Use [complete procedure](Cursor_First_Workflow.md), [student checklist](StudentChecklist.md) and [acceptance matrix](Acceptance_Matrix.md). A failed MCP connection or untested Quest headset must be reported as such.
