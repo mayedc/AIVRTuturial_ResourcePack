@@ -1,12 +1,8 @@
-# Teacher answers
+# Teacher answer key — not part of a student's initial Unity import
 
-Unity imports scripts from the project's Assets folder. These answers live outside it. Students should attempt the two coding exercises before reading the reference files.
+- **Student Starter:** `UnitySource/Runtime/Starter` is the only code imported during Prompt 1.3.
+- **Reference solution:** the two files in `Answers/Reference` implement 1.4 speed control and explicit gap flight with **the same namespace** `AIVRWorkshop.Student`. In a **teacher/student project backup only**, replace the content of the matching existing runtime script while preserving its Unity `.meta` GUID. Never add them as second .cs files with duplicate class names.
+- `Answers/Original` is a **historical archive** from the previous V4 Unity project; it has a different namespace/contract and is not a build input for Plan B.
+- `WorkshopRobotWalk.cs` and `WorkshopDesktopPanel.cs` are complete in the Starter and remain unchanged in 1.4.
 
-- `Original/` preserves the four source files from main at `c3aaaee8203f9905d219624266da2b9c73e89ca6`. The archived desktop probe expects those original runtime scripts and is for historical reproduction on that revision.
-- `Reference/` contains two replacements that work with the student panel. Copy the content into the existing file of the same name under `Assets/AI_VR_Workshop_V4/Runtime/` on a separate teacher project copy. Keep each original `.meta` in place. Copying a second C# file into Assets would create duplicate types.
-
-1. Apply `WorkshopSpeedControl.cs` first. Compile and compare observed cruise at 0.85 and 1.20 m/s in Play. The car should yield and still stop at the gap.
-2. Apply `WorkshopDrive.cs` second. Compile and confirm that the car holds at the gap until you press **Fly across the gap**. Watch the jets, landing, final stop, pause and restart. Try flight on desktop first.
-3. Use a separate checkpoint for Quest Link. Start the headset check with the vehicle stationary. Record headset results separately.
-
-The reference preserves the car, the route and the eye anchor. Its flight uses a scripted path. The archived fade transfer is for reproducing the earlier teacher demonstration.
+The reference solution is not permission to skip the student's independent Play checks. Build/validate the **fresh scene from FBXs**, verify the 1.3 fixed-speed gap hold, then test 1.4 on another safe checkpoint. No Quest HMD result can be inferred from desktop Play.
