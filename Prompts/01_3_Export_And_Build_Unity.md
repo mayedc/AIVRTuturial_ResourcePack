@@ -19,4 +19,4 @@ Only run this after the student completed **1.1 (all-model review)** and approve
 
 8. Explicitly hand control to the student to **press Unity Play manually** and observe the **whole route**, not just start-up: cruise target eventually **0.85 m/s**, vehicle yields before crossing, robot crosses, car holds at **z=32 m** before the 6 m gap, Pause/Resume and Restart work. Ask the student to confirm custom body look and heading.
 9. Present a **PASS / FAIL / NOT TESTED** list, only marking items actually seen by the student or measured across the relevant time span. An 8-second `ApproachCrossing` sample at 0.44 m/s does **not** validate the route; mark this **WAITING FOR STUDENT PLAY**. Do not fabricate visual success.
-10. **STOP**. Tell the student: “先亲自完成 Unity Play（让行、机器人、缺口停车、暂停、重开）。确认后再独立复制 Prompt 1.4。” Never autonomously run 1.4 or modify runtime scripts in this step.
+10. **STOP**. Tell the student: “First complete the Unity Play tasks yourself (yielding, the robot, gap parking, pause, restart). Once confirmed, independently copy Prompt 1.4.” Never autonomously run 1.4 or modify runtime scripts in this step.
