@@ -1,27 +1,37 @@
 # AI Era: VR Development with AI Agent, Blender, and Unity
 
-A three-lesson driving workshop for MDIT 310. Open the prepared Unity project, recolor Aster GT in Blender, change its driving behavior in Unity, and attach a tracked cockpit view for wired Quest Link.
+A three-lesson MDIT 310 workshop: Cursor first, live Blender/Unity MCP, vehicle recolor, Unity scene integration, desktop behavior, and optional wired Quest Link.
 
-## Start here
+## Start here — Cursor-first sequence
 
-1. Follow the [Windows and Cursor setup](Docs/WindowsSetup.md). Use the Unity Editor version in `ProjectSettings/ProjectVersion.txt` and open the repository root in Unity Hub.
-2. Follow [Lesson 1](Docs/Lesson01_Setup.md) to download the pack, open the project, and read back Blender and Unity state through MCP.
-3. In [Lesson 2](Docs/Lesson02_Unity.md), recolor a copy of the car, export FBX, and bring the visual into a copy of `Workshop_Desktop.unity`. In Play, the starter drives at a fixed 0.85 m/s target, yields to the robot, and waits before the gap.
-4. In [Lesson 3](Docs/Lesson03_MetaQuest.md), implement the speed and flight exercises, verify the desktop run, and set up the cockpit rig in a separate scene copy.
+**Do not download a GitHub ZIP or open the workshop Unity project as your first action.**
 
-The [teacher guide](Docs/TeacherGuide.md) covers timing and recovery points. Use the [acceptance matrix](Docs/Acceptance_Matrix.md) to record the checks you actually ran.
+1. Create an **empty folder** on your PC, open that folder in **Cursor**, and clone the repository **into the open folder** using its terminal:
 
-## What's in the pack
+   ```powershell
+   git clone https://github.com/mayedc/AIVRTuturial_ResourcePack.git .
+   ```
 
-- `SourceArt/Blender` and `SourceArt/FBX`: Aster GT, Noma Robot, Meridian City, JetFX, and three road modules. The Blender folder also has an assembled master.
-- `Assets/AI_VR_Workshop_V4`: Unity meshes, materials, prefabs, route scripts, and scenes. See the [asset catalogue](Docs/02_Asset_Catalog_and_Reuse.md) and [project architecture](Docs/ProjectArchitecture.md).
-- `Prompts`: scoped instructions for each Agent exercise.
-- `Answers`: teacher reference scripts and archived originals, outside Unity's imported Assets. Start the exercises from the runtime files.
+2. Ask Cursor to read [the complete student workflow](Docs/Cursor_First_Workflow.md) and execute [Prompt 00A](Prompts/00A_Clone_and_Preflight.md). It checks Cursor/Blender/Unity/Meta Horizon Link compatibility, Git, versions, student file permissions, account sign-in, any course-selected Cursor Pro entitlement or quota, Unity license, and network access. A newer **validated-compatible** release is allowed; listed versions are baselines, not absolute ceilings.
+3. Start **an empty Blender scene and a separate temporary blank Unity project**. Ask Cursor to execute [Prompt 00B](Prompts/00B_MCP_Setup_and_Recovery.md): inspect existing MCP connectors, install or update [Blender MCP](https://github.com/ahujasid/mcp-for-blender) and [Unity MCP](https://github.com/CoplayDev/unity-mcp) through their **supported** installer/package manager, help start each application-side MCP service, and verify both using actual live tool calls. If a connection fails, diagnose and retry.
+4. Follow [Lesson 2's Blender lab](Docs/Lesson01_Blender.md): use Blender MCP to append the prepared Aster GT, recolor only `M_BodyPaint`, save a **student copy**, and export the vehicle as FBX. **Only after the recolor** open the cloned workshop project through Unity Hub.
+5. Reverify Unity MCP **in the cloned project**, then use [Prompt 01A](Prompts/01A_Unity_Automation.md) to import the edited FBX, construct the student visual in a **copy** of the desktop scene and run the validator/Play test. If MCP/Editor scripting cannot finish a step, use the teacher's [Unity export-package fallback](Prompts/01B_ExportPackage_Fallback.md) and import it manually in class.
+6. Implement [speed and flight exercises](Docs/Lesson03_MetaQuest.md). Optionally use the compatible Meta XR SDK and wired Quest Link for the seated cockpit test. Never treat a prior report as a current hardware pass.
 
-## Classroom platform
+**For students:** [Full workflow](Docs/Cursor_First_Workflow.md) · [checklist](Docs/StudentChecklist.md) · [troubleshooting](Docs/Troubleshooting.md)
 
-Windows, Cursor, Blender, Unity, and one Quest 3 or 3S with a tested data cable per group. Set up Quest Link, the PC OpenXR runtime, and the compatible Meta XR Core package before class. The Meta SDK is an external dependency. The shipped Meta scene is a historical rig reference, and the class starts from a copy of the desktop scene. See the [XR checklist](Docs/05_XR_and_Quest_Acceptance.md).
+**For instructors:** [Three-lesson guide](Docs/TeacherGuide.md) · [acceptance matrix](Docs/Acceptance_Matrix.md) · [historical release validation](Docs/Validation/FinalReleaseReport.md)
 
-Previous release runs are under [historical validation](Docs/Validation/FinalReleaseReport.md). Record current desktop, live MCP, and headset results separately.
+## What's in this pack
 
-Original course models, code, and material are under the MIT [license](LICENSE). See [asset credits](Docs/AssetLicenses.md) for third-party boundaries.
+- `SourceArt/Blender` and `SourceArt/FBX`: prepared car, robot, city, jet and road assets.
+- `Assets/AI_VR_Workshop_V4`: **legacy physical folder** containing prepared Unity meshes, materials, prefabs, scripts and scenes. In this documentation-only transition, paths and assembly identities remain unchanged to protect GUIDs and serialized scene references; see [version-suffix migration procedure](Docs/Version_Suffix_Migration.md).
+- `Prompts`: four new Cursor-first prompts plus existing exercise prompts.
+- `.cursor/skills`: Blender edit, Unity lesson and quality-check instructions.
+- `Answers`: instructor reference code, not student starting code.
+
+## Compatibility and evidence
+
+The provided project records Unity 6.3.27f2, URP 17.3 and Blender-created assets from Blender 5.2.2 LTS. Use these or newer **versions proven compatible on the target machine**; read [compatibility](Docs/Compatibility.md). The existing Unity MCP dependency is pinned to a historical commit, **not guaranteed latest**. Meta XR Core is external and the archived Meta scene contains an unresolved rig reference. A current Quest pass requires actual headset testing.
+
+Original course models and code: MIT [LICENSE](LICENSE). See [asset credits](Docs/AssetLicenses.md) for third-party boundaries.
