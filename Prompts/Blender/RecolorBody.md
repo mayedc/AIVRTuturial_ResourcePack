@@ -1,23 +1,14 @@
-# Recolor the prepared body
+# Blender body paint — helper for student Prompt 1.2 only
 
-Objective: change `M_BodyPaint` on a student copy of the prepared car.
+This is a **reference specification**, not permission to execute other lesson stages. Students must first finish [Prompt 1.1](../01_1_Review_All_Blender_Models.md), then fill their color in [Prompt 1.2](../01_2_Choose_Car_Color.md). **Do not override student choice with hardcoded red.**
 
-Paths:
+- Original teacher source: `SourceArt/Blender/AsterGT.blend` (read-only).
+- Collection: `01_AsterGT_Editable`.
+- Sole recolor target: `M_BodyPaint`.
+- Default if the student leaves the selection empty: red linear RGBA `(0.55, 0.025, 0.045, 1)`.
+- Allow a written color name or hex sRGB color, converting to the Blender shader color space correctly.
+- Save As to a new `StudentWork/<group>/AsterGT_Color.blend` **before** editing, never overwrite existing student work.
+- No geometry, bones, glass, rubber, trim, lighting, eye anchor, or scale changes. Do not run art generators or rebuild the model.
+- Through Blender MCP read back color, object count and scale. Give the student a chance to visually approve.
 
-- Teacher file: `SourceArt/Blender/AsterGT.blend`
-- Collection: `01_AsterGT_Editable`
-- Optional helper, copy only: `Tools/blender_safe_recolor.py`
-
-Rules:
-
-- Save As before the first edit. If the open file is the teacher file, stop and save a copy.
-- Do not delete objects, bones, or materials.
-- Do not run teacher art generators.
-- Do not rebuild the car.
-
-Success:
-
-- The copy shows a new body color.
-- Glass, rubber, and trim colors are unchanged.
-- Object count and scale match the teacher file.
-- The teacher file was not overwritten.
+**STOP after recolor. No FBX export and no Unity operations in Prompt 1.2.**
