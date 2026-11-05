@@ -35,21 +35,21 @@ Optimize the software compatibility check for speed and accuracy. This stage is 
 
 ### Local path cache format
 
-Write or update `.cursor/local-app-paths.json` only after validating paths. Keep values machine-local. Example shape:
+Write or update `.cursor/local-app-paths.json` only after validating paths on **this machine**. Keep values machine-local and never put a student's real paths into this prompt or the committed example. The shipped template starts with empty strings; discovery fills them locally.
 
 ```json
 {
-  "updated": "YYYY-MM-DD",
+  "updated": "",
   "apps": {
-    "cursor": "D:\\AppFile\\cursor\\Cursor.exe",
-    "blender": "D:\\AppFile\\Blender\\blender.exe",
-    "unityHub": "D:\\AppFile\\UnityHub\\Unity Hub\\Unity Hub.exe",
-    "unityEditor": "D:\\ForStudy\\UnityEditor\\6000.3.27f2\\Editor\\Unity.exe",
-    "questLink": "D:\\Oculus\\Support\\oculus-client\\Client.exe",
-    "git": "D:\\AppFile\\Git\\cmd\\git.exe",
-    "python": "C:\\Python314\\python.exe",
-    "uv": "C:\\Users\\User\\AppData\\Local\\Microsoft\\WinGet\\Packages\\astral-sh.uv_Microsoft.Winget.Source_8wekyb3d8bbwe\\uv.exe",
-    "uvx": "C:\\Users\\User\\AppData\\Local\\Microsoft\\WinGet\\Packages\\astral-sh.uv_Microsoft.Winget.Source_8wekyb3d8bbwe\\uvx.exe"
+    "cursor": "",
+    "blender": "",
+    "unityHub": "",
+    "unityEditor": "",
+    "questLink": "",
+    "git": "",
+    "python": "",
+    "uv": "",
+    "uvx": ""
   }
 }
 ```
