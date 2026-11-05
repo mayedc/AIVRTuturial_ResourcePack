@@ -9,8 +9,8 @@ Record the date, machine, software versions, scene or file, and the result. Use 
 | CP2 · Unity import | Scene checkpoint, one car visual, correct scale and materials, route references retained |
 | CP3 · Desktop starter | Cruise at 0.85 m/s, full crossing stop, robot clearance, stable wait at z = 32 m, pause and restart. No speed or flight control before coding. |
 | CP3 · Desktop exercise | Target is bounded, actual cruise changes, crossing yield is retained, explicit flight lands at z = 48 m and comes to rest at z = 58 m. Pause and restart are checked. |
-| CP4 · Cockpit | Rig on a scene copy, one active HMD camera and one listener, unit rig scale and documented tracking origin |
-| CP5 · Device | Wired Link, both eyes, seated view and responsive head tracking witnessed on the headset |
+| CP4 · XR readiness and cockpit | [02_1](../Prompts/02_1_XR_Setup_And_Device_Check.md): Standalone OpenXR, installed Meta Core and **resolved camera prefab**, active Quest Link self-check; [02_2](../Prompts/02_2_Attach_Driver_Camera_And_Test.md): rig on a new student VR scene under DriverEyeAnchor, one tracked camera/listener, unit scale and documented tracking origin |
+| CP5 · Device | Student actually wears headset during 02_2, confirms working wired PC Link, stereo image, seated driver view and head rotation/position tracking; otherwise NOT TESTED |
 
 ## Desktop details
 
