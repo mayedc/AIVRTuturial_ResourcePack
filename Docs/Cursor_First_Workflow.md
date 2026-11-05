@@ -51,9 +51,9 @@ Use [the Blender exercise](Lesson01_Blender.md) and [recolor prompt](../Prompts/
 
 1. Stop/close the temporary blank Unity project. In Unity Hub choose **Add project from disk**, select the **cloned GitHub folder** (it contains `Assets`, `Packages`, `ProjectSettings`) and open it with a compatible editor.
 2. Check `com.coplaydev.unity-mcp` in the workshop project's Package Manager; the installed temporary project's MCP does **not** automatically install into another Unity project. Check for/update the older pin using the same compatibility and rollback procedure. Start its local MCP service and let Cursor read back this **new project's** path, active scene and Console status.
-3. Ask Cursor to use [Unity round-trip prompt](../Prompts/01A_Unity_Automation.md). First create a personal copy of `Assets/AI_VR_Workshop/Scenes/Workshop_Desktop.unity`; then import the exported FBX, map its material to URP Lit, create/replace **one `StudentVisual` child** on `AsterGT`, align axes and scale, disable duplicate original renderers, preserve all gameplay scripts, `DriverEyeAnchor`, robot, jets, road colliders and serialized references.
+3. Ask Cursor to use [Unity round-trip prompt](../Prompts/01A_Unity_Automation.md). First create a personal copy of `Assets/AI_VR_Workshop_V4/Scenes/Workshop_Desktop.unity`; then import the exported FBX, map its material to URP Lit, create/replace **one `StudentVisual` child** on `AsterGT`, align axes and scale, disable duplicate original renderers, preserve all gameplay scripts, `DriverEyeAnchor`, robot, jets, road colliders and serialized references.
 4. All possible actions should be issued through **Unity MCP**, including scene creation and component/asset edits. If a tool cannot perform a specific action, Cursor may generate a minimal reviewed **Unity Editor script** and run it through the editor on a checkpoint. Do **not** silently edit scene YAML or invent an MCP API.
-5. Compile, inspect Console, validate the active scene from **Workshop → Validate active workshop scene**, and run desktop Play: stop for robot crossing, resume, hold before the gap, pause/restart. Save screenshots and the new scene as CP2/CP3. A stale successful report is not a pass.
+5. Compile, inspect Console, validate the active scene from **Workshop V4 → Validate active workshop scene**, and run desktop Play: stop for robot crossing, resume, hold before the gap, pause/restart. Save screenshots and the new scene as CP2/CP3. A stale successful report is not a pass.
 
 ## Fallback: teacher-exported Unity package
 
@@ -72,3 +72,5 @@ Continue [Lesson 3](Lesson03_MetaQuest.md) from the validated desktop checkpoint
 - **Permission failure:** verify workspace trust and Cursor Agent terminal/file permission, disk write access, Git credentials and restricted network/proxy rules.
 - **FBX/scene failure:** inspect file exists, import path, transform, material/shader, duplicated visuals, script references, Console and active scene. Retry one scoped fix at a time.
 - **No real MCP readback:** status remains FAILED/NOT TESTED; provide the blocking output and teacher fallback rather than a fictitious connection success.
+
+> **Migration notice:** the existing Unity package still uses a legacy V4 folder/menu in this branch; follow `Docs/Version_Suffix_Migration.md` to remove those names after Unity-side validation. Do not assume migrated paths exist before then.
