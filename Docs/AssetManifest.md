@@ -1,18 +1,14 @@
-# Asset manifest
+# Source-first asset inventory
 
-Scenes do not stay linked to prefab instances for the city and vehicle. They contain unpacked objects that share mesh and material GUIDs with the prefabs. Editing a prefab does not update the teaching scenes. See `Docs/02_Asset_Catalog_and_Reuse.md`.
+**No premade Unity scene or prefab bundle ships in this repository.** Historical V4 Unity assets were removed; they are available through Git history only. Students build a new scene in their own blank URP Unity project.
 
-| Teaching name | Blender | FBX | Prefab | Scene objects |
-|---|---|---|---|---|
-| AsterGT vehicle and cockpit materials | `SourceArt/Blender/AsterGT.blend` | `SourceArt/FBX/AsterGT.fbx` | `Assets/AI_VR_Workshop_V4/Prefabs/AsterGT.prefab` | `AsterGT` and `AsterGT_Surface_M_*` including `M_BodyPaint` |
-| Noma robot | `SourceArt/Blender/NomaRobot.blend` | `SourceArt/FBX/NomaRobot.fbx` | `Assets/AI_VR_Workshop_V4/Prefabs/NomaRobot.prefab` | `NomaRobot` bone chain `Pelvis` through hands |
-| Meridian city | `SourceArt/Blender/MeridianCity.blend` | `SourceArt/FBX/MeridianCity.fbx` | `Assets/AI_VR_Workshop_V4/Prefabs/MeridianCity.prefab` | `MeridianCity` and block materials |
-| Straight road | `SourceArt/Blender/Road_Straight12.blend` | `SourceArt/FBX/Road_Straight12.fbx` | `Assets/AI_VR_Workshop_V4/Prefabs/Road_Straight12.prefab` | Used as source art; the live street is the city mesh plus `RoadCollider_Main` |
-| Crosswalk | `SourceArt/Blender/Road_Crosswalk12.blend` | `SourceArt/FBX/Road_Crosswalk12.fbx` | `Assets/AI_VR_Workshop_V4/Prefabs/Road_Crosswalk12.prefab` | Source module. The stop is the drive distance 7.5 m, not a separate waypoint object. |
-| Gap | `SourceArt/Blender/Road_Gap12.blend` | `SourceArt/FBX/Road_Gap12.fbx` | `Assets/AI_VR_Workshop_V4/Prefabs/Road_Gap12.prefab` | Source module. Colliders are `RoadCollider_Main` and `RoadCollider_Landing`. |
-| Jet effect | `SourceArt/Blender/JetFX.blend` | `SourceArt/FBX/JetFX.fbx` | `Assets/AI_VR_Workshop_V4/Prefabs/JetFX.prefab` | `JetFX`, anchors `JetAnchor_L` and `JetAnchor_R` |
-| Assembly | `SourceArt/Blender/Workshop_Master.blend` | None | None | Blender only |
+| Model | Repository source | Role in 1.3 |
+|---|---|---|
+| AsterGT | SourceArt/Blender/AsterGT.blend and SourceArt/FBX/AsterGT.fbx | Student exports their *custom* AsterGT_Color.fbx instead of using teacher stock FBX |
+| NomaRobot | SourceArt/Blender/NomaRobot.blend and SourceArt/FBX/NomaRobot.fbx | Imported robot and rigid walk |
+| MeridianCity | SourceArt/Blender/MeridianCity.blend and SourceArt/FBX/MeridianCity.fbx | Imported road/street, crosswalk, gap |
+| JetFX | SourceArt/Blender/JetFX.blend and SourceArt/FBX/JetFX.fbx | Imported jet visual, initially inactive |
+| Three Road_* modules | SourceArt/Blender and SourceArt/FBX | Optional reference modules, not imported by default |
+| Workshop_Master | SourceArt/Blender/Workshop_Master.blend | Blender-only reference assembly |
 
-Counts from the desktop scene import check: 104 meshes, 271,896 triangles, 0 missing materials.
-
-No texture, font, or audio files are part of this manifest.
+The build also imports four Starter C# scripts, two Editor C# scripts and the JSON scene spec from [UnitySource](../UnitySource/README.md). Students create their own Unity .unity scene from these sources. Historical mesh counts in SourceArt or Docs/Validation are **not** new source-first Unity Play results.
