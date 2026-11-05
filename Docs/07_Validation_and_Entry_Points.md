@@ -22,7 +22,7 @@ This copy still has the Meta prefab reference and does not have the Meta package
 1. Desktop: open `Assets/AI_VR_Workshop_V4/Scenes/Workshop_Desktop.unity` and press Play. Use the panel to pause and restart. The starter holds at the gap. Complete [Lesson 3](Lesson03_MetaQuest.md) for speed and flight.
 2. VR file check: open `Workshop_MetaVR.unity` and inspect `AsterGT/DriverEyeAnchor`. The recorded world eye point is about (1.36, 1.24, -0.12) m. Headset seat height is a device calibration. Do not add another 1.24 m on top of a floor-origin rig.
 3. Model edit: open `SourceArt/Blender/AsterGT.blend` or `NomaRobot.blend`. Keep the teacher file. Students use Save As.
-4. Lessons: follow [the teacher guide](04_Three_Lesson_Teacher_Guide.md) and Prompts 00 through 04. Students do not run `Tools/build_teacher_art.py` or `Tools/build_unity_assets.py`. Those generators rewrite source files.
+4. Lessons: follow [the teacher guide](04_Three_Lesson_Teacher_Guide.md) and Prompts 00, 1.1–1.4 and 02_1–02_2. Students do not run `Tools/build_teacher_art.py` or `Tools/build_unity_assets.py`. Those generators rewrite source files.
 
 ## Not verified on this copy
 
