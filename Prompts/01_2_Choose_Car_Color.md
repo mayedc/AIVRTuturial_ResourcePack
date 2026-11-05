@@ -2,7 +2,7 @@
 
 **Student edit field (fill before pasting):**
 
-**希望修改的车身颜色（留空默认红色）：** ________
+**Desired vehicle body colour (leave blank for the default red):** ________
 
 Default if empty/underscores: **red**; teacher example `M_BodyPaint` linear RGBA `(0.55, 0.025, 0.045, 1)`. Students may provide a Chinese/English color name, sRGB hex such as `#1E90FF`, or an explicitly labeled RGBA value. Convert hex sRGB to linear Blender shader values correctly. Do not silently assume other materials should change.
 
