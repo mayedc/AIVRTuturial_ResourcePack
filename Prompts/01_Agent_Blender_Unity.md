@@ -1,16 +1,14 @@
-# Cursor prompt — Blender export to MCP-built Unity scene
+# Lesson 2: four separate student-operated prompts (INDEX ONLY)
 
-Read `AGENTS.md`, `Docs/Cursor_First_Workflow.md`, `Docs/02_Asset_Catalog_and_Reuse.md` and `Docs/03_Unity_Integration.md`. Confirm both MCPs with real reads and that the student's **blank** Unity project is active. Work in new student-owned files only.
+**Do not run this file as an automation.** The former all-in-one procedure has been retired. Students copy one prompt at a time and Cursor **stops at the end of each prompt**. Respond to students in Simplified Chinese.
 
-**Phase A — Blender, before any teaching-scene import**
-1. Via Blender MCP, append `Collection/01_AsterGT_Editable` from `SourceArt/Blender/AsterGT.blend` into a student copy `StudentWork/<group>/AsterGT_Color.blend`. Do not overwrite the source. Detect and avoid double import.
-2. Change only `M_BodyPaint` (the teacher example uses red linear RGBA 0.55, 0.025, 0.045, 1). Keep geometry, wheels, bones, glass, dimensions and driver eye point unchanged. Read back material and object/bounds evidence. Save and reopen the copy.
-3. Export only the relevant car hierarchy to `StudentWork/<group>/AsterGT_Color.fbx`, with **-Z Forward / Y Up**, metres and evaluated modifiers. Read the exported file path and check orientation and bounds. Report CP1.
+| Stage | Action | Copy this prompt | Required student checkpoint |
+|---|---|---|---|
+| 1.1 | Open and examine **all eight** original Blender .blend models through Cursor/Blender MCP; no editing | [01_1_Review_All_Blender_Models.md](01_1_Review_All_Blender_Models.md) | Student visually reviews models |
+| 1.2 | Student selects vehicle paint color; blank defaults to red; **edit Blender only** | [01_2_Choose_Car_Color.md](01_2_Choose_Car_Color.md) | Student approves paint appearance |
+| 1.3 | Export approved FBX, import dependencies and build the student Unity scene through Unity MCP | [01_3_Export_And_Build_Unity.md](01_3_Export_And_Build_Unity.md) | Student manually watches full Unity Play (crossing, robot, gap hold, pause, restart) |
+| 1.4 | **After Play confirmation**, implement adjustable speed and commanded jet flight over the gap | [01_4_Speed_And_Gap_Flight.md](01_4_Speed_And_Gap_Flight.md) | Both features tested; desktop lesson complete |
 
-**Phase B — Unity, only after CP1**
-4. Identify the current *blank URP Unity student project* and its actual compatible packages. Prefer an instructor-tested `.unitypackage` for workshop dependencies if one exists. Otherwise bring in permitted reference assets (with matching `.meta` files), scripts, materials and prefab/scene dependencies from the cloned repo. Use Cursor's local file/terminal operations for byte transfer if MCP cannot copy files, then ask Unity MCP to refresh/reimport. Do not pretend FBX alone builds the city, robot, road, jet and logic.
-5. Via Unity MCP create a **new** `Workshop_Desktop_Student` scene or duplicate a verified imported reference scene as a checkpoint. Do not overwrite `Workshop_Desktop.unity`. Set up/reconcile the city, road, crosswalk, 6 m gap with **two separate road colliders**, the robot and its walk script, `AsterGT` car root, `WorkshopDrive`, `WorkshopSpeedControl`, jet reference, `DriverEyeAnchor`, camera, light and desktop panel. Prefer existing reference geometry and scripts instead of regenerating it.
-6. Import `AsterGT_Color.fbx` and attach **one** aligned `StudentVisual` child under the car root. Disable duplicate visual renderers, preserve the original root and mover, map body paint to a compatible URP material, and check expected Unity forward (+Z), bounds and scale.
-7. Through Unity MCP read back scene hierarchy, material, missing scripts and Console errors. Compile, run the provided validator where compatible, save checkpoint, and record Play Mode results (0.85 m/s, robot yield, gap hold, pause/restart). Request a student-observed visual check rather than inventing results.
+If the previous all-in-one Cursor run already produced S01 assets and `VRAITest1` scene, first use [S01 reversible local recovery](01_0_Reset_S01_After_AutoRun.md), **then independently paste 1.1**. GitHub cannot revert local Blender or Unity machine state.
 
-**Fallback if MCP cannot insert scripts/packages:** report the exact unsupported operation. If a teacher-verified `.unitypackage` exists, instruct the student to use **Assets > Import Package > Custom Package**, then resume MCP after package restore. If no package exists, stop the failing portion and report it for the teacher's separate package-generation step; do not claim the automated scene is complete. Return a per-stage **DONE / MANUAL / BLOCKED / NOT TESTED** table with changed paths and checks.
+Keep teacher `SourceArt` and original `Workshop_Desktop.unity` unchanged. Require live MCP readbacks at the relevant stage. The VR/Quest stage is separate and not modified here.
