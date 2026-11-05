@@ -86,7 +86,8 @@ check("WorkshopSceneBuilder" in p13 and "student" in p13.lower(), "1.3 must invo
 check("StudentWork" in p13 and "NomaRobot.fbx" in p13, "1.3 must import student car and source FBXs.")
 check("Workshop_Desktop_Student.unity" in p13, "1.3 must save separate student scene.")
 check("only after" in p14.lower() and "BeginJetFlight" in p14, "1.4 stage gate or flight is missing.")
-check("File.Exists(spec.studentScenePath)" in build, "Builder must reject overwriting an existing scene.")
+check("AssetDatabase.LoadAssetAtPath<SceneAsset>(spec.studentScenePath)" in build and
+      "Build was skipped" in build, "Builder must reject overwriting an existing scene.")
 check("PrefabUtility.InstantiatePrefab" in build, "Builder must instantiate source FBX models.")
 validator = (ROOT / "UnitySource/Editor/WorkshopSceneValidator.cs").read_text(encoding="utf-8")
 check("Validate Student Scene (1.4)" in validator, "Missing post-exercise structural validation entry point.")
