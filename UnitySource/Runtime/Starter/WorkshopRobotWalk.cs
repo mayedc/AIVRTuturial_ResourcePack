@@ -35,6 +35,9 @@ namespace AIVRWorkshop.Student
         {
             if (hasRestPose) return;
             var bones = Bones;
+            // AddComponent invokes Awake before the scene builder assigns FBX bone references.
+            // Never capture an empty binding as the rest pose.
+            for (int i = 0; i < 6; i++) if (bones[i] == null) return;
             restPose = new Quaternion[bones.Length];
             for (int i = 0; i < bones.Length; i++)
                 restPose[i] = bones[i] == null ? Quaternion.identity : bones[i].localRotation;
@@ -51,6 +54,7 @@ namespace AIVRWorkshop.Student
             CaptureRestPose();
             phase = 0f;
             walking = false;
+            if (!hasRestPose) return;
             var bones = Bones;
             for (int i = 0; i < bones.Length; i++)
                 if (bones[i] != null) bones[i].localRotation = restPose[i];
@@ -59,6 +63,8 @@ namespace AIVRWorkshop.Student
         private void Update()
         {
             if (!walking) return;
+            CaptureRestPose();
+            if (!hasRestPose) return;
             // The source FBX's authored cycle lasts one second and remains in place.
             phase = Mathf.Repeat(phase + Mathf.Min(Time.deltaTime, 0.05f), 1f);
             Pose(phase, leftThigh, leftShin, leftFoot, leftArm, leftForearm, 0, 2, 4, 6, 8);
@@ -69,7 +75,7 @@ namespace AIVRWorkshop.Student
         private void LateUpdate()
         {
             // Ground the lowest sole, not the pelvis. Never snap the walking root back on cycle wrap.
-            if (leftSole == null || rightSole == null)
+            if (!hasRestPose || leftSole == null || rightSole == null)
             {
                 if (!reportedGroundingProblem)
                 {
