@@ -1,4 +1,4 @@
-# Source-first Unity construction kit (Plan B)
+# Source-first Unity construction kit (source-first workflow)
 
 This directory contains **no** preassembled Unity scene, native mesh Prefab, imported Meta SDK binary or `.unitypackage`. Students build their own scene from the 1.2-approved `AsterGT_Color.fbx` and three course source FBXs with **Cursor + Unity MCP**.
 
