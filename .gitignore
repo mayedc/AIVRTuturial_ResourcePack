@@ -44,3 +44,6 @@ OldMaterial/
 *.apk
 *.aab
 *.unitypackage
+
+# Generated teacher-art metrics / previews are not classroom source assets
+SourceArt/Generated/
