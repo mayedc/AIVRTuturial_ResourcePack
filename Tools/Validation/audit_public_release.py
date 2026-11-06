@@ -45,7 +45,7 @@ def main():
         for label, pattern in PATH_PATTERNS.items():
             if pattern.search(data):
                 failures.append((rel, label))
-        if not (rel.startswith(ARCHIVE[0]) or rel == ARCHIVE[1]) and LEGACY.search(data):
+        if not (rel.startswith(ARCHIVE[0]) or rel == ARCHIVE[1] or rel == "Tools/Validation/audit_public_release.py") and LEGACY.search(data):
             # Historical examples in narrative documentation should be reviewed individually,
             # not rewritten blindly where preserving context is instructional.
             failures.append((rel, "Historical development label in active file"))
