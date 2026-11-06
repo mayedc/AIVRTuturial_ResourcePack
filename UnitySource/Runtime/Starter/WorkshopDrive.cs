@@ -89,7 +89,7 @@ namespace AIVRWorkshop.Student
                     crossingX = Mathf.MoveTowards(crossingX, 4.5f, 0.6f * dt);
                     pedestrian.position = new Vector3(
                         origin.x + crossingX - 1.8f,
-                        pedestrianOrigin.y,
+                        pedestrian.position.y,
                         pedestrianOrigin.z);
                     if (pedestrianWalk != null) pedestrianWalk.walking = crossingX < 4.5f;
                     if (crossingX >= 4.5f)
