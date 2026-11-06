@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace AIVRWorkshop.Student
@@ -81,11 +80,11 @@ namespace AIVRWorkshop.Student
             }
             float soleY = Mathf.Min(leftSole.bounds.min.y, rightSole.bounds.min.y);
             float correction = roadSurfaceY - soleY;
-            if (!float.IsNaN(correction) && !float.IsInfinity(correction) && Mathf.Abs(correction) <= 0.08f)
+            if (!float.IsNaN(correction) && !float.IsInfinity(correction) && Mathf.Abs(correction) <= 0.30f)
                 transform.position += Vector3.up * correction;
             else if (!reportedGroundingProblem)
             {
-                Debug.LogError("Robot foot grounding needs more than 8 cm; inspect FBX scale, axes, rest pose and ground.");
+                Debug.LogError("Robot foot grounding needs more than 30 cm; inspect FBX scale, axes, rest pose and ground.");
                 reportedGroundingProblem = true;
             }
         }
