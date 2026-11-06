@@ -2,7 +2,7 @@
 
 **A student-led, source-first AI Agent workshop.** Students use Cursor + Blender MCP + Unity MCP to inspect eight Blender models, customize a car, **build their own Unity scene from four FBXs**, implement an interactive speed control and gap flight, and test the driver's view with a Quest headset.
 
-> **Plan B:** This repository does **not** provide a ready-made Unity scene, prefab asset bundle or `.unitypackage`. Every student's Unity scene is assembled inside **their own separate blank URP Unity project**. The first source-first version is awaiting a fresh-clone Unity/Quest retest; older validation logs apply only to historical releases.
+> **Source-first workflow:** This repository does **not** provide a ready-made Unity scene, prefab asset bundle or `.unitypackage`. Every student's Unity scene is assembled inside **their own separate blank URP Unity project**. The first source-first version is awaiting a fresh-clone Unity/Quest retest; older validation logs apply only to historical releases.
 
 ## Learning outcomes
 
@@ -30,10 +30,13 @@ See [quick start](Docs/QuickStart.md), [teacher guide](Docs/TeacherGuide.md), [s
 
 ## Required software and equipment
 
+**Before class:** Share the [Windows student pre-class announcement](Docs/Student_Preclass_Announcement.md), covering Cursor Pro, Unity International, Blender, Git, Python, uv, Quest Link and hardware checks.
+
+
 - **Windows PC**, supported GPU, local write permissions and internet access to GitHub, Blender MCP package registry and Unity Package Manager.
 - **Unity 6**, with the blank **URP template** and a tested-compatible Editor (historical baseline `6000.3.27f2`); **Blender 5.2.2** baseline or newer after real import checks; Cursor, Git and uv/uvx for MCP.
 - CoplayDev Unity MCP and ahujasid Blender MCP, installed/verified through Prompt 00.
-- For VR only: compatible Quest 3 / 3S, USB-C **data** cable, Windows Meta Quest Link/Meta Horizon Link app, verified Standalone OpenXR and compatible Meta XR rig package. **Headset hardware is not needed to complete the desktop portion.**
+- For VR only: compatible Quest 2 / 3 / 3S, USB-C **data** cable, Windows Meta Quest Link/Meta Horizon Link app, verified Standalone OpenXR and compatible Meta XR rig package. **Headset hardware is not needed to complete the desktop portion.**
 - Cursor Pro is required only if the course or account's selected Cursor features require it; the Blender/Unity MCP projects do not inherently require a subscription.
 
 Historical package versions are in [compatibility](Docs/Compatibility.md). A higher version number alone is not an execution pass.
@@ -59,7 +62,7 @@ Historical package versions are in [compatibility](Docs/Compatibility.md). A hig
 
 Cursor copies four approved FBXs and `UnitySource` into the **blank student Unity project**, then invokes **Tools > Workshop > Build Student Scene From FBX**. The Editor code creates `Workshop_Desktop_Student.unity`, one vehicle root, robot and city hierarchy, jets, driver's eye, camera, colliders and Starter controls, then checks them using **Tools > Workshop > Validate Student Scene (1.3)**.
 
-The builder **does not overwrite an existing student scene** and does not produce an HMD success claim. Imported axes, car appearance, robot animation and the full Play route must still be verified in the real Editor. [Build contract](UnitySource/README.md) · [Scene integration guide](Docs/03_Unity_Integration.md).
+The builder **does not overwrite an existing student scene** and does not produce an HMD success claim. Imported axes, car appearance, robot animation (see [walk regression checks](Docs/Robot_Walk_Regression_Check.md)) and the full Play route must still be verified in the real Editor. [Build contract](UnitySource/README.md) · [Scene integration guide](Docs/03_Unity_Integration.md).
 
 ## Validation status
 
