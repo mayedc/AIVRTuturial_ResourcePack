@@ -4,6 +4,8 @@
 
 > **Source-first workflow:** This repository does **not** provide a ready-made Unity scene, prefab asset bundle or `.unitypackage`. Every student's Unity scene is assembled inside **their own separate blank URP Unity project**. The first source-first version is awaiting a fresh-clone Unity/Quest retest; older validation logs apply only to historical releases.
 
+For consistent stage IDs and file naming, see [Stage naming convention](Docs/Stage_Naming_Convention.md). Release privacy checking: `python Tools/Validation/audit_public_release.py` (review any findings before publishing).
+
 ## Learning outcomes
 
 - **3D asset editing:** read real Blender models through MCP and recolor only the student car's `M_BodyPaint`.
