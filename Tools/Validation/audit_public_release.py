@@ -46,7 +46,7 @@ def main():
             matches = list(pattern.finditer(data))
             if label == "Email address" and p.suffix == ".py":
                 # Blender matrix multiplication uses @ and can resemble an email.
-                matches = [m for m in matches if not m.group(0).endswith(("me.corner_normals", "v.co"))]
+                matches = [m for m in matches if not m.group(0).endswith(("me.corner_normals", "me.vertices", "v.co"))]
             if matches:
                 failures.append((rel, label))
         if not (rel.startswith(ARCHIVE[0]) or rel == ARCHIVE[1] or rel.startswith("Answers/Original/") or rel == "Docs/00_Production_Plan_and_Source_Review.md" or rel == "Tools/Validation/audit_public_release.py") and LEGACY.search(data):
