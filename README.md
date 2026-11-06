@@ -55,7 +55,7 @@ Historical package versions are in [compatibility](Docs/Compatibility.md). A hig
 | `UnitySource/Editor/` | Unity Editor-only source for safe scene construction and structural validation |
 | `Answers/Reference/` | Teacher-only replacement solutions; **not imported in 1.3** |
 | `Tools/Validation/` | Dependency-free repository checks |
-| `Docs/Validation/` | **Historical evidence**, not a claim that current Plan B ran in Unity/Quest |
+| `Docs/Validation/` | **Historical evidence**, not a claim that current source-first workflow ran in Unity/Quest |
 | `.cursor/skills/` | Additional scoped instructions for the teaching Agent |
 
 **Student outputs** go into Git-ignored `StudentWork/<group>/` for Blender/FBX, and the student-selected **separate Unity project** in `Assets/WorkshopStudentGenerated/`. Do not create a second Unity project inside the Git repository, commit local Unity caches, or overwrite teacher originals.
