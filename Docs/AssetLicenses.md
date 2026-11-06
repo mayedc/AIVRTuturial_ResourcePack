@@ -1,4 +1,4 @@
-# Asset license and redistribution notes — Plan B
+# Asset license and redistribution notes — source-first teaching pack
 
 This source-first GitHub repository contains Blender/FBX teacher originals, written Prompts/Docs, source-code-only UnitySource, teacher answers and validation tools. No full Unity scene, proprietary Meta SDK binary or bundled Unity package cache is distributed here.
 
@@ -12,4 +12,4 @@ This source-first GitHub repository contains Blender/FBX teacher originals, writ
 | Meta XR Core SDK / Meta camera rig | Meta | **Not included**; install via official distribution and respect Meta package terms |
 | Blender/Unity student generated files | Student's working directory | Outside Git repository, no automatic public licensing/commit |
 
-The historical old Assets/AI_VR_Workshop_V4 content and its license assessment belong to previous Git revisions/Docs/Validation, **not** to this current source-first tree. No downloaded game asset, commercial texture or Mixamo clip is identified in the teacher source models. If importing any third-party material in future, add an explicit license and provenance row before publishing. Avoid committing local paths, paid libraries, student screenshots or user credentials.
+The historical old historical prebuilt Unity asset folder content and its license assessment belong to previous Git revisions/Docs/Validation, **not** to this current source-first tree. No downloaded game asset, commercial texture or Mixamo clip is identified in the teacher source models. If importing any third-party material in future, add an explicit license and provenance row before publishing. Avoid committing local paths, paid libraries, student screenshots or user credentials.
