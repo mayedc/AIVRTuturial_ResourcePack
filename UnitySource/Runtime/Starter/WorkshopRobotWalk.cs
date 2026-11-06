@@ -75,7 +75,8 @@ namespace AIVRWorkshop.Student
         private void LateUpdate()
         {
             // Ground the lowest sole, not the pelvis. Never snap the walking root back on cycle wrap.
-            if (!hasRestPose || leftSole == null || rightSole == null)
+            if (!hasRestPose) return;
+            if (leftSole == null || rightSole == null)
             {
                 if (!reportedGroundingProblem)
                 {
