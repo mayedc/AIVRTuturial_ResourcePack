@@ -2,7 +2,7 @@ name: Source-first repository checks
 
 on:
   push:
-    branches: [main, refactor/source-first-unity-rebuild]
+    branches: [main]
   pull_request:
 
 jobs:
@@ -15,3 +15,5 @@ jobs:
           python-version: '3.11'
       - name: Validate source-first kit, links and scene spec (no Unity license required)
         run: python Tools/Validation/validate_source_first.py
+      - name: Audit tracked public-release text and machine-local content
+        run: python Tools/Validation/audit_public_release.py
