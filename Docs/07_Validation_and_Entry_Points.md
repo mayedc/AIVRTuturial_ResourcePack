@@ -1,4 +1,4 @@
-# Validation entry points — source-first Plan B
+# Validation entry points — source-first the current teaching package
 
 **Current release candidate:** GitHub source files and new UnitySource C# builder; **no distributed Unity scene**.
 
@@ -12,4 +12,4 @@
 
 The old [2026-11-04 tests](Validation/FinalReleaseReport.md), including original Unity scene hashes and prior build/runtime observations, are historical results for a different repository layout. **Do not use them to claim the current source-first Unity builder, VR rig, or clean-clone test passed.**
 
-New Plan B release is blocked until a fresh clone, blank-project Unity compile, scene construction, full Play and physical headset test are recorded. See [Release Checklist](ReleaseChecklist.md).
+New the current teaching package release is blocked until a fresh clone, blank-project Unity compile, scene construction, full Play and physical headset test are recorded. See [Release Checklist](ReleaseChecklist.md).
