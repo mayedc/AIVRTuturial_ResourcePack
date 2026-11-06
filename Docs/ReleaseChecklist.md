@@ -1,6 +1,6 @@
-# Source-first release checklist — must be rerun after Plan B
+# Source-first release checklist — must be rerun after this source-first revision
 
-1. [ ] Clone the candidate revision into a **new empty Cursor folder**. No old student files, source-built scenes, Unity package cache or teacher V4 asset pack are imported.
+1. [ ] Clone the candidate revision into a **new empty Cursor folder**. No old student files, source-built scenes, Unity package cache or teacher previous-generation asset pack are imported.
 2. [ ] Run python Tools/Validation/validate_source_first.py. Fix required files, JSON schema and relative Markdown links.
 3. [ ] Open eight original Blender .blend files; verify the student color copy and export FBX using live Blender MCP.
 4. [ ] Open a **new blank URP Unity project outside this Git repository**, connect Unity MCP and copy only the four required FBXs, Starter scripts, Editor scripts and config.
