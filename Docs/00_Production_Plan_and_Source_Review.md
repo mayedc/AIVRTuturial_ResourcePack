@@ -1,4 +1,4 @@
-# Historical production plan and source review (pre-Plan B)
+# Historical production plan and source review (historical)
 
 > Archived narrative for the earlier 2026 release. The **current** student workflow is [source-first](Cursor_First_Workflow.md), creating a scene from FBXs in a separate blank URP Unity project; the time allocations, original scene and teacher assembly statements below are historical.
 
