@@ -1,4 +1,4 @@
-# Prompt 1.3 — Build the entire Unity desktop scene from FBX sources (Plan B)
+# Prompt 1.3 — Build the entire Unity desktop scene from FBX sources 
 
 Run **only after** the student has inspected eight Blender files in 1.1 and visually approved the recolored **student** Aster GT in 1.2. This is a **source-first build**, not a copy of a teacher scene or `.unitypackage`. Reply in **Simplified Chinese**. **STOP at the 1.3 student Play gate**; do not automatically execute 1.4 or 02_1/02_2.
 
@@ -26,7 +26,7 @@ Run **only after** the student has inspected eight Blender files in 1.1 and visu
 
 ## D. Mandatory student-operated Play gate
 
-9. Hand control to the student: **manually press Unity Play** in `Workshop_Desktop_Student.unity`; inspect the **entire starter route**, not only the first seconds: a stable 0.85 m/s target, yielding before the crosswalk, visible walking robot, clearance, holding at **z=32** before the unbridged gap, Pause/Resume and Restart. The vehicle must **not fly** yet and the speed slider must remain locked. Mark each check **STUDENT OBSERVED PASS / FAIL / NOT TESTED**.
-10. Return actual created paths and readback evidence (FBX, scene, importer, scripts, Console), unresolved issues and a compact gate checklist. A static compile or the first 8s of Play does **not** satisfy full route/robot verification. Explicitly wait for the student's confirmation.
+9. Hand control to the student: **manually press Unity Play** in `Workshop_Desktop_Student.unity`; inspect the **entire starter route**, not only the first seconds: a stable 0.85 m/s target, yielding before the crosswalk, visible walking robot with both soles meeting the road, no floating, no foot penetration, no end-of-cycle reset or unintended teleport, clearance, holding at **z=32** before the unbridged gap, Pause/Resume and Restart. The vehicle must **not fly** yet and the speed slider must remain locked. Mark each check **STUDENT OBSERVED PASS / FAIL / NOT TESTED**.
+10. Return actual created paths and readback evidence (FBX, scene, importer, scripts, Console), unresolved issues and a compact gate checklist. Use [the robot gait regression protocol](../Docs/Robot_Walk_Regression_Check.md) for at least three complete gait loops. A static compile or the first 8s of Play does **not** satisfy full route/robot verification. Explicitly wait for the student's confirmation.
 
 **STOP.** The student independently copies `Prompts/01_4_Speed_And_Gap_Flight.md` **only after 1.3 Play passes**.
