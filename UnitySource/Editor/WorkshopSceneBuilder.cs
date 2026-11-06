@@ -156,7 +156,13 @@ namespace AIVRWorkshop.Student.EditorTools
             walk.leftArm = FindBone(root, "UpperArm_L"); walk.rightArm = FindBone(root, "UpperArm_R");
             walk.leftForearm = FindBone(root, "Forearm_L"); walk.rightForearm = FindBone(root, "Forearm_R");
             RequireLegs(walk);
-            foreach (var animator in root.GetComponentsInChildren<Animator>(true)) animator.enabled = false;
+            foreach (var animator in root.GetComponentsInChildren<Animator>(true))
+            {
+                animator.applyRootMotion = false;
+                animator.enabled = false;
+            }
+            foreach (var legacyAnimation in root.GetComponentsInChildren<Animation>(true))
+                legacyAnimation.enabled = false;
         }
 
         static string SafeName(string source)
@@ -269,6 +275,7 @@ namespace AIVRWorkshop.Student.EditorTools
             ConvertMaterials(robot);
             var walk = robot.AddComponent<WorkshopRobotWalk>();
             BindRobot(walk, robot.transform);
+            walk.roadSurfaceY = 0f;
 
             var jets = Prefab(spec.importDirectory + "/" + spec.jetFbx, scene);
             jets.name = "JetFX";
