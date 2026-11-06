@@ -89,11 +89,14 @@ namespace AIVRWorkshop.Student
                     crossingX = Mathf.MoveTowards(crossingX, 4.5f, 0.6f * dt);
                     pedestrian.position = new Vector3(
                         origin.x + crossingX - 1.8f,
-                        pedestrianOrigin.y - 0.12f +
-                          Mathf.SmoothStep(0f, 0.12f, Mathf.InverseLerp(3.9f, 4.3f, Mathf.Abs(crossingX))),
+                        pedestrian.position.y,
                         pedestrianOrigin.z);
                     if (pedestrianWalk != null) pedestrianWalk.walking = crossingX < 4.5f;
-                    if (crossingX >= 4.5f) { stage = Stage.ApproachGap; timer = 0f; }
+                    if (crossingX >= 4.5f)
+                    {
+                        if (pedestrianWalk != null) pedestrianWalk.walking = false;
+                        stage = Stage.ApproachGap; timer = 0f;
+                    }
                     break;
                 case Stage.ApproachGap:
                     Advance(GapHold, dt);

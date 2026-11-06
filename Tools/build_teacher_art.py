@@ -9,7 +9,7 @@ from math import sin, cos, pi, sqrt
 
 args = sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else []
 ROOT = Path(args[args.index('--root')+1]).resolve() if '--root' in args else Path(__file__).resolve().parents[1]
-ART = ROOT/'SourceArt'; DATA = ROOT/'Assets/AI_VR_Workshop_V4/Editor/ArtData'
+ART = ROOT/'SourceArt'; DATA = ROOT/'SourceArt/Generated/ArtData/Editor/ArtData'
 for p in [ART/'Blender', ART/'FBX', ART/'Previews', DATA]: p.mkdir(parents=True,exist_ok=True)
 random.seed(24)
 COL=None; PARENT=None; M={}; REPORT=[]

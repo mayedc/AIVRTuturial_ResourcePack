@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Compatibility entrypoint for the old validation command.
-No legacy Assets/AI_VR_Workshop_V4 scenes or PyYAML are required.
+No legacy historical prebuilt Unity asset folder scenes or PyYAML are required.
 """
 from pathlib import Path
 import runpy

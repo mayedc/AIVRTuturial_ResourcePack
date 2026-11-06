@@ -1,4 +1,4 @@
-# Unity integration — Plan B source-first construction contract
+# Unity integration — the current teaching package source-first construction contract
 
 **There is no delivered `Workshop_Desktop.unity`, prebuilt Unity Prefab, native mesh bundle or .unitypackage.** A student creates a blank URP Unity project in a separate folder, then Cursor uses Unity MCP and the reviewed [Editor builder](../UnitySource/Editor/WorkshopSceneBuilder.cs) to assemble the scene from real FBXs.
 

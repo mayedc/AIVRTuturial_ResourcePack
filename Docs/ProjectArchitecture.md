@@ -1,4 +1,4 @@
-# Plan B source-first architecture
+# the current teaching package source-first architecture
 
 The **Cursor/Git repository** is a source bundle: Blender/FBX models, instructions, Config JSON, four Starter C# scripts, two Editor C# files, teacher answers and validators. It is **not** a Unity project. The student's **blank URP Unity project is a separate local directory**; it receives imported FBXs and source code under Assets/WorkshopStudentGenerated.
 
@@ -8,4 +8,4 @@ The Editor builder creates student scene Workshop_Desktop_Student.unity with a W
 
 **VR 02_1** installs/verifies Standalone OpenXR, an actual Meta tracked XR camera prefab and a physical Quest Link session. **VR 02_2** makes a new VR student scene copied from the completed *student-generated* desktop scene, binds one tracked rig to DriverEyeAnchor and requires student-worn stereo/head-tracking evidence.
 
-Old V4 Unity scenes and package settings are historical only, not classroom dependencies. [Build contract](../UnitySource/README.md) · [Acceptance](Acceptance_Matrix.md).
+Old previous Unity scenes and package settings are historical only, not classroom dependencies. [Build contract](../UnitySource/README.md) · [Acceptance](Acceptance_Matrix.md).

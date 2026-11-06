@@ -1,4 +1,4 @@
-# Source-first static repository validation (Plan B).
+# Source-first static repository validation (source-first workflow).
 # The old full Unity project is intentionally absent.
 $ErrorActionPreference = 'Stop'
 $repo = Split-Path -Parent $PSScriptRoot

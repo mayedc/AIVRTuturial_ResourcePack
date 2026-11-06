@@ -1,6 +1,6 @@
 # Source-first asset inventory
 
-**No premade Unity scene or prefab bundle ships in this repository.** Historical V4 Unity assets were removed; they are available through Git history only. Students build a new scene in their own blank URP Unity project.
+**No premade Unity scene or prefab bundle ships in this repository.** Historical previous-generation Unity assets were removed; they are available through Git history only. Students build a new scene in their own blank URP Unity project.
 
 | Model | Repository source | Role in 1.3 |
 |---|---|---|

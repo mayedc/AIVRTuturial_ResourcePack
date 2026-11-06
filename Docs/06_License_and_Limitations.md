@@ -18,6 +18,6 @@ That license does not grant rights in Unity, Blender, Cursor, MCP servers, or Me
 
 Doors and the hood do not open. The cabin is not an ergonomics study. The robot is rigid armor, not a soft skinned capture. The city is one straight route and has no interiors. The jets are glowing meshes, not a simulation. The teaching shaders and a Blender render will not match.
 
-**Plan B includes no shipped Unity scene, prefab or GUID-stable asset bundle.** The student generates their own in a separate URP project. This repository revision has not compiled its new UnitySource builder in a live Editor or completed a Quest 3/3S retest. Earlier logs in [historical validation](Validation/FinalReleaseReport.md) apply to the prior full-project layout, not this branch.
+**the current teaching package includes no shipped Unity scene, prefab or GUID-stable asset bundle.** The student generates their own in a separate URP project. This repository revision has not compiled its new UnitySource builder in a live Editor or completed a Quest 2/3/3S retest. Earlier logs in [historical validation](Validation/FinalReleaseReport.md) apply to the prior full-project layout, not this branch.
 
 Students do not need an online 3D generator, a paid asset, or a model downloaded during class.

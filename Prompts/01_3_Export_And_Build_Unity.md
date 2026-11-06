@@ -1,4 +1,4 @@
-# Prompt 1.3 — Build the entire Unity desktop scene from FBX sources (Plan B)
+# Prompt 1.3 — Build the entire Unity desktop scene from FBX sources 
 
 Run **only after** the student has inspected eight Blender files in 1.1 and visually approved the recolored **student** Aster GT in 1.2. This is a **source-first build**, not a copy of a teacher scene or `.unitypackage`. Reply in **Simplified Chinese**. **STOP at the 1.3 student Play gate**; do not automatically execute 1.4 or 02_1/02_2.
 
@@ -6,7 +6,7 @@ Run **only after** the student has inspected eight Blender files in 1.1 and visu
 
 1. Read `AGENTS.md`, `UnitySource/README.md`, `UnitySource/Config/WorkshopSceneSpec.json`, `Docs/03_Unity_Integration.md`, and `Docs/Acceptance_Matrix.md`. Via live Blender and Unity MCP readbacks confirm the **Git repository root**, the active **separate student blank URP Unity project**, exact scene, Unity version and Console. Refuse to modify the repository's teacher originals or an unrelated existing Unity project.
 2. Locate the actually approved `StudentWork/<group>/AsterGT_Color.blend` and its chosen `M_BodyPaint` value (default red only if the student did not choose a color). From Blender MCP export **only the car hierarchy** to `StudentWork/<group>/AsterGT_Color.fbx`, metres, **-Z Forward / Y Up**, applied modifiers, no camera/lights. If that FBX path contains unrelated student work, use a unique checkpoint. Read back the exported file; do not substitute the teacher's `AsterGT.fbx`.
-3. Confirm the **three repository FBX sources** exist: `SourceArt/FBX/NomaRobot.fbx`, `MeridianCity.fbx`, `JetFX.fbx`. The optional Road_* FBXs are for inspection/extensions; do not layer road tiles onto an existing city road without a placement plan. **There is deliberately no `Assets/AI_VR_Workshop_V4`, `Workshop_Desktop.unity`, reference Prefab or .unitypackage in the source-first workflow.** Do not call `Tools/Install-Workshop.ps1`.
+3. Confirm the **three repository FBX sources** exist: `SourceArt/FBX/NomaRobot.fbx`, `MeridianCity.fbx`, `JetFX.fbx`. The optional Road_* FBXs are for inspection/extensions; do not layer road tiles onto an existing city road without a placement plan. **There is deliberately no `historical prebuilt Unity asset folders`, `Workshop_Desktop.unity`, reference Prefab or .unitypackage in the source-first workflow.** Do not call `Tools/Install-Workshop.ps1`.
 
 ## B. Copy minimal source code and import the FBXs
 
@@ -26,7 +26,7 @@ Run **only after** the student has inspected eight Blender files in 1.1 and visu
 
 ## D. Mandatory student-operated Play gate
 
-9. Hand control to the student: **manually press Unity Play** in `Workshop_Desktop_Student.unity`; inspect the **entire starter route**, not only the first seconds: a stable 0.85 m/s target, yielding before the crosswalk, visible walking robot, clearance, holding at **z=32** before the unbridged gap, Pause/Resume and Restart. The vehicle must **not fly** yet and the speed slider must remain locked. Mark each check **STUDENT OBSERVED PASS / FAIL / NOT TESTED**.
-10. Return actual created paths and readback evidence (FBX, scene, importer, scripts, Console), unresolved issues and a compact gate checklist. A static compile or the first 8s of Play does **not** satisfy full route/robot verification. Explicitly wait for the student's confirmation.
+9. Hand control to the student: **manually press Unity Play** in `Workshop_Desktop_Student.unity`; inspect the **entire starter route**, not only the first seconds: a stable 0.85 m/s target, yielding before the crosswalk, visible walking robot with both soles meeting the road, no floating, no foot penetration, no end-of-cycle reset or unintended teleport, clearance, holding at **z=32** before the unbridged gap, Pause/Resume and Restart. The vehicle must **not fly** yet and the speed slider must remain locked. Mark each check **STUDENT OBSERVED PASS / FAIL / NOT TESTED**.
+10. Return actual created paths and readback evidence (FBX, scene, importer, scripts, Console), unresolved issues and a compact gate checklist. Use [the robot gait regression protocol](../Docs/Robot_Walk_Regression_Check.md) for at least three complete gait loops. A static compile or the first 8s of Play does **not** satisfy full route/robot verification. Explicitly wait for the student's confirmation.
 
 **STOP.** The student independently copies `Prompts/01_4_Speed_And_Gap_Flight.md` **only after 1.3 Play passes**.

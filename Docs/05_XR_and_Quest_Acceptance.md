@@ -1,6 +1,6 @@
 # Quest PC Link + driver-eye acceptance on the generated student scene
 
-**Prerequisite:** Prompt 1.3 generated a new desktop scene from FBXs and Prompt 1.4 speed/flight work passed a real Unity Play. There is **no teacher Meta VR scene or prefab bundled in GitHub**. This lesson uses a **Windows PCVR** Quest 3/3S connected through USB-C **data** cable.
+**Prerequisite:** Prompt 1.3 generated a new desktop scene from FBXs and Prompt 1.4 speed/flight work passed a real Unity Play. There is **no teacher Meta VR scene or prefab bundled in GitHub**. This lesson uses a **Windows PCVR** Quest 2 / 3 / 3S connected through USB-C **data** cable.
 
 ## 02_1: XR package/device readiness (do not bind camera yet)
 

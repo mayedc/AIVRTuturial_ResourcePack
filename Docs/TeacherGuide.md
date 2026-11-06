@@ -10,6 +10,6 @@ Students construct a new Unity scene from FBXs with Cursor; they **do not** open
 
 The previous three-by-45-minute schedule is a teaching **target**, not a measured time for installing Unity/Meta packages. Prepare compatible Windows GPU/Quest Link setup, USB-C data cable, Unity 6 URP, Blender, Cursor, Git and uv/uvx **before class**, or allocate recovery time.
 
-**Teacher release gate:** perform a clean Git clone and open a fresh blank Unity project at a separate path. Ensure no previously generated Assets/AI_VR_Workshop_V4 scripts or Prefabs exist on that machine. Copy/import four FBXs and UnitySource, compile C#, build the scene through the real Editor, verify car nose, glass, Noma skeleton, walking animation and gap, then full Play and headset. Static link/spec checks do not prove runtime. Store any emergency teacher demo separately; students must never depend on it.
+**Teacher release gate:** perform a clean Git clone and open a fresh blank Unity project at a separate path. Ensure no previously generated historical prebuilt Unity asset folder scripts or Prefabs exist on that machine. Copy/import four FBXs and UnitySource, compile C#, build the scene through the real Editor, verify car nose, glass, Noma skeleton, walking animation and gap, then full Play and headset. Static link/spec checks do not prove runtime. Store any emergency teacher demo separately; students must never depend on it.
 
 [Acceptance matrix](Acceptance_Matrix.md) · [Troubleshooting](Troubleshooting.md) · [Source-first architecture](ProjectArchitecture.md).
