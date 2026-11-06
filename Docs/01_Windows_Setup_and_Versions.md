@@ -1,8 +1,8 @@
 # Windows setup and versions
 
-The student entry point is [Cursor-first workflow](Cursor_First_Workflow.md), not a ZIP download or immediate Unity Hub import.
+Share [the pre-class announcement](Student_Preclass_Announcement.md) first. The student entry point is [Cursor-first workflow](Cursor_First_Workflow.md), not a ZIP download or immediate Unity Hub import.
 
-Start with **Unity 6 6000.3.27f2 or newer compatible**, **Blender 5.2.2 or newer compatible**, a current compatible Cursor, Git, Python 3.10+ and uv/uvx. These are starting points, not a requirement to use one patch release forever. Verify newer Unity builds against the URP project packages and newer Blender builds against the source .blend. Historic URP/Input/OpenXR/XR Management baselines are recorded in [Compatibility](Compatibility.md).
+Start with **Unity 6.3 LTS 6000.3.27f2 or a later tested security-patched LTS update**, **Blender 5.2.2 LTS (or 5.2.3 LTS after an asset/MCP check)**, a current compatible Cursor, Git, Python 3.10+ and uv/uvx. These are starting points, not a requirement to use one patch release forever. Verify newer Unity builds against the URP project packages and newer Blender builds against the source .blend. Historic URP/Input/OpenXR/XR Management baselines are recorded in [Compatibility](Compatibility.md).
 
 1. Create an empty local folder, open Cursor and run [clone/preflight prompt](../Prompts/00_Clone_Preflight.md). Check Cursor sign-in, classroom Pro entitlement if needed, filesystem and terminal permissions, Meta Quest Link PC app and XR hardware.
 2. Open an **empty Blender scene and blank URP Unity project**; use [MCP install/update prompt](../Prompts/00_Install_Update_MCP.md) to check existing software-side connectors, install missing, update outdated compatible packages, enable services and verify actual live readbacks in Cursor.
