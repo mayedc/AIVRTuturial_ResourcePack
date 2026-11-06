@@ -1,4 +1,4 @@
-# Cursor-first workflow — source-first Plan B
+# Cursor-first workflow — source-first the current teaching package
 
 This repository is a SOURCE BUNDLE, not a Unity project. Students open an empty folder in Cursor, clone the repository, connect real Blender/Unity MCP tools, inspect/recolor models, create an independent Unity scene from FBXs, then implement interactions and test in Quest. **Copy one prompt at a time.**
 
