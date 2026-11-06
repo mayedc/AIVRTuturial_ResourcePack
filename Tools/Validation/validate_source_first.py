@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Dependency-free repository checks for Plan B; run from repository root.
+"""Dependency-free repository checks for the source-first teaching pack; run from repository root.
 This cannot compile Unity C# or test a headset. Only structural/source checks.
 """
 from pathlib import Path
@@ -41,7 +41,8 @@ for name in required:
     p = ROOT / name
     check(p.is_file() and p.stat().st_size > 0, f"Required file missing or empty: {name}")
 
-check(not (ROOT / "Assets/AI_VR_Workshop_V4").exists(), "Plan B must not contain the old ready-made Unity asset pack.")
+check(not (ROOT / "Assets").exists() and not (ROOT / "ProjectSettings").exists(),
+      "The source-only teaching repository must not contain a prebuilt Unity project.")
 
 spec_path = ROOT / "UnitySource/Config/WorkshopSceneSpec.json"
 if spec_path.exists():
