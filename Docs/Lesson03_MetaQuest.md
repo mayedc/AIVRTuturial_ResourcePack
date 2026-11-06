@@ -6,7 +6,7 @@
 
 Copy [02_1 XR setup and device self-check](../Prompts/02_1_XR_Setup_And_Device_Check.md). Cursor reads the active Unity project through MCP, examines **XR Plug-in Management > Standalone > OpenXR**, OpenXR settings, the installed **Meta XR Core SDK**, and a real supported **tracked XR rig/camera prefab**. If all are compatible and healthy, report without reinstalling. Otherwise install via Unity Package Manager and the **official Meta XR Core SDK**, with user sign-in and license steps done manually.
 
-The student connects Quest 3/3S with a USB-C **data cable**, starts the Windows Meta Quest Link / Meta Horizon Link desktop app, **launches Link from the headset**, checks the PC OpenXR runtime and personally confirms they are seeing the **PC Link environment**. Cursor must stop for this check: do not attach a VR camera yet.
+The student connects Quest 2/3/3S with a USB-C **data cable**, starts the Windows Meta Quest Link / Meta Horizon Link desktop app, **launches Link from the headset**, checks the PC OpenXR runtime and personally confirms they are seeing the **PC Link environment**. Cursor must stop for this check: do not attach a VR camera yet.
 
 ## 02_2 — Attach driver's XR camera and test while wearing headset
 
